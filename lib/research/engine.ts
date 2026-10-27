@@ -147,6 +147,12 @@ export async function runResearch(rawProfile: ResearchProfile, options:ResearchO
   emit('Planner','Compile your research mandate',`${p.markets.join(' + ')}; ${p.horizonMonths}-month horizon; ${p.targetReturn}% annual return aspiration; volatility ≤${p.maxVolatility}%; historical drawdown ≤${p.maxDrawdown}%. ${p.baseCurrency} ${money(p.capital)} is a research budget, not an allocation order.`);
   if (lessons.length) emit('Memory','Recall previous committee decisions',`${lessons.join(' ')} Current evidence and hard limits still govern every outcome.`);
   emit('Data steward','Establish provenance and listing scope',`${scope.length} securities in the selected market universe. ${isLive?'Live sources require dated provenance and adjusted closing prices.':'All price paths and fundamentals are synthetic fixtures. Company source links are discovery references, not support for the sample figures.'}`,isLive&&!scope.length?'warning':'completed',1,scope.flatMap(s=>s.evidence?.map(e=>e.id)??[]));
+  const missingMarkets=p.markets.filter(m=>!scope.some(s=>s.market===m));
+  if(missingMarkets.length){
+    const covered=dedupe(scope.map(s=>s.market));
+    const detail=`Requested market coverage is unavailable for ${missingMarkets.join(', ')}: no source records were delivered. ${covered.length?`Findings apply only to ${covered.join(', ')}.`:'No requested market has source coverage.'} Market selection alone does not establish data coverage.`;
+    warnings.push(detail);emit('Data steward','Disclose missing market coverage',detail,'warning');
+  }
   if (conflictingIds.size) warnings.push(`${conflictingIds.size} source identifiers referred to contradictory records. Every affected security was excluded; conflicting records are retained with unique conflict-* IDs for inspection.`);
   if (!scope.length) warnings.push(isLive?'No live universe was supplied. Configure and verify Zetaris before requesting live research.':'No securities are available in the selected markets.');
   if (!isLive) warnings.push(`${SAMPLE_NOTICE} Sample validation replays the fixed ${SAMPLE_AS_OF} fixture clock; the run creation time is not a current market-data timestamp.`);
@@ -207,7 +213,8 @@ export async function runResearch(rawProfile: ResearchProfile, options:ResearchO
       if(w.quant) s.score=rank(s,w.quant,p,w.penalty);
       s.reasons.push(...w.critiques);
       s.bearCase += ` ${w.critiques[0]}`;
-      if((s.operatingMargin<=0 || s.quality<65 || p.horizonMonths<=12) && s.status!=='excluded')s.status='watch';
+      if((s.operatingMargin<=0 || s.quality<65 || p.horizonMonths<=12 || s.currency!==p.baseCurrency) && s.status!=='excluded')s.status='watch';
+      if(s.currency!==p.baseCurrency)s.reasons.push(`Base-currency risk is unverified: this ${s.currency} listing has no aligned ${p.baseCurrency} FX history. Local-currency risk checks cannot qualify it for the base-currency brief; retain watch-only status.`);
       s.analystNote += ` Initial score ${baseline}; revised to ${s.score} after skeptic review.`;
       changes.push(`${s.symbol}: ${baseline} → ${s.score}${s.status==='watch'?' (watch-only)':''}`);
     }
@@ -262,7 +269,7 @@ export async function runResearch(rawProfile: ResearchProfile, options:ResearchO
     'Hard volatility and drawdown gates use unrounded computed values. Sector exclusions, data quality and live/sample provenance cannot be overridden by commentary. Latest close must match the last adjusted price within 0.1%; contradictory source-ID collisions exclude every affected security and preserve quarantined evidence.',
     'Ranking weights: quality 30%, risk headroom 25%, growth and margins 20%, valuation heuristic 15%, historical aspiration comparison 10%, followed by explicit skeptic penalties. Scores are relative research priorities, not probabilities.',
     'A horizon of 12 months or less makes otherwise eligible equities watch-only. Conflicting return/risk preferences trigger abstention under an explicit product policy, not a modeled efficient frontier.',
-    'Returns are local-currency price returns; dividends, withholding, fees, FX, taxes, market access, liquidity and portfolio correlations are not modeled. No portfolio optimization or order execution is provided.',
+    'Foreign-currency listings remain watch-only without aligned FX history; local-currency risk metrics do not establish base-currency suitability. Returns are local-currency price returns; dividends, withholding, fees, FX, taxes, market access, liquidity and portfolio correlations are not modeled. No portfolio optimization or order execution is provided.',
     'Stress scenarios apply stated hypothetical shocks. Historical maximum drawdown is an observation, never a stop-loss guarantee or a bound on future losses.',
   ],warnings:dedupe(warnings)};
 }

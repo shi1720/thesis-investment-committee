@@ -1,0 +1,16 @@
+FROM node:24-slim AS builder
+WORKDIR /app
+COPY package.json package-lock.json ./
+RUN npm ci
+COPY . .
+RUN node scripts/build-api.mjs
+
+FROM node:24-slim
+ENV NODE_ENV=production
+WORKDIR /app
+COPY package.json package-lock.json ./
+RUN npm ci --omit=dev && npm cache clean --force
+COPY --from=builder /app/dist/api ./dist/api
+USER node
+EXPOSE 8080
+CMD ["node", "dist/api/server.mjs"]

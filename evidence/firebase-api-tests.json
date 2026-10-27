@@ -1,0 +1,27 @@
+{
+  "executedAt": "2026-10-27T07:24:09.913Z",
+  "environment": "https://thesis-investing.web.app",
+  "disposableAnonymousAccounts": 2,
+  "checks": 19,
+  "results": [
+    "Anonymous HTTP caller cannot read history",
+    "Sites identity header spoofing rejected",
+    "Forged Firebase token rejected",
+    "Verified workspace access works while direct client database reads are denied",
+    "Invalid mandate rejected",
+    "Cross-origin writes rejected",
+    "Oversized body rejected",
+    "Research runs actual risk screening, critique revision and official H-MEM",
+    "Idempotent retry returns original decision",
+    "Idempotency key cannot change the mandate",
+    "A second Firebase account cannot read research or reports",
+    "Saved thesis identity comes from server-owned research",
+    "Notes persist and reject edits from another account",
+    "Authenticated printable report preserves provenance",
+    "Conflicting mandate abstains without paid generation",
+    "Official memory is recalled in a later request",
+    "Account export includes persisted runs and notes",
+    "Run deletion removes access",
+    "Workspace reset clears research, notes and memory"
+  ]
+}

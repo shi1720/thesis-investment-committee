@@ -36,7 +36,7 @@ export async function executeResearch(userId:string,profile:ResearchProfile,id:s
   run.events.splice(1,0,{id:`${id}-hmem-recall`,at:new Date().toISOString(),agent:'Memory',action:'Recall with Meterless H-MEM',detail:`Official engine commit 1742dec. ${memory.reused?`${memory.lessons.length} historical decisions recalled using hybrid search.`:'First run: empty account memory. New decision will be retained for the next run.'} Prior decisions cannot change current risk limits.`,status:'completed',iteration:1,model:'Meterless/H-MEM',evidenceIds:[]});
   if(profile.mode==='live'){
     const zetaris=run.providers.find(p=>p.name==='Zetaris');
-    if(zetaris){zetaris.status='verified';zetaris.detail=`Successful authenticated query delivered ${stocks.length} validated stock records from the configured view. ${synthetic?'Data is synthetic sponsor-demo fixtures.':'Dated price and filing provenance retained.'}`;}
+    if(zetaris){zetaris.status='verified';zetaris.detail=`Successful authenticated query delivered ${stocks.length} validated stock records from the configured view. ${synthetic?'Data is synthetic research fixtures.':'Dated price and filing provenance retained.'}`;}
     event('Data steward','Verify the Zetaris query',`Authenticated data-layer query returned ${stocks.length} stocks; validated schema, identities, source metadata and listing scope. ${synthetic?'The dataset contains synthetic fixtures and remains labeled sample.':'This result uses connected financial source records.'}`,'completed','Zetaris/SQL',run.evidence.map(e=>e.id));
     try{
       const review=await new NightshiftClient(config).critiqueResearch(run,memory.context);
@@ -88,7 +88,7 @@ export async function executeResearch(userId:string,profile:ResearchProfile,id:s
         run.warnings.push('Optional independent exclusion audit did not complete. Deterministic exclusions remain in force.');
       }
     }
-    if(synthetic)run.warnings.push('Connected sponsor demonstration: Zetaris delivered synthetic fixtures. Real API calls are shown in the audit trail, but none of these figures represent current market data.');
+    if(synthetic)run.warnings.push('Connected research: Zetaris delivered synthetic fixtures. Real API calls are shown in the audit trail, but none of these figures represent current market data.');
   }else{
     run.providers=run.providers.map(p=>p.name==='Zetaris'||p.name==='Meterless Nightshift'?{...p,status:'sample',detail:'Not called in this offline sample run. Synthetic fixtures and deterministic research specialists were used.'}:p);
   }

@@ -47,3 +47,6 @@ yarn-error.log*
 !.dev.vars.example
 /playwright-report/
 /test-results/
+/dist-web/
+/dist-api/
+firebase-debug.log*

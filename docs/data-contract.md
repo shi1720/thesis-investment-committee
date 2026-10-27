@@ -14,8 +14,8 @@ not access to current market data.
 ## Rebuild and register
 
 1. Run `npx tsx scripts/export-zetaris-data.ts` from the repository root.
-2. Stage `prices.jsonl`, `fundamentals.csv` and `filings.jsonl` under
-   `/home/zetaris/customer-data/thesis/` in the actual Zetaris driver. File URLs
+2. Stage `prices.json`, `fundamentals.csv` and `filings.json` under
+   `/home/zetaris/customer-data/shared/thesis/` in the actual Zetaris driver. File URLs
    in the SQL refer to the driver filesystem, not the browser or this repository.
 3. Inspect existing object names, then execute one top-level statement at a time
    from `data/zetaris/register.sql`. Its syntax follows Zetaris Lightning
@@ -42,9 +42,9 @@ the source fixture changes.
 
 | Feed | Format | Fixture rows | Responsibility |
 | --- | --- | ---: | --- |
-| `thesis_prices.records` | JSONL | 20 | Listing identity, local currency, snapshot date, 505 daily adjusted closing prices, cached summaries |
+| `thesis_prices.records` | JSON array | 20 | Listing identity, local currency, snapshot date, 505 daily adjusted closing prices, cached summaries |
 | `thesis_fundamentals.records` | CSV | 20 | Company identity, sector, financial inputs, initial thesis, catalyst and risk |
-| `thesis_filings.records` | JSONL | 20 | Two provenance records per security, serialized as an evidence array |
+| `thesis_filings.records` | JSON array | 20 | Two provenance records per security, serialized as an evidence array |
 
 The evidence feed contains one row per security/snapshot and a serialized array
 with the underlying source records. This preserves independent ownership of the
@@ -123,3 +123,8 @@ Thesis reports local-currency price returns, not portfolio or after-tax returns.
 The capital input is a loss-budget illustration; no share allocation is computed
 without valid FX and investability data. A return aspiration affects research
 prioritization but never becomes a promised or inferred future return.
+
+The verified native JSON reader consumes array files. JSONL exports remain as
+compatibility artifacts but are not the registered native source: this tested
+Zetaris version returned only the first JSONL row. Always verify delivered row
+counts against the fixture manifest after source registration.

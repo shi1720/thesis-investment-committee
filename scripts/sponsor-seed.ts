@@ -38,8 +38,8 @@ async function main(){
   if(containerArg>=0){
     const container=process.argv[containerArg+1];if(!container||!/^[A-Za-z0-9_.-]+$/.test(container))throw new Error('A valid explicit driver container name is required.');
     const exec=promisify(execFile);
-    await exec('docker',['exec',container,'mkdir','-p','/home/zetaris/customer-data/thesis']);
-    for(const file of ['prices.jsonl','fundamentals.csv','filings.jsonl'])await exec('docker',['cp',path.resolve('data/zetaris',file),`${container}:/home/zetaris/customer-data/thesis/${file}`]);
+    await exec('docker',['exec',container,'mkdir','-p','/home/zetaris/customer-data/shared/thesis']);
+    for(const file of ['prices.json','fundamentals.csv','filings.json'])await exec('docker',['cp',path.resolve('data/zetaris',file),`${container}:/home/zetaris/customer-data/shared/thesis/${file}`]);
     console.log(JSON.stringify({stagedFiles:3,container}));
   }
   const executed:{statement:number;action:'created'|'already_exists'}[]=[];
@@ -60,7 +60,7 @@ async function main(){
   const counts=Object.fromEntries(['US','India','China','UAE'].map(m=>[m,stocks.filter(s=>s.market===m).length]));
   if(stocks.length!==20||Object.values(counts).some(c=>c!==5)||stocks.some(s=>s.prices.length!==505||s.evidence.some(e=>!e.sample)))throw new Error('Queried universe does not match the expected synthetic fixture manifest.');
   const files:Record<string,{sha256:string;bytes:number}>={};
-  for(const name of ['prices.jsonl','fundamentals.csv','filings.jsonl','register.sql']){const b=await fs.readFile(path.resolve('data/zetaris',name));files[name]={sha256:createHash('sha256').update(b).digest('hex'),bytes:b.length}}
+  for(const name of ['prices.json','fundamentals.csv','filings.json','register.sql']){const b=await fs.readFile(path.resolve('data/zetaris',name));files[name]={sha256:createHash('sha256').update(b).digest('hex'),bytes:b.length}}
   const proof={schema:'thesis.zetaris.live-proof.v1',testedAt:new Date().toISOString(),provider:'Zetaris',apiMode:mode,syntheticInputs:true,notice:'Real Zetaris source registration and query over fabricated research fixtures; not live financial observations.',statements:executed,view:'thesis.research_universe',sourceFiles:files,stockCount:stocks.length,marketCounts:counts,priceObservationsPerStock:505,contractValidated:true,symbols:stocks.map(s=>s.symbol),limitations:['This proof establishes delivery and schema validation, not financial correctness or a live market-data license.','Three file feeds are federated; these files simulate independent systems.']};
   await fs.mkdir('evidence',{recursive:true});await fs.writeFile(path.resolve('evidence/zetaris-live.json'),JSON.stringify(proof,null,2)+'\n');
   console.log(JSON.stringify({success:true,proof:'evidence/zetaris-live.json',stockCount:stocks.length,marketCounts:counts}));

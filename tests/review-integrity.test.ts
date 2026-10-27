@@ -115,3 +115,31 @@ test('sample provenance validation continues to replay the fixture clock in late
   assert.equal(replay.eligibleCount,current.eligibleCount);
   assert.deepEqual(replay.opportunities,current.opportunities);
 });
+
+test('a multi-market mandate exposes missing source coverage instead of implying global coverage',async()=>{
+  const stock=datedLiveRecord('2026-10-27');
+  const run=await runResearch({...defaultProfile,markets:['US','India'],mode:'live'},{...clock,stocks:[stock]});
+  assert.equal(run.universeCount,1);
+  assert.ok(run.warnings.some(w=>w.includes('India')&&w.includes('no source records')));
+  assert.ok(run.events.some(e=>e.agent==='Data steward'&&e.action==='Disclose missing market coverage'&&e.status==='warning'));
+  assert.ok(run.warnings.some(w=>w.includes('Findings apply only to US')));
+});
+
+test('foreign listings cannot qualify for a base-currency mandate without aligned FX history',async()=>{
+  const stock=sampleUniverse.find(s=>s.symbol==='V')!;
+  const foreign=await runResearch({...defaultProfile,markets:['US'],baseCurrency:'INR',maxVolatility:80,maxDrawdown:80},{...clock,stocks:[stock]});
+  assert.equal(foreign.opportunities[0].status,'watch');
+  assert.ok(foreign.opportunities[0].metrics.every(m=>m.passed));
+  assert.equal(foreign.eligibleCount,0);assert.equal(foreign.abstained,true);
+  assert.ok(foreign.opportunities[0].reasons.some(r=>r.includes('Base-currency risk is unverified')&&r.includes('INR FX history')));
+  const aligned=await runResearch({...defaultProfile,markets:['US'],baseCurrency:'USD',maxVolatility:80,maxDrawdown:80},{...clock,stocks:[stock]});
+  assert.equal(aligned.opportunities[0].status,'qualified');
+});
+
+test('an HKD listing can qualify for an HKD mandate while remaining watch-only in USD',async()=>{
+  const stock={...sampleUniverse.find(s=>s.symbol==='V')!,symbol:'HKTEST',name:'Synthetic HKD fixture',market:'China' as const,exchange:'HKEX',currency:'HKD'};
+  const local=await runResearch({...defaultProfile,markets:['China'],baseCurrency:'HKD',maxVolatility:80,maxDrawdown:80},{...clock,stocks:[stock]});
+  assert.equal(local.opportunities[0].status,'qualified');assert.equal(local.eligibleCount,1);
+  const foreign=await runResearch({...defaultProfile,markets:['China'],baseCurrency:'USD',maxVolatility:80,maxDrawdown:80},{...clock,stocks:[stock]});
+  assert.equal(foreign.opportunities[0].status,'watch');assert.equal(foreign.eligibleCount,0);
+});

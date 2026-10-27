@@ -1,0 +1,17 @@
+.git
+.gitignore
+node_modules
+work
+.env*
+.dev.vars*
+.wrangler
+.sites-runtime
+.next
+.vinext
+dist
+dist-web
+submission
+evidence
+*.pem
+*.tsbuildinfo
+firebase-debug.log*

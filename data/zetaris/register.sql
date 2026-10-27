@@ -7,9 +7,9 @@
 CREATE LIGHTNING DATABASE thesis_prices DESCRIBE BY 'Synthetic daily adjusted price paths and listing identities';
 CREATE LIGHTNING DATABASE thesis_fundamentals DESCRIBE BY 'Synthetic company financial input feed';
 CREATE LIGHTNING DATABASE thesis_filings DESCRIBE BY 'Research provenance and source discovery references';
-CREATE LIGHTNING FILESTORE TABLE records FROM thesis_prices FORMAT JSON OPTIONS (path 'file:///home/zetaris/customer-data/thesis/prices.jsonl');
-CREATE LIGHTNING FILESTORE TABLE records FROM thesis_fundamentals FORMAT CSV OPTIONS (path 'file:///home/zetaris/customer-data/thesis/fundamentals.csv', header 'true', quote '"', escape '"');
-CREATE LIGHTNING FILESTORE TABLE records FROM thesis_filings FORMAT JSON OPTIONS (path 'file:///home/zetaris/customer-data/thesis/filings.jsonl');
+CREATE LIGHTNING FILESTORE TABLE records FROM thesis_prices FORMAT JSON OPTIONS (path '/home/zetaris/customer-data/shared/thesis/prices.json');
+CREATE LIGHTNING FILESTORE TABLE records FROM thesis_fundamentals FORMAT CSV OPTIONS (path '/home/zetaris/customer-data/shared/thesis/fundamentals.csv', header 'true', quote '"', escape '"');
+CREATE LIGHTNING FILESTORE TABLE records FROM thesis_filings FORMAT JSON OPTIONS (path '/home/zetaris/customer-data/shared/thesis/filings.json');
 CREATE SCHEMASTORE CONTAINER thesis;
 CREATE SCHEMASTORE VIEW research_universe WITH CONTAINER thesis AS
 SELECT p.symbol AS symbol,

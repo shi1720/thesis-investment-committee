@@ -1,0 +1,24 @@
+{
+  "schema": "thesis.sponsor-proof.public-metadata.v1",
+  "startedAt": "2026-10-27T07:09:53.060Z",
+  "finishedAt": "2026-10-27T07:10:00.444Z",
+  "dataMode": "actual_private",
+  "dataProvider": "Zetaris",
+  "counts": {
+    "stocks": 1,
+    "modelRequests": 0
+  },
+  "checks": {
+    "sourceRowsValidated": true,
+    "structuredReviewReturned": false,
+    "policyAbstentionObserved": true,
+    "noGenerationForAbstention": true,
+    "temporaryActualRunRemovedFromDemoHistory": true
+  },
+  "receipts": [],
+  "limitations": [
+    "Public metadata only. Financial source records, research narratives, risk metrics, user preferences, model prompts and runtime receipt bodies are intentionally omitted.",
+    "The complete proof remains in the operator’s ignored work/private-proofs directory. This metadata grants no financial-data redistribution rights.",
+    "Schema and citation checks do not independently verify financial facts or investment performance."
+  ]
+}

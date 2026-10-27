@@ -1,89 +1,108 @@
-# Independent judge review
+# Independent rubric review
 
-Review snapshot: **27 October 2026, 05:31 UTC**. Primary track: **The Agent That Can Explain Why**. This is a diagnostic assessment against the supplied hackathon rubric, not an official judging result or a prediction of winning.
+Review snapshot: 27 October 2026. Primary track: **Track 3, Reasoning Architecture**.
+This is a diagnostic assessment against the supplied hackathon rubric, not a
+judge's score or a prediction of placement. The public application is
+[thesis-investing.web.app](https://thesis-investing.web.app).
 
-**The current build is not submission-complete.** It demonstrates a working, defensively engineered research workflow, but the required Zetaris integration has no retained successful execution proof at this snapshot. That is an eligibility/compliance gap, not merely a few lost sponsor points. A finished video, accessible public source repository and reproducible complete sponsor path must also be verified before submission.
+## Current evidence
 
-## Evidence actually reviewed
+The earlier sponsor-execution blockers have been materially resolved. The
+submitted evidence now includes:
 
-- `README.md`, `docs/product-strategy.md`, `docs/architecture.md`, `docs/launch-readiness.md`, `docs/demo-script.md`, and the current research/provider/service code.
-- Fresh `npm test`: **49 passed, zero failed, zero skipped/TODO**. This includes staged critique changing an initial winning rank, unrounded hard risk gates, impossible mandates, source collisions, inconsistent closing prices, zero-return aspirations, bounded model repairs and provider failure accounting.
-- `evidence/api-tests.json`: **14 recorded API checks** against a local built Worker with synthetic platform identity headers, including cross-account access refusal. These are implementation tests, not an external security audit.
-- `evidence/hmem-conformance.json`: **13/13 upstream conformance checks** for the pinned official Meterless H-MEM engine.
-- `evidence/nightshift-live.json`: a genuine Qwen research call through Nightshift, with a concrete model, token counts, latency and receipt. This proof predates the latest staged-engine/narrative-guard changes; it is historical execution evidence, not sufficient final-version acceptance evidence.
-- `evidence/nemotron-live.json`: a genuine `local-runtime/nemotron-mini-4b-instruct-q4-k-m` exclusion-auditor response through Nightshift. It returns `request_review` and source IDs over synthetic inputs. At review time, the application service does not yet invoke `auditExclusion`; a CLI/library proof alone does not demonstrate that a product user benefits from the feature.
-- `evidence/ui-results.png` and `evidence/ui-workspace.png`: a coherent research interface with visible sample labeling, risk controls, results and saved-work navigation. A screenshot does not establish responsive, keyboard or end-to-end browser correctness.
-- No successful `evidence/zetaris-live.json` or complete `evidence/connected-research.json` was available at this snapshot.
+| Evidence | What it establishes | What it does not establish |
+| --- | --- | --- |
+| [Public API checks](../evidence/firebase-api-tests.json) | Nineteen hosted checks, including real Firebase UID isolation, authenticated reports, idempotency and workspace erasure | External security certification or sustained load tolerance |
+| [Public connected application](../evidence/firebase-connected-application.json) | Cloud Tasks dispatch through the actual application, Zetaris, Nightshift and H-MEM; one Qwen call; 22.7 seconds | An always-on provider service or a latency guarantee |
+| [Local connected application](../evidence/connected-application.json) | End-to-end provider/application execution on synthetic records with actual usage receipts | Actual current financial observations |
+| [Zetaris federation](../evidence/zetaris-live.json) | Twenty records from three registered physical sources and the federated view | Licensed live exchange coverage |
+| [Official H-MEM conformance](../evidence/hmem-conformance.json) | Thirteen passing upstream conformance checks against the pinned official engine | A proprietary memory invention or demonstrated customer benefit |
+| [Nemotron feature](../evidence/nemotron-live.json) and [model provenance](../evidence/nemotron-model-provenance.json) | A real optional exclusion-auditor feature, two actual request receipts and concrete NVIDIA model identity | Nemotron involvement in the recorded Qwen-only public cloud run |
+| [Private actual-data metadata](../evidence/zetaris-personal-metadata.json) | A validated actual personal-use US record in its separate Zetaris namespace | Public redistribution rights, a broad live universe or an investable recommendation |
+| Automated suite and clean reproduction | Typed source/risk/revision behavior, adapter boundaries and repeatable setup | Investment alpha, calibrated forecasts or an audited financial service |
 
-## Realistic rubric range
+The public sponsor demonstrations use synthetic financial inputs. Real provider
+execution and real market observations are separate facts. The private actual
+record supports an ingress feasibility claim; it must not be copied into public
+submission artifacts under an assumed commercial license. A retained earlier
+provider-timeout artifact is a failed historical attempt, not another success.
 
-The ranges below reflect the current evidence and missing final deliverables. They deliberately do not award points for planned integrations, proposed commercial demand or claims of investment outperformance.
+## Plausible rubric range
 
-| Criterion | Available | Current evidence-based range | Why |
+| Criterion | Maximum | Current range | Reason |
 | --- | ---: | ---: | --- |
-| Impact | 30 | **14–19** | The constraint/counterargument/invalidation job is clear. Actual financial-source coverage, observed investor benefit and willingness to pay remain unvalidated; all market examples are synthetic. |
-| Technical | 20 | **15–18** | Working typed state transitions, meaningful defensive tests, durable account records, receipts, bounded repair and abstention. Missing complete sponsor execution and durable job recovery limit the production claim. |
-| Innovation | 15 | **7–10** | Rejected alternatives, explicit countercases, persistent invalidation records and memory are a useful product combination. Screening and financial dashboards are crowded categories; fixed heuristic specialists and one connected qualitative reviewer do not alone establish a novel reasoning architecture. |
-| Demo | 15 | **5–8** | A runnable sample, screenshots, script and retained component receipts exist. A finished recorded main workflow, complete sponsor path and final-version proof are not yet available. |
-| Product & UX | 10 | **7–9** | Clear brief, readable risk distinctions, comparison, saved theses and dossier export. This review has not independently completed browser QA or user testing. |
-| Sponsor Tech | 10 | **4–6** | Official H-MEM and real Nightshift execution are established. Nemotron has genuine component proof, but its service integration is not yet demonstrated. Required Zetaris execution is unverified. |
-| **Total** | **100** | **52–70** | Diagnostic only; missing mandatory sponsor use can supersede the numerical estimate. |
+| Impact | 30 | 18–23 | A concrete pre-investment decision record addresses risk, counterarguments and reconsideration. Actual broad-market usefulness, user benefit and willingness to pay remain unvalidated. |
+| Technical | 20 | 17–19 | Public persistent multiuser execution, durable dispatch, actual critique/state revision, deterministic vetoes, source checks, real sponsor execution and extensive tests. No external audit, sustained load/recovery exercise or stable always-on sponsor hosting yet. |
+| Innovation | 15 | 9–11 | Consequential skepticism, refusal and remembered decision context form a coherent workflow. Computational specialist roles are useful but should not be sold as several autonomous LLMs; this is not demonstrated research novelty. |
+| Demo | 15 | 10–13 | The public workflow and machine-readable receipts can demonstrate an actual decision, rejection and refinement. Final recorded narration, pacing and judge handoff still determine the presentation score. |
+| Product & UX | 10 | 7–9 | Guest entry, explicit constraints, comparison, saved decisions and authenticated reports support a usable workflow. Observed user testing and a comprehensive accessibility audit are absent. |
+| Sponsor Tech | 10 | 8–10 | Zetaris federation, official H-MEM and primary Nightshift execution now have concrete working evidence. Show the optional Nemotron feature separately with its exact model receipts. |
+| **Total** |**100**|**69–85**| A plausible diagnostic range, not a guarantee. Impact is the largest unresolved scoring opportunity. |
 
-If the actual Zetaris federation, final connected research run, optional Nemotron product path, reproducible public source and a clear recorded demo are completed, **roughly 68–82/100** becomes a plausible review range for the same focused product. A score above that would need stronger real-user evidence, actual permissioned financial-source work or clearer comparative effectiveness. Those outcomes cannot be manufactured with presentation language. There is no basis here to promise a podium finish.
+This range assumes the final public repository, setup instructions, required
+one-to-four-minute video and slide deck are accessible to judges. Required
+submission completeness and organizer eligibility checks can override a numerical
+estimate. No evidence supports a promise of a podium finish.
 
-## Highest-impact work to finish now
+## Highest-impact final presentation changes
 
-### 1. Close the mandatory sponsor gap before adding features
+1. **Lead with a decision that changes.** Show the initial candidate ranking, the
+   specific critique task, the planner's actual revision and the resulting
+   shortlist. Follow with a contradictory mandate that abstains. This exposes
+   behavior that ordinary filtering and persuasive stock prose do not explain.
+2. **Show why the data layer matters.** Trace separate price, fundamental and
+   filing-provenance feeds into the real Zetaris view. Explain that incomplete or
+   inconsistent evidence prevents qualification. A source count alone is weaker
+   than showing a consequential validation result.
+3. **Show the public connected run, then its boundary.** Open the returned
+   provider/model receipt and persistent job result. State that the financial
+   values are fixtures. Show private actual-data ingress only through operational
+   metadata and explain the current personal-use/commercial boundary.
+4. **Demonstrate continuity without weakening risk.** Save an invalidation
+   condition, revise the mandate and show H-MEM retrieval. Current inputs must
+   still be recomputed. A recalled optimistic note cannot override a veto.
+5. **Keep every model claim exact.** The recorded public run used Qwen through
+   Nightshift. The optional Nemotron auditor has a separate working feature and
+   two request receipts. Present that feature separately if competing for the
+   NVIDIA award; do not imply every cloud decision received NVIDIA review.
+6. **Give judges one reproducible handoff.** Link the public application, source,
+   setup command, evidence index and sample cases. Keep provider availability
+   requirements explicit. Prefer a short successful path and an honest refusal
+   over another feature or an unsupported production claim.
 
-Run the three real source registrations and federated view query in Zetaris, then exercise the returned view through the application contract. Retain request timing, source/view row counts, actual response metadata and a complete connected research proof. A successful `SELECT 1`, prepared SQL or local reconstruction test is insufficient. A real Zetaris execution over the fixture feeds must remain labeled **synthetic data**.
+These are presentation and verification improvements using implemented behavior,
+not requests for architectural expansion. The strongest business hypothesis is
+that investors need a reusable decision record and a countercase. A small observed
+study measuring risk comprehension and return use would establish more than
+claiming an unmeasured time saving or showing more ticker symbols.
 
-The strongest short sponsor explanation is concrete: prices, fundamentals and filing provenance are separate feeds; the view brings them together; incomplete joins stay visible and fail validation. This explains why the data layer affects the decision instead of merely naming the sponsor.
+## Claims supported now
 
-### 2. Make final-version receipts match the submitted product
+- A functioning Track 3 research workflow with actual state revision, bounded model
+  interpretation, deterministic constraints and explained abstention.
+- A public persistent private-workspace application with tested account ownership,
+  report/export behavior and asynchronous connected execution.
+- Genuine required sponsor integrations and separately identified NVIDIA feature
+  receipts, with clear synthetic/actual data classification.
+- A limited actual personal-use US ingress path with complete field lineage and
+  a verified private federated record.
 
-Refresh the Qwen proof after the current qualitative-output guard and actual staged-state code are in place. The older proof includes now-prohibited numeric/predictive prose and old trace actions. Preserve it only as clearly dated history; use fresh final-code evidence in the submission.
+## Claims still unsupported
 
-Wire the optional Nemotron exclusion auditor into connected research and retain its event/receipt in the returned dossier. The model can request human review while the measured veto remains binding. Show the actual observation and exact model ID; do not describe a generic repeated thesis as an independently verified financial conclusion.
+- Investment outperformance, probability of hitting a target, prevention of future
+  losses or a validated personalized investment-advice service.
+- Actual current coverage of four markets or commercial display/redistribution
+  rights for the personal-use provider feed.
+- Several independently autonomous model agents in every run. The core specialists
+  are deterministic roles; Nightshift supplies a bounded qualitative review.
+- Semantic correctness merely because citation IDs exist, or an optional model
+  receipt proving a financial conclusion true.
+- Customer traction, validated pricing, audited security, continuous sponsor
+  availability, automatic recovery of ambiguous paid inference or complete
+  commercial production readiness.
 
-### 3. Demonstrate a consequential rejection and a real change
-
-Use existing behavior to tell a specific story:
-
-1. A default mandate yields two research candidates in the synthetic fixture.
-2. A familiar high-growth candidate fails its measured risk limits despite an attractive business hypothesis.
-3. The source register, counterargument and invalidation condition explain the rejection.
-4. A revised brief causes a different computed outcome; H-MEM recalls the earlier decision, but current gates are recomputed.
-5. An infeasible mandate ends in abstention and zero narrative requests.
-
-Point to the actual initial/revised ranking events rather than describing an invisible council of autonomous LLMs. The specialists are computational roles; connected model interpretation is a separate, bounded review. This distinction improves credibility and still demonstrates real work.
-
-### 4. Finish the judge handoff, not another feature branch
-
-Verify the public repository can be cloned cleanly, run the documented setup from a fresh checkout, and verify the intended judge access path. A private hosted site must not be presented as an anonymously accessible demo. A reproducible local application is a valid fallback if documented clearly.
-
-Create a short proof index linking the final tests, API isolation checks, H-MEM conformance, actual Zetaris federation, Nightshift receipts and Nemotron feature receipt. Give judges one path through the evidence. Complete the required slide deck and the one-to-four-minute video, using actual clicks and returned output.
-
-### 5. Keep the commercial claim narrow and testable
-
-The near-term product hypothesis is a reusable pre-investment decision record for self-directed investors comparing multiple markets. The proposed monthly price is a hypothesis. The measurable user benefit should be the ability to explain the main risk and invalidation trigger, followed by return use of saved theses; no measured benefit is yet established.
-
-Established products already provide substantial screening and data coverage. Koyfin lists screeners, watchlists, filings and global company snapshots in its [pricing comparison](https://www.koyfin.com/pricing/). Stock Analysis describes broad global coverage and multiple financial-data providers in its [data documentation](https://stockanalysis.com/help/data-and-downloads/about-our-data/). These primary vendor pages were checked on 27 October 2026; their feature statements are not independent quality assessments. Thesis needs to earn a workflow advantage through clearer decisions and counterarguments, rather than claim superior data breadth.
-
-Keep licensing and operational cost visible. A local model receipt reporting zero API charge excludes hardware, electricity and operations. The open-source H-MEM engine is useful infrastructure, not a proprietary moat. Proposed savings or margins require measurement and valid data rights.
-
-## Claims the submission can support
-
-- Working research screening with hard user constraints, actual rule-state revision, source-integrity checks and explicit abstention.
-- A research shortlist, countercase and saved invalidation record, with synthetic examples labeled consistently.
-- Official Meterless H-MEM execution and conformance, genuine Nightshift model calls and concrete per-request model provenance where receipts exist.
-- Account ownership checks and implementation-level security defenses covered by recorded tests.
-
-## Claims the submission cannot currently support
-
-- Investment alpha, a probability of hitting a return goal, prevention of future losses or validated personalized investment advice.
-- Live coverage of four entire stock markets, independent verification of financial facts or licensed redistribution rights.
-- A completed Zetaris product integration until actual final-workflow evidence exists.
-- Semantic truth merely because a model used valid source IDs.
-- Full commercial production readiness, external security certification, customer traction or a defensible proprietary moat.
-
-The most persuasive final demo is a small, auditable decision that survives challenge, followed by a justified refusal when the mandate cannot be supported. That is a concrete outcome judges can inspect. More markets, more role names or a louder performance claim would not resolve the current evidence gaps.
+The documented monthly prices and contribution margin are hypotheses. A local
+receipt reporting zero API charge excludes hardware, electricity and operations.
+Established screeners already offer substantial coverage; Thesis must earn an
+advantage through decision clarity and reconsideration, not unsupported data
+breadth or forecast accuracy.

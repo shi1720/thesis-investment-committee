@@ -4,7 +4,9 @@
 
 A global stock research committee that checks your risk limits, challenges the thesis, explains rejected candidates and can decline to make a pick.
 
-Built by **Shivam Gupta**, with AI-assisted engineering, for **Open Agent Hackathon 2026**. Primary track: **Reasoning Architecture**.
+**[Open the app](https://thesis-investing.web.app)**. A private guest workspace opens automatically. No brokerage login is required.
+
+Built by **Shivam Gupta**, with AI-assisted engineering. Submission track: **Reasoning Architecture**.
 
 ![Thesis research workspace](evidence/ui-results.png)
 
@@ -22,7 +24,7 @@ There is no trade execution, brokerage connection or promise of future returns. 
 
 ## Start from a clean checkout
 
-Requirements: Node.js 22.13+ and npm. No sponsor credentials are needed for sample mode.
+Requirements: Node.js 24 LTS (24.12+) and npm. No sponsor credentials are needed for sample mode.
 
 ```bash
 npm ci
@@ -40,7 +42,7 @@ npm run dev -- --port 5188
 
 `npm run setup` builds the Worker and applies each checked-in local D1 migration once, tracking applied file hashes in ignored local state. Subsequent runs skip unchanged migrations. Local and hosted databases are separate.
 
-## A reproducible judge walkthrough
+## A reproducible walkthrough
 
 1. Keep the default US + India mandate: 12% return aspiration, 25% volatility, 25% historical drawdown, 36 months.
 2. Run the committee. In this synthetic fixture, two companies pass. Inspect Visa's countercase and invalidation conditions.
@@ -58,7 +60,7 @@ The computational specialists perform separate work over shared typed state. The
 
 Connected mode adds an independent Nightshift qualitative critique. The evaluator checks candidate identities, citation membership, required source kinds, output schema and prohibited numerical/forecast claims. A rejected response gets one repair attempt. These controls do not establish semantic truth: model prose remains an unverified interpretation for human review. Failed generations retain their model receipts and usage accounting.
 
-H-MEM stores and retrieves account-scoped historical decisions with source provenance. Older context rotates out of the bounded active snapshot; audit entries move into separate D1 archives before rotation. Deleting a run clears aggregate memory and archives so deleted context cannot reappear through recall. Remaining run history can rebuild context on the next request.
+H-MEM stores and retrieves account-scoped historical decisions with source provenance. Older context rotates out of the bounded active snapshot; audit entries move into separate account-scoped archives before rotation. Deleting a run clears aggregate memory and archives so deleted context cannot reappear through recall. Remaining run history can rebuild context on the next request.
 
 See [architecture](docs/architecture.md) and [research/data contract](docs/data-contract.md). Reproducible [sample mandates and complete outputs](examples/research/) include US/India, China/UAE, and a conflicting return goal.
 
@@ -67,8 +69,8 @@ See [architecture](docs/architecture.md) and [research/data contract](docs/data-
 | Technology | Working role | Evidence boundary |
 | --- | --- | --- |
 | Meterless H-MEM | Official pinned TypeScript engine, actual hybrid recall and decision memory | Automated feature tests and upstream conformance tests run without credentials |
-| Meterless Nightshift | Source-constrained skeptical research review | A fresh real Qwen review with concrete model and runtime receipt is retained in [proof](evidence/nightshift-live.json) |
-| Zetaris | Federates price, fundamental and filing-provenance sources into `thesis.research_universe` | Adapter, three source files, registration SQL, contract tests and seeding verifier are included; only a retained successful instance proof establishes live execution |
+| Meterless Nightshift | Source-constrained skeptical research review | [Actual public-URL queued research](evidence/firebase-connected-application.json) and a fresh [Qwen review](evidence/nightshift-live.json) retain concrete model and receipt identity |
+| Zetaris | Federates price, fundamental and filing-provenance sources into `thesis.research_universe` | [Actual three-source federation](evidence/zetaris-live.json) delivered all 20 validated fixtures; the [complete public-URL run](evidence/firebase-connected-application.json) queried the view through the application |
 | NVIDIA Nemotron | Optional independent exclusion auditor through Nightshift | [Two concrete Nemotron Mini receipts](evidence/nemotron-live.json) verify the implemented feature over synthetic inputs. This standalone proof does not establish the complete connected workflow |
 
 Configuration is not verification. A real sponsor request over synthetic records remains a **sample-data demonstration**. Connected source failures do not silently turn into a successful live result.
@@ -91,7 +93,7 @@ npm run sponsor:proof
 
 The seed script performs explicit setup mutations against the configured instance. Review the configuration and [SQL](data/zetaris/register.sql) first. The app itself only issues bounded read-only queries against an allowlisted configured view.
 
-A hosted Worker cannot reach laptop loopback. For a local sponsor demonstration run Thesis locally, or configure reachable authenticated sponsor endpoints. The hosted sample application needs no external credentials.
+The Firebase application uses a narrow authenticated gateway to the operator-owned local services. The public view contains synthetic fixtures; the personal-use real-company namespace is never exposed by that gateway. The cloud sample workflow runs independently. See [Firebase deployment](docs/firebase-deployment.md).
 
 ## Verification
 
@@ -99,6 +101,8 @@ A hosted Worker cannot reach laptop loopback. For a local sponsor demonstration 
 npm run typecheck
 npm test
 npm run build
+npm run build:web
+npm run build:api
 ```
 
 For API integration tests against the local development server:
@@ -113,9 +117,17 @@ For multi-account isolation checks, run the **built Worker locally** with `npm s
 
 ## Deployment
 
-The tracked `.openai/hosting.json` declares Site identity and the D1 binding. The Sites publishing workflow applies generated Drizzle migrations before deploying the Worker. Source includes the generated SQL and migration metadata. The production site defaults to owner-private access with platform sign-in.
+The main public deployment is **https://thesis-investing.web.app**, using Firebase Hosting, Firebase Authentication, a dedicated named Firestore database, Cloud Run and Cloud Tasks. Connected requests queue durably and the browser polls or reconnects after reload. Reports, notes, exports and deletion enforce the verified Firebase account identity.
 
-The repository includes CI for clean installation, TypeScript, tests and a production build. See [SECURITY.md](SECURITY.md) for the identity trust boundary and [launch-readiness](docs/launch-readiness.md) for remaining commercial prerequisites.
+```bash
+THESIS_CLOUD_ENV=/absolute/private/path/cloudrun.env.yaml npm run deploy:firebase
+```
+
+This clean deployment script runs checks, builds a fresh Linux container, deploys the API, releases Hosting and runs isolated hosted tests. See [deployment guide](docs/firebase-deployment.md) and [backend architecture](docs/firebase-backend.md). The browser configuration key is intentionally public, restricted to authentication APIs and Thesis hostnames. Server secrets remain in Secret Manager.
+
+The original Sites build remains supported for credential-free local reproduction with local D1 and its platform identity boundary. It is a separate deployment path, with separate records. `.openai/hosting.json` and the checked-in Drizzle migrations belong to that path.
+
+CI checks installation, TypeScript, 84 automated tests and all three production builds. [Hosted verification](evidence/firebase-api-tests.json) records 19 checks, including two-account isolation; [connected execution](evidence/firebase-connected-application.json) records an actual Cloud Tasks job through Zetaris, Nightshift and H-MEM. These tests are not an external security audit. See [SECURITY.md](SECURITY.md) and [launch readiness](docs/launch-readiness.md).
 
 ## Product and economics
 

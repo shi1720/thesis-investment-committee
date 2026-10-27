@@ -22,7 +22,7 @@ export function csv(rows:Record<string,unknown>[]):string {
 const jsonl=(rows:unknown[])=>rows.map(row=>JSON.stringify(row)).join('\n')+'\n';
 export async function exportZetarisData(out=join(root,'data/zetaris')){
   const sources=splitStockSources(sampleUniverse);
-  const files:Record<string,string>={'prices.jsonl':jsonl(sources.prices),'fundamentals.csv':csv(sources.fundamentals),'filings.jsonl':jsonl(sources.filings),'sample-universe.json':JSON.stringify(sampleUniverse,null,2)+'\n'};
+  const files:Record<string,string>={'prices.json':JSON.stringify(sources.prices,null,2)+'\n','prices.jsonl':jsonl(sources.prices),'fundamentals.csv':csv(sources.fundamentals),'filings.json':JSON.stringify(sources.filings,null,2)+'\n','filings.jsonl':jsonl(sources.filings),'sample-universe.json':JSON.stringify(sampleUniverse,null,2)+'\n'};
   const fixtureManifest={schemaVersion:1,synthetic:true,asOf:SAMPLE_AS_OF,notice:SAMPLE_NOTICE,markets:['US','India','China','UAE'],securities:sampleUniverse.length,sourceRows:{prices:sources.prices.length,fundamentals:sources.fundamentals.length,filings:sources.filings.length},expectedViewRows:sampleUniverse.length,pricesPerSecurity:505,sourceSha256:Object.fromEntries(Object.entries(files).map(([name,body])=>[name,createHash('sha256').update(body).digest('hex')])),liveExecutionVerified:false};
   files['fixture-manifest.json']=JSON.stringify(fixtureManifest,null,2)+'\n';
   await mkdir(out,{recursive:true});

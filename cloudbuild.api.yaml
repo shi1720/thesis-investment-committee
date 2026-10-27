@@ -1,0 +1,9 @@
+steps:
+  - name: gcr.io/cloud-builders/docker
+    args: [build, -f, Dockerfile.api, -t, '${_IMAGE}', .]
+images: ['${_IMAGE}']
+substitutions:
+  _IMAGE: us-central1-docker.pkg.dev/gen-lang-client-0444960702/thesis/api:latest
+options:
+  logging: CLOUD_LOGGING_ONLY
+timeout: 900s

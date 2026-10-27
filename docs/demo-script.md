@@ -15,49 +15,49 @@ Target duration: **3 minutes 30 seconds**, at roughly 130 words per minute with 
 
 ## Run of show and word-for-word narration
 
-### 0:00–0:20 — The problem
+### 0:00–0:20 : The problem
 
 **Action:** Show the Thesis workspace and hero. Begin with your cursor still.
 
 > I’m Shivam Gupta. This is Thesis, a research committee for an investment decision that deserves a second opinion. Finding a promising stock is easy. Understanding whether it fits your limits, and what would change your mind, takes more work.
 
-### 0:20–0:50 — The investor’s brief
+### 0:20–0:50 : The investor’s brief
 
 **Action:** Point to the sample notice. Show selected US + India, 12% goal, 25% volatility, 25% drawdown and 3-year horizon. Click **Run research committee**.
 
 > All market values in this demonstration are synthetic. They make the workflow reproducible without presenting fabricated numbers as current opportunities. I choose the markets, my return aspiration, volatility comfort, drawdown ceiling and time horizon. The return is a goal to investigate. Historical volatility and drawdown never guarantee a future loss limit.
 
-### 0:50–1:20 — The shortlist and the counterargument
+### 0:50–1:20 : The shortlist and the counterargument
 
 **Action:** Select **Qualified**. Open a passing company’s thesis. Show opportunity, counterargument and invalidation sections. Click **Save thesis**, then close the drawer.
 
 > The committee recomputes risk from the price path and separates companies that pass from those that fail. A fit score cannot override a failed limit. Open a thesis and both sides stay visible: the opportunity, the counterargument, and a concrete condition that would invalidate the idea. I save that argument for a later review.
 
-### 1:20–1:55 — The decision trail
+### 1:20–1:55 : The decision trail
 
 **Action:** Open **Committee**. Scroll through the skeptic challenge, planner revision, risk veto and evaluator events. Then open **Evidence** briefly.
 
 > Here is the decision trail. The skeptic challenges the initial ranking. The planner revises priorities. The risk guardian vetoes candidates that breach the mandate. These analytical checks are deterministic. Connected mode adds a model reviewer through Nightshift. The evaluator checks structure, candidate identity and source-reference membership, with one bounded repair. Those checks do not prove that every sentence is true.
 
-### 1:55–2:20 — Stress and memory
+### 1:55–2:20 : Stress and memory
 
 **Action:** Open **Stress lab**, choose one scenario, then open **Saved theses** and show the saved invalidation condition. Return to Research.
 
 > The stress lab exposes its assumptions instead of disguising them as probabilities. Saved theses keep the invalidation condition beside my own notes. Meterless H-MEM recalls relevant prior decisions on later runs. Historical decisions remain context. Fresh evidence and current risk limits still control the outcome.
 
-### 2:20–2:45 — The system is allowed to abstain
+### 2:20–2:45 : The system is allowed to abstain
 
 **Action:** Set return40, volatility5, drawdown5, horizon6months. Run the committee. Show the abstention banner and model-call count in Committee.
 
 > Now I ask for forty percent returns with five percent volatility and a six-month horizon. The committee declines to manufacture a shortlist. It explains the conflict and makes no model request for this mandate. A useful research system needs permission to say that the available evidence does not support the brief.
 
-### 2:45–3:15 — Sponsor proof and honest status
+### 2:45–3:15 : Sponsor proof and honest status
 
 **Action:** Show Integrations. Cut to the sanitized Qwen receipt, the two Nemotron audit receipts and H-MEM conformance result. Show the final Nemotron `request_review` classification. Preserve Zetaris pending status without implying a complete connected run.
 
 > The official H-MEM reference engine passes its thirteen conformance checks. Nightshift is the primary model gateway. A real Qwen review and a separate NVIDIA Nemotron Mini exclusion audit retain concrete model receipts. Nemotron requested a planner recheck, while the original numeric veto stayed binding. Zetaris live verification remains pending. These are working infrastructure features over synthetic data.
 
-### 3:15–3:30 — Why it can become a product
+### 3:15–3:30 : Why it can become a product
 
 **Action:** End on the workspace or slide8. Fade to the cover with your name.
 

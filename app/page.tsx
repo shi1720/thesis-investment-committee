@@ -1,6 +1,6 @@
 "use client";
 
-import { useCallback, useEffect, useMemo, useRef, useState } from "react";
+import { useCallback, useEffect, useId, useMemo, useRef, useState } from "react";
 import type { ReactNode } from "react";
 import {
   ArrowDownRight,
@@ -40,6 +40,7 @@ import {
   X,
   Zap,
 } from "lucide-react";
+import { firebaseEnabled, newPrivateWorkspace, workspaceFetch } from "@/lib/client/firebase-auth";
 import { defaultProfile, markets } from "@/lib/contracts";
 import { isSyntheticStock, researchPresentation } from "@/lib/research/provenance";
 import type {
@@ -54,6 +55,7 @@ import type {
 } from "@/lib/contracts";
 
 type View = "research" | "saved" | "history" | "methodology" | "integrations";
+type PendingResearch = { id: string; status: "queued" | "running"; pollUrl?: string; createdAt?: string; message?: string };
 type ResultsTab = "opportunities" | "committee" | "stress" | "evidence";
 const marketLabels: Record<
   Market,
@@ -81,7 +83,7 @@ const format = (n: number, digits = 1) =>
         maximumFractionDigits: digits,
         minimumFractionDigits: digits,
       })
-    : "—";
+    : "N/A";
 const pct = (n: number, sign = false) =>
   `${sign && n > 0 ? "+" : ""}${format(n)}%`;
 const date = (s: string) =>
@@ -105,7 +107,7 @@ const initials = (name: string) =>
     .toUpperCase();
 
 async function api<T>(path: string, options?: RequestInit): Promise<T> {
-  const response = await fetch(path, {
+  const response = await workspaceFetch(path, {
     ...options,
     headers: { "Content-Type": "application/json", ...options?.headers },
   });
@@ -136,6 +138,7 @@ function Sparkline({
   color?: string;
   large?: boolean;
 }) {
+  const id = useId();
   const source = prices.length > 1 ? prices : [1, 1];
   const min = Math.min(...source),
     max = Math.max(...source),
@@ -149,7 +152,6 @@ function Sparkline({
         `${i === 0 ? "M" : "L"}${((i / (source.length - 1)) * w).toFixed(1)},${(h - pad - ((v - min) / span) * (h - 2 * pad)).toFixed(1)}`,
     )
     .join(" ");
-  const id = `spark-${Math.round(source[0] * 100)}-${source.length}-${large ? "large" : "small"}`;
   return (
     <svg
       className={large ? "sparkline large" : "sparkline"}
@@ -239,12 +241,18 @@ function Modal({
   const ref = useRef<HTMLDialogElement>(null);
   useEffect(() => {
     const el = ref.current;
+    const previousFocus = document.activeElement instanceof HTMLElement ? document.activeElement : null;
     el?.showModal();
     const old = document.body.style.overflow;
     document.body.style.overflow = "hidden";
     return () => {
       document.body.style.overflow = old;
       el?.close();
+      requestAnimationFrame(() => {
+        if (previousFocus && previousFocus !== document.body && previousFocus.isConnected && !previousFocus.closest("[inert]")) {
+          previousFocus.focus({ preventScroll: true });
+        }
+      });
     };
   }, []);
   return (
@@ -252,7 +260,7 @@ function Modal({
       ref={ref}
       className={`modal ${className}`}
       aria-label={label}
-      onCancel={onClose}
+      onCancel={(event) => { event.preventDefault(); onClose(); }}
       onClick={(e) => {
         if (e.target === e.currentTarget) onClose();
       }}
@@ -309,12 +317,20 @@ export default function Home() {
   const [error, setError] = useState("");
   const [tab, setTab] = useState<ResultsTab>("opportunities");
   const [search, setSearch] = useState("");
-  const [filter, setFilter] = useState<"all" | "qualified" | "excluded">("all");
+  const [filter, setFilter] = useState<"all" | "qualified" | "watch" | "excluded">("all");
   const [selected, setSelected] = useState<Stock | Opportunity | null>(null);
   const [compare, setCompare] = useState<string[]>([]);
   const [compareOpen, setCompareOpen] = useState(false);
   const [helpOpen, setHelpOpen] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
+  const [isMobile, setIsMobile] = useState(false);
+  const [accountOpen, setAccountOpen] = useState(false);
+  const [accountBusy, setAccountBusy] = useState<"export" | "reset" | null>(null);
+  const [accountError, setAccountError] = useState("");
+  const [reportLoading, setReportLoading] = useState(false);
+  const [reportError, setReportError] = useState("");
+  const navigationRef = useRef<HTMLElement>(null);
+  const menuRef = useRef<HTMLButtonElement>(null);
   const [advanced, setAdvanced] = useState(false);
   const [saving, setSaving] = useState<string | null>(null);
   const [mutationError, setMutationError] = useState("");
@@ -322,6 +338,10 @@ export default function Home() {
   const [scenarioIndex, setScenarioIndex] = useState(0);
   const [startedAt, setStartedAt] = useState(0);
   const [elapsed, setElapsed] = useState(0);
+  const [jobMessage, setJobMessage] = useState("");
+  const [pendingJob, setPendingJob] = useState<PendingResearch | null>(null);
+  const [checkingJobs, setCheckingJobs] = useState(firebaseEnabled);
+  const checkedJobs = useRef(false);
   const [historyLoading, setHistoryLoading] = useState(false);
   const [showReport, setShowReport] = useState(false);
   const [draftNotes, setDraftNotes] = useState<Record<string, string>>({});
@@ -340,6 +360,48 @@ export default function Home() {
   useEffect(() => {
     void load();
   }, [load]);
+  useEffect(() => {
+    const query = window.matchMedia("(max-width: 720px)");
+    const update = () => {
+      setIsMobile(query.matches);
+      if (!query.matches) setMobileOpen(false);
+    };
+    update();
+    query.addEventListener("change", update);
+    return () => query.removeEventListener("change", update);
+  }, []);
+  useEffect(() => {
+    if (!isMobile || !mobileOpen) return;
+    const panel = navigationRef.current;
+    if (!panel) return;
+    const previousOverflow = document.body.style.overflow;
+    document.body.style.overflow = "hidden";
+    const focusable = () => Array.from(panel.querySelectorAll<HTMLElement>(
+      'button:not([disabled]), a[href], input:not([disabled]), [tabindex="0"]',
+    )).filter((element) => element.getClientRects().length > 0);
+    focusable()[0]?.focus();
+    const onKey = (event: KeyboardEvent) => {
+      if (event.key === "Escape") {
+        event.preventDefault();
+        setMobileOpen(false);
+      }
+      if (event.key !== "Tab") return;
+      const items = focusable();
+      const first = items[0];
+      const last = items[items.length - 1];
+      if (event.shiftKey && document.activeElement === first) {
+        event.preventDefault(); last?.focus();
+      } else if (!event.shiftKey && document.activeElement === last) {
+        event.preventDefault(); first?.focus();
+      }
+    };
+    document.addEventListener("keydown", onKey);
+    return () => {
+      document.body.style.overflow = previousOverflow;
+      document.removeEventListener("keydown", onKey);
+      menuRef.current?.focus();
+    };
+  }, [isMobile, mobileOpen]);
   useEffect(() => {
     if (!notice) return;
     const t = setTimeout(() => setNotice(""), 4500);
@@ -366,6 +428,61 @@ export default function Home() {
         .finally(() => setHistoryLoading(false));
     }
   };
+  const waitForResearch = async (initial: ResearchRun | PendingResearch): Promise<ResearchRun> => {
+    if ("opportunities" in initial) { setPendingJob(null); return initial; }
+    setPendingJob(initial);
+    let pending = initial;
+    let failures = 0;
+    const deadline = Date.now() + 10 * 60_000;
+    while (Date.now() < deadline) {
+      setJobMessage(pending.message || (pending.status === "queued" ? "Your committee is queued. This research will stay available if you reload." : "The committee is reviewing the evidence. You can leave this tab open or return later."));
+      await new Promise((resolve) => setTimeout(resolve, 2000));
+      try {
+        const response = await workspaceFetch(`/api/runs/${encodeURIComponent(pending.id)}`);
+        const data = await response.json() as Record<string, unknown>;
+        if (response.status === 202) { pending = data as unknown as PendingResearch; setPendingJob(pending); failures = 0; continue; }
+        if (!response.ok) {
+          if (response.status === 422 || response.status === 404) setPendingJob(null);
+          throw new Error(typeof data.error === "string" ? data.error : "The research could not be completed.");
+        }
+        if (!Array.isArray(data.opportunities)) throw new Error("The research response was unreadable. Check its status again to reconnect.");
+        setPendingJob(null);
+        return data as unknown as ResearchRun;
+      } catch (error) {
+        // Transient connection failures do not erase the server-side job.
+        if (error instanceof TypeError && failures++ < 2) continue;
+        throw error;
+      }
+    }
+    throw new Error("The research is still processing. Select Check research status to reconnect to this saved job. Your request has not been duplicated.");
+  };
+  useEffect(() => {
+    if (!firebaseEnabled || !bootstrap || checkedJobs.current) return;
+    checkedJobs.current = true;
+    let cancelled = false;
+    void (async () => {
+      try {
+        const { jobs } = await api<{ jobs: PendingResearch[] }>("/api/jobs");
+        setCheckingJobs(false);
+        const pending = jobs.find((job) => job.status === "queued" || job.status === "running");
+        if (!pending || cancelled) return;
+        setRunning(true);
+        const timestamp = pending.createdAt ? Date.parse(pending.createdAt) : Date.now();
+        setStartedAt(Number.isFinite(timestamp) ? timestamp : Date.now());
+        const result = await waitForResearch(pending);
+        if (cancelled) return;
+        setRun(result); setProfile(result.profile);
+        setHistory((current) => [result, ...current.filter((item) => item.id !== result.id)]);
+        setNotice("Your research is ready. The saved job has been restored.");
+      } catch (error) {
+        if (!cancelled) {
+          setCheckingJobs(false);
+          setError((error as Error).message);
+        }
+      } finally { if (!cancelled) { setRunning(false); setJobMessage(""); } }
+    })();
+    return () => { cancelled = true; };
+  }, [bootstrap]);
   const startResearch = async () => {
     setError("");
     setRunning(true);
@@ -375,11 +492,12 @@ export default function Home() {
     setTab("opportunities");
     setCompare([]);
     try {
-      const data = await api<ResearchRun>("/api/research", {
+      const response = pendingJob || await api<ResearchRun | PendingResearch>("/api/research", {
         method: "POST",
         headers: { "x-idempotency-key": crypto.randomUUID() },
         body: JSON.stringify(profile),
       });
+      const data = await waitForResearch(response);
       setRun(data);
       setHistory((h) => [data, ...h.filter((r) => r.id !== data.id)]);
       setFilter("all");
@@ -395,6 +513,7 @@ export default function Home() {
       setError((e as Error).message);
     } finally {
       setRunning(false);
+      setJobMessage("");
     }
   };
   const openHistory = (item: ResearchRun) => {
@@ -428,6 +547,13 @@ export default function Home() {
       ),
     [run, bootstrap, profile.markets],
   );
+  useEffect(() => {
+    const available = new Set(stocks.map((stock) => stock.symbol));
+    setCompare((current) => {
+      const next = current.filter((symbol) => available.has(symbol));
+      return next.length === current.length ? current : next;
+    });
+  }, [stocks]);
   const displayed = stocks.filter(
     (s) =>
       (!search ||
@@ -438,7 +564,7 @@ export default function Home() {
         ("status" in s &&
           (filter === "qualified"
             ? s.status === "qualified"
-            : s.status === "excluded"))),
+            : filter === "watch" ? s.status === "watch" : s.status === "excluded"))),
   );
   const qualified =
     run?.opportunities.filter((s) => s.status === "qualified") || [];
@@ -517,17 +643,64 @@ export default function Home() {
       setSaving(null);
     }
   };
+  const download = (blob: Blob, filename: string) => {
+    const url = URL.createObjectURL(blob);
+    const link = document.createElement("a");
+    link.href = url;
+    link.download = filename;
+    document.body.appendChild(link);
+    link.click();
+    link.remove();
+    setTimeout(() => URL.revokeObjectURL(url), 1000);
+  };
+  const exportAccount = async () => {
+    setAccountBusy("export"); setAccountError("");
+    try {
+      const response = await workspaceFetch("/api/account");
+      if (!response.ok) throw new Error("Your workspace export could not be prepared. Please retry.");
+      download(await response.blob(), "thesis-workspace-export.json");
+    } catch (error) { setAccountError((error as Error).message); }
+    finally { setAccountBusy(null); }
+  };
+  const resetAccount = async () => {
+    if (!window.confirm("Start a new private workspace? This permanently deletes your current research history, saved theses and research memory. Export your data first if you want to keep it. This cannot be undone.")) return;
+    setAccountBusy("reset"); setAccountError("");
+    try {
+      await api("/api/account", { method: "DELETE" });
+      await newPrivateWorkspace();
+      setRun(null); setHistory([]); setWatchlist([]); setDraftNotes({});
+      setCompare([]); setProfile({ ...defaultProfile }); setView("research");
+      setSearch(""); setTab("opportunities"); setAccountOpen(false);
+      checkedJobs.current = false;
+      await load();
+      setNotice("Your new private workspace is ready.");
+    } catch (error) { setAccountError((error as Error).message); }
+    finally { setAccountBusy(null); }
+  };
+  const openPrintReport = async () => {
+    if (!run) return;
+    setReportError("");
+    const popup = window.open("about:blank", "_blank");
+    if (!popup) { setReportError("Allow a new tab for Thesis, then try opening the report again."); return; }
+    popup.opener = null;
+    popup.document.title = "Preparing your research report";
+    popup.document.body.textContent = "Preparing your research report…";
+    setReportLoading(true);
+    try {
+      const response = await workspaceFetch(`/api/runs/${encodeURIComponent(run.id)}/report`);
+      if (!response.ok) throw new Error("Your research report could not be opened. Please retry.");
+      const url = URL.createObjectURL(new Blob([await response.text()], { type: "text/html" }));
+      popup.location.replace(url);
+      setTimeout(() => URL.revokeObjectURL(url), 60_000);
+    } catch (error) { popup.close(); setReportError((error as Error).message); }
+    finally { setReportLoading(false); }
+  };
   const exportRun = () => {
     if (!run) return;
     const blob = new Blob([JSON.stringify(run, null, 2)], {
       type: "application/json",
     });
-    const url = URL.createObjectURL(blob);
-    const a = document.createElement("a");
-    a.href = url;
-    a.download = `thesis-research-${run.id}.json`;
-    a.click();
-    URL.revokeObjectURL(url);
+    download(blob, `thesis-research-${run.id}.json`);
   };
   const toggleCompare = (symbol: string) => {
     setCompare((list) =>
@@ -580,7 +753,15 @@ export default function Home() {
           onClick={() => setMobileOpen(false)}
         />
       )}
-      <aside className={`sidebar ${mobileOpen ? "open" : ""}`}>
+      <aside
+        id="workspace-navigation"
+        ref={navigationRef}
+        className={`sidebar ${mobileOpen ? "open" : ""}`}
+        inert={isMobile && !mobileOpen}
+        role={isMobile && mobileOpen ? "dialog" : undefined}
+        aria-modal={isMobile && mobileOpen ? true : undefined}
+        aria-label="Workspace navigation"
+      >
         <button
           className="brand-home"
           onClick={() => navigate("research")}
@@ -589,12 +770,11 @@ export default function Home() {
           <Wordmark />
         </button>
         <div className="workspace-tag">
-          <span className="workspace-monogram">SG</span>
+          <span className="workspace-monogram">{firebaseEnabled ? <Compass size={14} /> : bootstrap?.user.signedIn ? initials(bootstrap.user.name) : "T"}</span>
           <div>
             <strong>Personal workspace</strong>
             <span>Investment research</span>
           </div>
-          <ChevronDown size={14} />
         </div>
         <p className="nav-label">WORKSPACE</p>
         <nav className="primary-nav" aria-label="Main navigation">
@@ -603,6 +783,7 @@ export default function Home() {
               key={item.id}
               onClick={() => navigate(item.id)}
               className={view === item.id ? "active" : ""}
+              aria-current={view === item.id ? "page" : undefined}
             >
               <item.icon size={18} />
               <span>{item.label}</span>
@@ -618,6 +799,7 @@ export default function Home() {
           <button
             onClick={() => navigate("methodology")}
             className={view === "methodology" ? "active" : ""}
+            aria-current={view === "methodology" ? "page" : undefined}
           >
             <BookOpen size={18} />
             <span>Methodology</span>
@@ -625,6 +807,7 @@ export default function Home() {
           <button
             onClick={() => navigate("integrations")}
             className={view === "integrations" ? "active" : ""}
+            aria-current={view === "integrations" ? "page" : undefined}
           >
             <Layers3 size={18} />
             <span>Integrations</span>
@@ -646,27 +829,31 @@ export default function Home() {
               Our research principles <ArrowUpRight size={13} />
             </button>
           </div>
-          <button className="help-button" onClick={() => setHelpOpen(true)}>
+          <button className="help-button" onClick={() => { setMobileOpen(false); setHelpOpen(true); }}>
             <CircleHelp size={17} /> Help & getting started{" "}
             <ArrowUpRight size={13} />
           </button>
           <div className="account">
             <span className="avatar">
-              {bootstrap?.user.signedIn ? initials(bootstrap.user.name) : "SG"}
+              {firebaseEnabled ? <ShieldCheck size={17} /> : bootstrap?.user.signedIn ? initials(bootstrap.user.name) : "SG"}
             </span>
             <div>
               <strong>
-                {bootstrap?.user.signedIn
+                {firebaseEnabled ? "Private workspace" : bootstrap?.user.signedIn
                   ? bootstrap.user.name
                   : "Guest researcher"}
               </strong>
               <span>
-                {bootstrap?.user.signedIn
+                {firebaseEnabled ? "Saved in this browser" : bootstrap?.user.signedIn
                   ? "Personal account"
                   : "Sign in to begin research"}
               </span>
             </div>
-            {bootstrap?.user.signedIn ? (
+            {firebaseEnabled ? (
+              <button className="icon-button" aria-label="Workspace privacy and data" onClick={() => {
+                setMobileOpen(false); setAccountError(""); setAccountOpen(true);
+              }}><Settings2 size={17} /></button>
+            ) : bootstrap?.user.signedIn ? (
               <a
                 href="/signout-with-chatgpt?return_to=%2F"
                 target="_top"
@@ -688,12 +875,15 @@ export default function Home() {
           </div>
         </div>
       </aside>
-      <div className="main-shell">
+      <div className="main-shell" inert={isMobile && mobileOpen}>
         <header className="topbar">
           <div className="topbar-title">
             <button
+              ref={menuRef}
               className="icon-button mobile-menu"
               aria-label="Open navigation"
+              aria-expanded={mobileOpen}
+              aria-controls="workspace-navigation"
               onClick={() => setMobileOpen(true)}
             >
               <Menu size={20} />
@@ -1109,7 +1299,7 @@ export default function Home() {
                                   )
                                 }
                               >
-                                {["USD", "INR", "CNY", "AED"].map((c) => (
+                                {["USD", "INR", "CNY", "HKD", "AED"].map((c) => (
                                   <option key={c}>{c}</option>
                                 ))}
                               </select>
@@ -1172,7 +1362,7 @@ export default function Home() {
                       </div>
                     )}
                     <div className="brief-divider" />
-                    {bootstrap && !bootstrap.user.signedIn ? (
+                    {!firebaseEnabled && bootstrap && !bootstrap.user.signedIn ? (
                       <a
                         className="primary-button run-button"
                         href="/signin-with-chatgpt?return_to=%2F"
@@ -1185,7 +1375,7 @@ export default function Home() {
                       <button
                         type="submit"
                         className="primary-button run-button"
-                        disabled={running || !bootstrap}
+                        disabled={running || checkingJobs || !bootstrap}
                       >
                         {running ? (
                           <>
@@ -1194,7 +1384,7 @@ export default function Home() {
                           </>
                         ) : (
                           <>
-                            <Sparkles size={17} /> Run research committee{" "}
+                            <Sparkles size={17} /> {checkingJobs ? "Opening private workspace…" : pendingJob ? "Check research status" : "Run research committee"}{" "}
                             <ArrowRight size={16} />
                           </>
                         )}
@@ -1209,9 +1399,10 @@ export default function Home() {
                 <section
                   className="results-panel"
                   ref={resultsRef}
-                  aria-live="polite"
-                  aria-busy={running}
+                  aria-busy={running || (!bootstrap && !bootError)}
                 >
+                  {running && jobMessage && <p className="job-status" role="status"><Loader2 size={15} className="spinning" />{jobMessage}</p>}
+                  {!running && pendingJob && <div className="banner" role="status"><History size={18} /><div><strong>Your research is saved and still processing.</strong><span>Reconnect to the existing request. This does not start another committee.</span></div><button className="text-button" onClick={() => void startResearch()}>Check status <RefreshCw size={13} /></button></div>}
                   <div className="results-heading">
                     <div>
                       <div className="eyebrow small">
@@ -1233,7 +1424,7 @@ export default function Home() {
                     {run ? (
                       <button
                         className="secondary-button compact"
-                        onClick={() => setShowReport(true)}
+                        onClick={() => { setReportError(""); setShowReport(true); }}
                       >
                         <Download size={14} />
                         <span>Export</span>
@@ -1374,10 +1565,23 @@ export default function Home() {
                             ).map((t) => (
                               <button
                                 key={t.id}
+                                id={`research-tab-${t.id}`}
                                 role="tab"
+                                aria-controls={`research-panel-${t.id}`}
+                                tabIndex={tab === t.id ? 0 : -1}
                                 aria-selected={tab === t.id}
                                 className={tab === t.id ? "active" : ""}
                                 onClick={() => setTab(t.id)}
+                                onKeyDown={(event) => {
+                                  const ids: ResultsTab[] = ["opportunities", "committee", "stress", "evidence"];
+                                  const current = ids.indexOf(t.id);
+                                  const next = event.key === "ArrowRight" ? ids[(current + 1) % ids.length]
+                                    : event.key === "ArrowLeft" ? ids[(current + ids.length - 1) % ids.length]
+                                    : event.key === "Home" ? ids[0] : event.key === "End" ? ids[ids.length - 1] : null;
+                                  if (!next) return;
+                                  event.preventDefault(); setTab(next);
+                                  requestAnimationFrame(() => document.getElementById(`research-tab-${next}`)?.focus());
+                                }}
                               >
                                 <t.icon size={15} />
                                 {t.label}
@@ -1390,12 +1594,13 @@ export default function Home() {
                         </>
                       )}
                       {(!run || tab === "opportunities") && (
-                        <>
+                        <div role={run ? "tabpanel" : undefined} id="research-panel-opportunities" aria-labelledby={run ? "research-tab-opportunities" : undefined}>
                           <div className="list-toolbar">
-                            <div className="filter-pills">
+                            <div className="filter-pills" role="group" aria-label="Company screening filters">
                               <button
                                 className={filter === "all" ? "selected" : ""}
                                 onClick={() => setFilter("all")}
+                                aria-pressed={filter === "all"}
                               >
                                 {run ? "All reviewed" : "All companies"}
                                 <span>{stocks.length}</span>
@@ -1407,14 +1612,17 @@ export default function Home() {
                                       filter === "qualified" ? "selected" : ""
                                     }
                                     onClick={() => setFilter("qualified")}
+                                    aria-pressed={filter === "qualified"}
                                   >
                                     Qualified<span>{qualified.length}</span>
                                   </button>
+                                  {stocks.some((stock) => "status" in stock && stock.status === "watch") && <button className={filter === "watch" ? "selected" : ""} onClick={() => setFilter("watch")} aria-pressed={filter === "watch"}>Needs review<span>{stocks.filter((stock) => "status" in stock && stock.status === "watch").length}</span></button>}
                                   <button
                                     className={
                                       filter === "excluded" ? "selected" : ""
                                     }
                                     onClick={() => setFilter("excluded")}
+                                    aria-pressed={filter === "excluded"}
                                   >
                                     Excluded
                                   </button>
@@ -1439,7 +1647,13 @@ export default function Home() {
                               )}
                             </label>
                           </div>
-                          {displayed.length === 0 ? (
+                          {!bootstrap && !run ? (
+                            <div className="universe-loading" role="status">
+                              <Loader2 size={23} className={bootError ? "" : "spinning"} />
+                              <strong>{bootError ? "Your workspace is unavailable." : "Opening your research workspace…"}</strong>
+                              <p>{bootError ? "Use Retry above to reconnect and load your companies." : "Preparing the sample universe and your saved research."}</p>
+                            </div>
+                          ) : displayed.length === 0 ? (
                             <Empty
                               icon={Compass}
                               title={
@@ -1549,7 +1763,7 @@ export default function Home() {
                                               <X size={11} /> Outside limits
                                             </>
                                           ) : (
-                                            "Watch closely"
+                                            "Needs further review"
                                           )}
                                         </span>
                                       )}
@@ -1644,10 +1858,10 @@ export default function Home() {
                                 : "Sample historical metrics are calculated from synthetic price paths. They do not represent actual company performance."}
                             </p>
                           </div>
-                        </>
+                        </div>
                       )}
                       {run && tab === "committee" && (
-                        <section className="committee-panel panel">
+                        <section className="committee-panel panel" role="tabpanel" id="research-panel-committee" aria-labelledby="research-tab-committee">
                           <div className="inner-panel-head">
                             <div>
                               <h3>A committee with a paper trail.</h3>
@@ -1767,7 +1981,7 @@ export default function Home() {
                         </section>
                       )}
                       {run && tab === "stress" && (
-                        <section className="stress-panel panel">
+                        <section className="stress-panel panel" role="tabpanel" id="research-panel-stress" aria-labelledby="research-tab-stress">
                           <div className="inner-panel-head">
                             <div>
                               <h3>Test the uncomfortable scenario.</h3>
@@ -1870,7 +2084,7 @@ export default function Home() {
                         </section>
                       )}
                       {run && tab === "evidence" && (
-                        <section className="evidence-panel panel">
+                        <section className="evidence-panel panel" role="tabpanel" id="research-panel-evidence" aria-labelledby="research-tab-evidence">
                           <div className="inner-panel-head">
                             <div>
                               <h3>Show the receipts.</h3>
@@ -2009,6 +2223,7 @@ export default function Home() {
                         id={`note-${item.id}`}
                         placeholder="What should your future self remember?"
                         maxLength={4000}
+                        disabled={saving === item.id}
                         value={draftNotes[item.id] ?? item.note}
                         onChange={(e) =>
                           setDraftNotes((d) => ({
@@ -2018,11 +2233,11 @@ export default function Home() {
                         }
                       />
                       <div className="saved-footer">
-                        <span>Saved {date(item.createdAt)}</span>
+                        <span>{(draftNotes[item.id] ?? item.note) !== item.note ? "Unsaved changes" : `Saved ${date(item.createdAt)}`}</span>
                         <button
                           className="secondary-button compact"
                           onClick={() => void saveNote(item)}
-                          disabled={saving === item.id}
+                          disabled={saving === item.id || (draftNotes[item.id] ?? item.note) === item.note}
                         >
                           {saving === item.id ? (
                             <Loader2 size={12} className="spinning" />
@@ -2389,7 +2604,7 @@ export default function Home() {
               <Wordmark small /> Independent thinking, by design.
             </span>
             <span>
-              Built by Shivam Gupta <i /> Open Agent Hackathon 2026
+              Built by Shivam Gupta with AI-assisted engineering
             </span>
           </footer>
         </main>
@@ -2417,6 +2632,7 @@ export default function Home() {
           <button
             className="primary-button compact"
             disabled={compare.length < 2}
+            id="open-comparison"
             onClick={() => setCompareOpen(true)}
           >
             Compare <ArrowRight size={14} />
@@ -2632,11 +2848,13 @@ export default function Home() {
                 toggleCompare(selected.symbol);
                 setSelected(null);
               }}
+              disabled={compare.length >= 3 && !compare.includes(selected.symbol)}
+              title={compare.length >= 3 && !compare.includes(selected.symbol) ? "Remove a company from comparison to add another." : undefined}
             >
               <Scale size={15} />
               {compare.includes(selected.symbol)
                 ? "Remove from comparison"
-                : "Add to comparison"}
+                : compare.length >= 3 ? "Comparison is full" : "Add to comparison"}
             </button>
             <button
               className="primary-button"
@@ -2660,7 +2878,10 @@ export default function Home() {
         <Modal
           className="compare-dialog"
           label="Compare companies"
-          onClose={() => setCompareOpen(false)}
+          onClose={() => {
+            setCompareOpen(false);
+            requestAnimationFrame(() => document.getElementById("open-comparison")?.focus({ preventScroll: true }));
+          }}
         >
           <div className="modal-heading">
             <div className="eyebrow small">TRADEOFFS, SIDE BY SIDE</div>
@@ -2741,6 +2962,26 @@ export default function Home() {
           </div>
         </Modal>
       )}
+      {accountOpen && (
+        <Modal className="account-dialog" label="Workspace privacy and data" onClose={() => { if (!accountBusy) setAccountOpen(false); }}>
+          <div className="modal-heading">
+            <div className="eyebrow small">YOUR RESEARCH, YOUR CONTROL</div>
+            <h2>A private space to think.</h2>
+            <p>Your research is stored under a private anonymous identity in this browser. There is no password to remember.</p>
+          </div>
+          <div className="privacy-note"><ShieldCheck size={21} /><p>Return with the same browser and site data to reopen your workspace. Clearing site data or changing browsers can remove access. Export a copy of anything you want to keep.</p></div>
+          <div className="account-actions">
+            <button className="secondary-button" onClick={() => void exportAccount()} disabled={!!accountBusy}>
+              {accountBusy === "export" ? <Loader2 size={16} className="spinning" /> : <Download size={16} />} Export my workspace
+            </button>
+            <button className="text-button danger-action" onClick={() => void resetAccount()} disabled={!!accountBusy || running || !!pendingJob}>
+              {accountBusy === "reset" ? <Loader2 size={15} className="spinning" /> : <Trash2 size={15} />} Delete data and start a new workspace
+            </button>
+          </div>
+          {accountError && <p className="inline-error" role="alert">{accountError}</p>}
+          <p className="small-note">Starting a new workspace permanently deletes the current research history, saved theses and research memory. You will be asked to confirm.</p>
+        </Modal>
+      )}
       {helpOpen && (
         <Modal
           className="help-dialog"
@@ -2759,7 +3000,7 @@ export default function Home() {
             {[
               {
                 title: "Set the boundaries.",
-                text: "Choose markets, a return goal, volatility comfort and a drawdown ceiling. The system tests whether the brief is internally consistent.",
+                text: "Choose markets, a return goal, volatility comfort and historical drawdown tolerance. The system tests whether the brief is internally consistent.",
               },
               {
                 title: "Run the committee.",
@@ -2826,16 +3067,17 @@ export default function Home() {
             <button className="primary-button" onClick={exportRun}>
               <Download size={16} /> Download complete JSON
             </button>
-            <a
+            <button
               className="secondary-button"
-              href={`/api/runs/${encodeURIComponent(run.id)}/report`}
-              target="_blank"
-              rel="noopener noreferrer"
+              onClick={() => void openPrintReport()}
+              disabled={reportLoading}
             >
-              <FileText size={16} /> Open print-ready report{" "}
+              {reportLoading ? <Loader2 size={16} className="spinning" /> : <FileText size={16} />}
+              {reportLoading ? "Preparing your report…" : "Open print-ready report"}
               <ArrowUpRight size={13} />
-            </a>
+            </button>
           </div>
+          {reportError && <p className="inline-error" role="alert">{reportError}</p>}
           <p className="small-note">
             The exported report preserves the original sample or live
             provenance. JSON can be independently inspected or used to reproduce

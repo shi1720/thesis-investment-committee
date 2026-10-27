@@ -1,0 +1,96 @@
+{
+  "schema": "thesis.zetaris.live-proof.v1",
+  "testedAt": "2026-10-27T06:42:38.438Z",
+  "provider": "Zetaris",
+  "apiMode": "direct",
+  "syntheticInputs": true,
+  "notice": "Real Zetaris source registration and query over fabricated research fixtures; not live financial observations.",
+  "statements": [
+    {
+      "statement": 1,
+      "action": "already_exists"
+    },
+    {
+      "statement": 2,
+      "action": "already_exists"
+    },
+    {
+      "statement": 3,
+      "action": "already_exists"
+    },
+    {
+      "statement": 4,
+      "action": "created"
+    },
+    {
+      "statement": 5,
+      "action": "already_exists"
+    },
+    {
+      "statement": 6,
+      "action": "created"
+    },
+    {
+      "statement": 7,
+      "action": "already_exists"
+    },
+    {
+      "statement": 8,
+      "action": "created"
+    }
+  ],
+  "view": "thesis.research_universe",
+  "sourceFiles": {
+    "prices.json": {
+      "sha256": "bf5c0bacadbfa025b38f2c65b76e42959947d0dc47a2478ed56ce49ffb8b7852",
+      "bytes": 114024
+    },
+    "fundamentals.csv": {
+      "sha256": "a681aab1c30f66547a374afa53021f6586fe8b660646b944758fa443c240a6a5",
+      "bytes": 8818
+    },
+    "filings.json": {
+      "sha256": "1c5bf03f3b2af2e066d3edff33cd3cac5ec7f05903ef38e1f560e3c45c4ab860",
+      "bytes": 24796
+    },
+    "register.sql": {
+      "sha256": "d5180e0b789f96453685de1a2d630f3576c0d72d88d188a5db9c444b473de724",
+      "bytes": 2560
+    }
+  },
+  "stockCount": 20,
+  "marketCounts": {
+    "US": 5,
+    "India": 5,
+    "China": 5,
+    "UAE": 5
+  },
+  "priceObservationsPerStock": 505,
+  "contractValidated": true,
+  "symbols": [
+    "MSFT",
+    "V",
+    "JNJ",
+    "NVDA",
+    "TSLA",
+    "HDFCBANK",
+    "TCS",
+    "SUNPHARMA",
+    "RELIANCE",
+    "ADANIENT",
+    "600519.SS",
+    "600036.SS",
+    "300750.SZ",
+    "002594.SZ",
+    "601012.SS",
+    "FAB",
+    "EMIRATESNBD",
+    "EMAAR",
+    "EAND",
+    "DEWA"
+  ],
+  "limitations": [
+    "This proof establishes delivery and schema validation, not financial correctness or a live market-data license.",
+    "Three file feeds are federated; these files simulate independent systems."
+  ]
+}

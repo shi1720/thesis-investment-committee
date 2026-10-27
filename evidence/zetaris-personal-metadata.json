@@ -1,0 +1,17 @@
+{
+  "schema": "thesis.zetaris.personal-metadata.v1",
+  "testedAt": "2026-10-27T07:04:26.348Z",
+  "provider": "Zetaris",
+  "dataMode": "actual_private",
+  "counts": {
+    "stocks": 1,
+    "physicalSources": 3,
+    "priceObservations": 500
+  },
+  "checks": {
+    "stockContractValidated": true,
+    "allEvidenceMarkedActual": true
+  },
+  "commercialRedistributionRightsVerified": false,
+  "notice": "Operational metadata only. Actual financial records and derived risk metrics remain in ignored private storage for personal research. The public gateway excludes this namespace."
+}

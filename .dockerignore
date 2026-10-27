@@ -1,0 +1,15 @@
+node_modules
+.git
+.dev.vars*
+.env*
+.wrangler
+.sites-runtime
+.next
+.vinext
+dist
+work
+outputs
+*.tsbuildinfo
+*.pem
+*.key
+.DS_Store

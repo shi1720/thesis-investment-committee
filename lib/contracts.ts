@@ -8,7 +8,7 @@ export const profileSchema = z.object({
   maxDrawdown: z.number().finite().min(5).max(80),
   horizonMonths: z.number().int().min(3).max(120),
   capital: z.number().finite().min(100).max(1000000000),
-  baseCurrency: z.enum(['USD','INR','CNY','AED']),
+  baseCurrency: z.enum(['USD','INR','CNY','AED','HKD']),
   excludedSectors: z.array(z.string().max(60)).max(12).default([]),
   mode: z.enum(['sample','live']).default('sample'),
 });

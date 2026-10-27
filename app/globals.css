@@ -3977,7 +3977,7 @@ textarea {
   }
   .topbar-title {
     gap: 9px;
-    font-size: 11px;
+    font-size: 12px;
   }
   .topbar-icon {
     display: none;
@@ -3989,7 +3989,7 @@ textarea {
     gap: 12px;
   }
   .topbar-sample {
-    font-size: 8px;
+    font-size: 12px;
   }
   .main-content {
     padding: 26px 22px 0;
@@ -4007,15 +4007,15 @@ textarea {
     margin-top: 14px;
   }
   .hero-copy > p {
-    font-size: 11px;
+    font-size: 12px;
     line-height: 1.9;
   }
   .hero-proof {
-    font-size: 8px;
+    font-size: 12px;
     gap: 10px;
   }
   .hero .eyebrow {
-    font-size: 7.5px;
+    font-size: 12px;
     letter-spacing: 1.6px;
   }
   .hero-visual {
@@ -4031,10 +4031,10 @@ textarea {
     display: none;
   }
   .workspace-stats strong {
-    font-size: 9px;
+    font-size: 12px;
   }
   .workspace-stats div > div > span {
-    font-size: 8px;
+    font-size: 12px;
   }
   .stat-icon {
     width: 28px;
@@ -4052,7 +4052,7 @@ textarea {
     column-gap: 20px;
   }
   .market-option {
-    font-size: 8px;
+    font-size: 12px;
     padding: 10px 7px;
     gap: 5px;
   }
@@ -4060,16 +4060,16 @@ textarea {
     gap: 6px;
   }
   .field-top label {
-    font-size: 9px;
+    font-size: 12px;
   }
   .field-hint {
-    font-size: 7.5px;
+    font-size: 12px;
   }
   .field-value {
     font-size: 17px;
   }
   .select-wrap select {
-    font-size: 7px;
+    font-size: 12px;
   }
   .brief-two-col {
     gap: 7px;
@@ -4081,13 +4081,13 @@ textarea {
     font-size: 23px;
   }
   .results-heading .eyebrow {
-    font-size: 8px;
+    font-size: 12px;
   }
   .results-heading > div > p {
-    font-size: 9px;
+    font-size: 12px;
   }
   .sample-notice > p {
-    font-size: 8px;
+    font-size: 12px;
   }
   .stock-name > strong {
     font-size: 12px;
@@ -4100,30 +4100,30 @@ textarea {
     font-size: 19px;
   }
   .stock-metrics > div > span {
-    font-size: 7px;
+    font-size: 12px;
   }
   .stock-card-bottom > p {
-    font-size: 8px;
+    font-size: 12px;
   }
   .result-tabs {
     justify-content: space-between;
     gap: 8px;
   }
   .result-tabs > button {
-    font-size: 8px;
+    font-size: 12px;
   }
   .filter-pills > button {
-    font-size: 8px;
+    font-size: 12px;
     padding: 6px;
   }
   .search-control {
     max-width: 134px;
   }
   .search-control > input {
-    font-size: 8px;
+    font-size: 12px;
   }
   .fit-score > span {
-    font-size: 6px;
+    font-size: 12px;
   }
   .fit-score > strong {
     font-size: 14px;
@@ -4144,10 +4144,10 @@ textarea {
     flex: 1;
   }
   .compare-tray strong {
-    font-size: 10px;
+    font-size: 12px;
   }
   .compare-tray .primary-button {
-    font-size: 9px;
+    font-size: 12px;
     min-height: 33px;
   }
   .compare-tray > .icon-button {
@@ -4160,7 +4160,7 @@ textarea {
   .app-footer {
     padding-bottom: 28px;
     margin-top: 27px;
-    font-size: 7px;
+    font-size: 12px;
   }
   .wordmark {
     font-size: 31px;
@@ -4169,7 +4169,7 @@ textarea {
     width: 33px;
   }
   .primary-nav button {
-    font-size: 11px;
+    font-size: 12px;
     padding: 0 12px;
     gap: 11px;
   }
@@ -4177,14 +4177,14 @@ textarea {
     width: 18px;
   }
   .nav-label {
-    font-size: 9px;
+    font-size: 12px;
     padding-left: 13px;
   }
   .workspace-tag strong {
-    font-size: 10.5px;
+    font-size: 12px;
   }
   .workspace-tag div > span {
-    font-size: 9.5px;
+    font-size: 12px;
   }
   .workspace-tag > svg {
     display: block;
@@ -4197,7 +4197,7 @@ textarea {
   .workspace-monogram {
     width: 27px;
     height: 29px;
-    font-size: 10px;
+    font-size: 12px;
   }
   .principle-card {
     padding: 18px 15px 15px;
@@ -4206,33 +4206,33 @@ textarea {
     font-size: 12px;
   }
   .principle-card > p {
-    font-size: 10.5px;
+    font-size: 12px;
   }
   .principle-card > button {
-    font-size: 9.5px;
+    font-size: 12px;
   }
   .help-button {
-    font-size: 10.5px;
+    font-size: 12px;
     padding: 0 11px;
     gap: 9px;
   }
   .account strong {
-    font-size: 10.5px;
+    font-size: 12px;
   }
   .account div > span {
-    font-size: 9px;
+    font-size: 12px;
   }
   .avatar {
     height: 31px;
     width: 31px;
-    font-size: 10px;
+    font-size: 12px;
   }
   .page-heading h1 {
     font-size: 28px;
     line-height: 1.3;
   }
   .page-heading p {
-    font-size: 10px;
+    font-size: 12px;
   }
   .secondary-view {
     padding-top: 8px;
@@ -4245,19 +4245,19 @@ textarea {
     font-size: 23px;
   }
   .method-lead p {
-    font-size: 11px;
+    font-size: 12px;
   }
   .method-grid {
     grid-template-columns: 1fr;
   }
   .method-card p {
-    font-size: 11px;
+    font-size: 12px;
   }
   .method-card h3 {
     font-size: 17px;
   }
   .method-card > div > span {
-    font-size: 11px;
+    font-size: 12px;
   }
   .method-details {
     padding: 23px;
@@ -4267,16 +4267,16 @@ textarea {
     gap: 7px;
   }
   .method-details dt {
-    font-size: 11px;
+    font-size: 12px;
   }
   .method-details dd {
-    font-size: 10px;
+    font-size: 12px;
   }
   .method-disclaimer {
     padding: 20px 2px;
   }
   .method-disclaimer p {
-    font-size: 10px;
+    font-size: 12px;
   }
   .history-row {
     gap: 10px;
@@ -4296,13 +4296,13 @@ textarea {
     font-size: 12px;
   }
   .history-main p {
-    font-size: 8px;
+    font-size: 12px;
   }
   .history-main > span {
-    font-size: 8px;
+    font-size: 12px;
   }
   .history-row .status {
-    font-size: 8px;
+    font-size: 12px;
   }
   .modal {
     max-width: calc(100vw - 24px);
@@ -4316,11 +4316,11 @@ textarea {
     font-size: 23px;
   }
   .detail-company div > span {
-    font-size: 8px;
+    font-size: 12px;
   }
   .detail-tags {
     gap: 8px;
-    font-size: 7px;
+    font-size: 12px;
   }
   .detail-body {
     padding: 19px 22px;
@@ -4329,7 +4329,7 @@ textarea {
     gap: 7px;
   }
   .detail-metrics span {
-    font-size: 6.5px;
+    font-size: 12px;
   }
   .detail-metrics strong {
     font-size: 18px;
@@ -4338,7 +4338,7 @@ textarea {
     font-size: 28px;
   }
   .detail-thesis > p {
-    font-size: 10px;
+    font-size: 12px;
   }
   .detail-body h3 {
     font-size: 13px;
@@ -4347,30 +4347,30 @@ textarea {
     grid-template-columns: 1fr;
   }
   .bull-bear p {
-    font-size: 10px;
+    font-size: 12px;
   }
   .bull-bear h4 {
-    font-size: 11px;
+    font-size: 12px;
   }
   .risk-gates > div {
     flex-wrap: wrap;
     gap: 9px;
   }
   .risk-gates div > span:first-child {
-    font-size: 8px;
+    font-size: 12px;
   }
   .risk-gates div > strong {
-    font-size: 9px;
+    font-size: 12px;
   }
   .risk-gates .status {
-    font-size: 7px;
+    font-size: 12px;
   }
   .detail-footer {
     padding: 14px 18px;
     gap: 9px;
   }
   .detail-footer button {
-    font-size: 8px;
+    font-size: 12px;
     gap: 6px;
     padding: 0 10px;
     min-height: 36px;
@@ -4382,7 +4382,7 @@ textarea {
     font-size: 26px;
   }
   .modal-heading p {
-    font-size: 10px;
+    font-size: 12px;
   }
   .help-steps {
     padding: 0 24px;
@@ -4406,7 +4406,7 @@ textarea {
   .toast {
     bottom: 18px;
     right: 15px;
-    font-size: 9px;
+    font-size: 12px;
   }
   .empty {
     padding: 45px 22px;
@@ -4415,7 +4415,7 @@ textarea {
     font-size: 20px;
   }
   .empty p {
-    font-size: 10px;
+    font-size: 12px;
   }
   .committee-panel,
   .stress-panel,
@@ -4429,47 +4429,47 @@ textarea {
     display: none;
   }
   .trace-summary span {
-    font-size: 7px;
+    font-size: 12px;
   }
   .trace-meta > time {
-    font-size: 6px;
+    font-size: 12px;
   }
   .trace-content > p {
-    font-size: 8.5px;
+    font-size: 12px;
   }
   .scenario-options > button {
-    font-size: 7px;
+    font-size: 12px;
     padding: 7px;
   }
   .scenario-intro h4 {
     font-size: 18px;
   }
   .scenario-intro p {
-    font-size: 9px;
+    font-size: 12px;
   }
   .stress-row div > span {
-    font-size: 7px;
+    font-size: 12px;
   }
   .stress-impact {
     gap: 8px;
   }
   .evidence-item a {
-    font-size: 10px;
+    font-size: 12px;
   }
   .evidence-item p {
-    font-size: 8px;
+    font-size: 12px;
   }
   .evidence-meta {
-    font-size: 6px;
+    font-size: 12px;
   }
   .evidence-bottom .status {
-    font-size: 6px;
+    font-size: 12px;
   }
   .feasibility-card p {
-    font-size: 8px;
+    font-size: 12px;
   }
   .feasibility-card strong {
-    font-size: 10px;
+    font-size: 12px;
   }
 }
 @media (max-width: 420px) {
@@ -4485,17 +4485,17 @@ textarea {
     font-size: 35px;
   }
   .hero-copy > p {
-    font-size: 10px;
+    font-size: 12px;
   }
   .hero-proof {
-    font-size: 7px;
+    font-size: 12px;
     gap: 8px;
   }
   .workspace-stats strong {
-    font-size: 8px;
+    font-size: 12px;
   }
   .workspace-stats div > div > span {
-    font-size: 7px;
+    font-size: 12px;
   }
   .stat-icon {
     width: 25px;
@@ -4515,7 +4515,7 @@ textarea {
     grid-template-columns: repeat(2, 1fr);
   }
   .market-option {
-    font-size: 10px;
+    font-size: 12px;
     padding: 11px 10px;
   }
   .slider-field {
@@ -4526,23 +4526,23 @@ textarea {
     grid-column: auto;
   }
   .field-top label {
-    font-size: 10px;
+    font-size: 12px;
   }
   .field-hint {
-    font-size: 8px;
+    font-size: 12px;
   }
   .brief-two-col {
     margin-top: 22px;
     gap: 12px;
   }
   .select-wrap select {
-    font-size: 8px;
+    font-size: 12px;
   }
   .advanced-toggle {
     grid-column: auto;
     grid-row: auto;
     margin-top: 18px;
-    font-size: 9px;
+    font-size: 12px;
   }
   .run-button {
     grid-column: auto;
@@ -4567,51 +4567,51 @@ textarea {
     display: none;
   }
   .stock-metrics > div > span {
-    font-size: 7px;
+    font-size: 12px;
   }
   .fit-score > span {
     display: none;
   }
   .stock-name > strong {
-    font-size: 11px;
+    font-size: 12px;
   }
   .stock-tags {
     padding-left: 0;
   }
   .stock-tags > span {
-    font-size: 7px;
+    font-size: 12px;
   }
   .results-heading h2 {
     font-size: 21px;
   }
   .results-heading > div > p {
-    font-size: 8px;
+    font-size: 12px;
   }
   .filter-pills > button {
-    font-size: 7px;
+    font-size: 12px;
     padding: 6px 5px;
   }
   .search-control {
     max-width: 110px;
   }
   .search-control > input {
-    font-size: 7px;
+    font-size: 12px;
   }
   .stock-metrics strong {
     font-size: 20px;
   }
   .stock-card-bottom > p {
-    font-size: 8px;
+    font-size: 12px;
   }
   .hero .eyebrow {
-    font-size: 6.5px;
+    font-size: 12px;
     letter-spacing: 1.3px;
   }
   .desktop-break {
     display: none;
   }
   .topbar-sample {
-    font-size: 7px;
+    font-size: 12px;
   }
   .topbar-actions {
     gap: 5px;
@@ -4620,7 +4620,7 @@ textarea {
     min-height: 218px;
   }
   .detail-metrics span {
-    font-size: 6px;
+    font-size: 12px;
   }
   .detail-metrics strong {
     font-size: 17px;
@@ -4635,16 +4635,16 @@ textarea {
     flex-wrap: wrap;
   }
   .risk-gates div > strong {
-    font-size: 8px;
+    font-size: 12px;
   }
   .risk-gates small {
-    font-size: 7px;
+    font-size: 12px;
   }
   .chart-caption {
-    font-size: 6px;
+    font-size: 12px;
   }
   .result-tabs > button {
-    font-size: 7px;
+    font-size: 12px;
     gap: 4px;
   }
   .result-tabs > button > svg {
@@ -4652,13 +4652,13 @@ textarea {
   }
   .trace-meta {
     gap: 6px;
-    font-size: 6px;
+    font-size: 12px;
   }
   .trace-meta > strong {
-    font-size: 8px;
+    font-size: 12px;
   }
   .trace-meta > time {
-    font-size: 5px;
+    font-size: 12px;
   }
 }
 @media (prefers-reduced-motion: reduce) {
@@ -5037,4 +5037,102 @@ textarea {
   .compare-table thead th > span {
     font-size: 9px;
   }
+}
+
+/* Workspace controls and mobile readability. */
+.universe-loading { min-height: 240px; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 13px; color: #53617c; text-align: center; padding: 28px; }
+.universe-loading strong { font-size: 15px; color: #35415a; }
+.universe-loading p { font-size: 12px; max-width: 290px; line-height: 1.7; }
+.account-dialog { width: 560px; max-width: calc(100vw - 24px); }
+.privacy-note { display: flex; align-items: flex-start; gap: 12px; margin: 0 32px; padding: 18px; border: 1px solid #dfe5f6; background: #f5f7ff; border-radius: 9px; color: #465571; }
+.privacy-note > svg { flex-shrink: 0; color: #4359e8; margin-top: 2px; }
+.privacy-note p { font-size: 13px; line-height: 1.75; }
+.account-actions { padding: 25px 32px 15px; display: flex; flex-direction: column; align-items: flex-start; gap: 20px; }
+.account-actions .secondary-button { min-height: 44px; font-size: 13px; }
+.account-dialog .small-note { padding: 8px 32px 28px; font-size: 12px; line-height: 1.7; }
+.inline-error { padding: 14px 24px; margin: 16px 24px; border-radius: 6px; background: #fff1f1; color: #a63446; font-size: 13px; line-height: 1.6; }
+.danger-action { color: #aa384b; line-height: 1.5; text-align: left; }
+.saved-card textarea:disabled { opacity: .7; cursor: wait; }
+@media (max-width: 720px) {
+  .sidebar { width: 270px; max-width: calc(100vw - 50px); }
+  .sidebar .primary-nav button, .sidebar .help-button { min-height: 44px; font-size: 13px; }
+  .sidebar .workspace-tag strong, .sidebar .account strong { font-size: 13px; }
+  .sidebar .workspace-tag div > span, .sidebar .account div > span { font-size: 12px; }
+  .hero { min-height: auto; padding-bottom: 15px; }
+  .hero-copy > p { font-size: 14px; line-height: 1.75; }
+  .hero-proof { flex-wrap: wrap; font-size: 12px; row-gap: 8px; }
+  .hero .eyebrow { font-size: 11px; letter-spacing: 1.2px; }
+  .brief-panel form { grid-template-columns: 1fr; }
+  .brief-panel form > * { grid-column: 1 / -1; grid-row: auto; }
+  .brief-panel form .slider-field { padding-top: 8px; margin-top: 24px; }
+  .market-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 9px; }
+  .market-option { min-height: 48px; padding: 10px; font-size: 13px; }
+  .field-top label, .select-field > label { font-size: 13px; }
+  .field-value { font-size: 22px; }
+  .field-value small { font-size: 12px; }
+  .field-hint { font-size: 12px; line-height: 1.65; }
+  .slider-field input[type="range"] { height: 36px; margin-top: 7px; background: transparent; }
+  .slider-field input[type="range"]::-webkit-slider-runnable-track { height: 6px; border-radius: 8px; background: linear-gradient(to right, #7186ea var(--fill), #e6eaf4 var(--fill)); }
+  .slider-field input[type="range"]::-webkit-slider-thumb { width: 22px; height: 22px; margin-top: -8px; border-width: 5px; }
+  .slider-field input[type="range"]::-moz-range-track { height: 6px; border-radius: 8px; background: #e6eaf4; }
+  .slider-field input[type="range"]::-moz-range-progress { height: 6px; background: #7186ea; }
+  .slider-field input[type="range"]::-moz-range-thumb { width: 13px; height: 13px; border-width: 5px; }
+  .range-labels { font-size: 11px; margin-top: 0; }
+  .select-wrap select, .capital-input input { font-size: 14px; min-height: 44px; }
+  .select-field > label, .capital-input > span, .advanced-toggle, .run-caption { font-size: 12px; }
+  .primary-button, .secondary-button { min-height: 44px; font-size: 13px; }
+  .icon-button { min-width: 36px; min-height: 36px; }
+  .list-toolbar { flex-wrap: wrap; row-gap: 13px; }
+  .filter-pills { flex-wrap: wrap; gap: 5px; }
+  .filter-pills > button { min-height: 38px; font-size: 12px; padding: 8px; }
+  .filter-pills > button > span { font-size: 11px; }
+  .search-control { max-width: none; width: 100%; padding: 8px 10px; background: #fff; border: 1px solid #e4e8f0; border-radius: 6px; }
+  .search-control > input { min-height: 26px; font-size: 13px; }
+  .result-tabs { overflow-x: auto; justify-content: flex-start; gap: 19px; }
+  .result-tabs > button { flex-shrink: 0; min-height: 44px; font-size: 12px; }
+  .result-tabs > button > span { font-size: 10px; }
+  .sample-notice > p, .stock-card-bottom > p, .feasibility-card p, .trace-content > p, .evidence-item p { font-size: 13px; }
+  .stock-name > strong { font-size: 14px; }
+  .stock-name > span, .stock-tags > span, .fit-score > span, .stock-metrics > div > span, .stock-card-bottom .text-button { font-size: 11px; }
+  .stock-metrics { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 8px; }
+  .stock-metrics > .sparkline-cell { display: none; }
+  .stock-metrics > div > span { min-height: 30px; line-height: 1.35; }
+  .stock-metrics strong { font-size: 23px; }
+  .trace-meta { flex-wrap: wrap; font-size: 11px; }
+  .trace-meta > strong, .trace-meta > span, .trace-meta > time { font-size: 11px; }
+  .trace-meta > time { margin-left: 0; }
+  .trace-content h4 { font-size: 14px; }
+  .trace-provenance > span, .trace-provenance > button { font-size: 11px; }
+  .small-note, .chart-caption, .evidence-meta, .detail-tags > span, .detail-research p, .risk-gates small, .detail-metrics span { font-size: 12px; }
+  .detail-metrics { gap: 14px 8px; }
+  .detail-metrics span { min-height: 32px; line-height: 1.35; }
+  .detail-metrics strong { font-size: 23px; }
+  .detail-footer { flex-wrap: wrap; gap: 10px; }
+  .detail-footer > button { flex: 1 1 180px; }
+  .compare-tray { flex-wrap: wrap; }
+  .compare-tray .primary-button { min-height: 40px; font-size: 12px; }
+  .compare-tray strong { font-size: 13px; }
+  .compare-tickers { display: none; }
+  .privacy-note { margin: 0 24px; padding: 16px; }
+  .account-actions { padding: 23px 24px 15px; }
+  .account-dialog .small-note { padding: 8px 24px 26px; }
+  .app-footer { font-size: 11px; flex-wrap: wrap; gap: 12px; }
+}
+.job-status { display: flex; align-items: flex-start; gap: 9px; padding: 14px 16px; margin-bottom: 18px; border: 1px solid #dce3f8; border-radius: 8px; background: #f0f3ff; color: #3e527c; font-size: 13px; line-height: 1.7; }
+.job-status > svg { flex-shrink: 0; margin-top: 3px; }
+.sidebar { overflow-y: auto; overscroll-behavior: contain; }
+.sidebar > * { flex-shrink: 0; }
+button:focus-visible, a:focus-visible, input:focus-visible, select:focus-visible, textarea:focus-visible { outline: 3px solid #4359e8; outline-offset: 3px; }
+.market-option.selected .market-check { background: #5368d9; border-color: #5368d9; }
+@media (max-width: 720px) {
+  .sidebar .principle-card { display: none; }
+  .sidebar-bottom { padding-top: 18px; }
+  .market-field legend { font-size: 13px; }
+}
+@media (max-width: 720px) {
+  .topbar { position: sticky; top: 0; z-index: 20; backdrop-filter: blur(14px); }
+  .results-panel { scroll-margin-top: 84px; }
+  .result-tabs { display: grid; grid-template-columns: 1fr 1.3fr 1fr 1fr; gap: 8px; overflow: visible; }
+  .result-tabs > button { justify-content: center; font-size: 12px; white-space: nowrap; gap: 4px; }
+  .result-tabs > button > svg { display: none; }
 }

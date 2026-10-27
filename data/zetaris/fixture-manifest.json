@@ -18,8 +18,10 @@
   "expectedViewRows": 20,
   "pricesPerSecurity": 505,
   "sourceSha256": {
+    "prices.json": "bf5c0bacadbfa025b38f2c65b76e42959947d0dc47a2478ed56ce49ffb8b7852",
     "prices.jsonl": "0c849a167d3f5f44557ed153e7eb832eb9a296aa5530071e24c3bb7edab06c19",
     "fundamentals.csv": "a681aab1c30f66547a374afa53021f6586fe8b660646b944758fa443c240a6a5",
+    "filings.json": "1c5bf03f3b2af2e066d3edff33cd3cac5ec7f05903ef38e1f560e3c45c4ab860",
     "filings.jsonl": "dfa8e640279cb2fb1690ca8e814b31fe16658ecd7abe89bfc96559c09ac9c99a",
     "sample-universe.json": "605e05926eda845e1a6b55b17da440a7c9c4a8167e004ad79a7092027cada0d1"
   },

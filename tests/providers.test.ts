@@ -185,3 +185,38 @@ test('qualitative guard rejects written-out forecasts while permitting condition
   assert.ok(narrativeIssues({...value,bullCase:'The expected return is exceptional.'}).length>0);
   assert.deepEqual(narrativeIssues({...value,bullCase:'The business may benefit from enterprise demand if execution remains sound.'}),[]);
 });
+
+test('public actual-data proof uses an allowlist and cannot disclose nested financial records or prompts',async()=>{
+  const {publicSponsorProof}=await import('../lib/providers/proof');
+  const privateText='PRIVATE_FINANCIAL_RECORD_ABC';
+  const input={startedAt:'2026-10-27T00:00:00Z',finishedAt:'2026-10-27T00:00:01Z',syntheticInputs:false,dataProvider:'Zetaris',stockCount:1,sourceRowsValidated:true,profile:{capital:99912345},prices:[123456.789],narrative:privateText,receipts:[{provider:'Meterless Nightshift' as const,role:privateText,requestedModel:'meterless/auto',responseModel:'local-runtime/test',resolvedModel:'local-runtime/test',nvidiaVerified:false,requestId:'req-1',receiptId:'rcpt-1',latencyMs:100,inputTokens:20,outputTokens:10,providerCostUsd:0,attempts:1,routedProvider:privateText,receiptBody:{prompt_preview:privateText,prices:[123456.789],profile:{capital:99912345}}}]};
+  const out=publicSponsorProof(input);const serialized=JSON.stringify(out);
+  assert.equal(out.dataMode,'actual_private');assert.equal(out.counts.stocks,1);assert.equal(out.receipts[0].resolvedModel,'local-runtime/test');assert.equal(out.receipts[0].providerCostUsd,0);
+  for(const hidden of [privateText,'99912345','123456.789','\"prompt_preview\":','\"receiptBody\":','\"profile\":','\"narrative\":'])assert.equal(serialized.includes(hidden),false);
+  assert.equal('research' in out,false);
+});
+
+test('Zetaris verified native headers map tabular rows and reject duplicate column identities',()=>{
+  assert.deepEqual(extractRows({headers:['symbol','price'],data:[['X',10]],total:1}),[{symbol:'X',price:10}]);
+  assert.throws(()=>extractRows({headers:['symbol','symbol'],data:[['X','Y']]}),/named columns/);
+});
+
+test('native Zetaris numeric strings normalize only fixed finite numerical columns',async()=>{
+  const stock=structuredClone(sampleUniverse[0]) as unknown as Record<string,unknown>;
+  for(const field of ['price','annualReturn','annualVolatility','maxDrawdown','revenueGrowth','operatingMargin','debtToEquity','pe','dividendYield','marketCapBn','quality'])stock[field]=String(stock[field]);
+  stock.prices=JSON.stringify(stock.prices);stock.evidence=JSON.stringify(stock.evidence);
+  const client=new ZetarisClient(stockEnv,fetcher(async()=>json({headers:Object.keys(stock),data:[Object.values(stock)]})));
+  const parsed=await client.stocks();assert.equal(parsed[0].price,sampleUniverse[0].price);assert.equal(parsed[0].quality,sampleUniverse[0].quality);
+  for(const invalid of ['', 'null', 'NaN', 'Infinity', '1e999', '$42.00', '1,234.50']){
+    const bad=new ZetarisClient(stockEnv,fetcher(async()=>json([{...stock,price:invalid}])));
+    await assert.rejects(()=>bad.stocks(),/contract failed at price/);
+  }
+});
+
+test('cross-market ticker collisions fail closed before symbol-only downstream association',async()=>{
+  const first=structuredClone(sampleUniverse[0]);
+  const second={...structuredClone(first),market:'India' as const,exchange:'NSE',currency:'INR',evidence:first.evidence.map(e=>({...e,id:e.id+'-other-listing'}))};
+  assert.notDeepEqual(first.evidence.map(e=>e.id),second.evidence.map(e=>e.id));
+  const client=new ZetarisClient(stockEnv,fetcher(async()=>json([first,second])));
+  await assert.rejects(()=>client.stocks(),/globally unique exchange-qualified symbol codes/);
+});

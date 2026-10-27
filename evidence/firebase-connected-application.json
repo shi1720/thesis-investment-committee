@@ -1,0 +1,43 @@
+{
+  "executedAt": "2026-10-27T07:00:42.718Z",
+  "url": "https://thesis-investing.web.app",
+  "queuePostStatus": 202,
+  "finalStatus": 200,
+  "durationMs": 22732,
+  "synthetic": true,
+  "universeCount": 10,
+  "eligibleCount": 2,
+  "providers": [
+    {
+      "name": "Zetaris",
+      "status": "verified",
+      "detail": "Successful authenticated query delivered 10 validated stock records from the configured view. Data is synthetic sponsor-demo fixtures."
+    },
+    {
+      "name": "Meterless Nightshift",
+      "status": "verified",
+      "detail": "Actual provider response: local-runtime/qwen2-5-7b-instruct-q4-k-m. 1 model requests."
+    },
+    {
+      "name": "Meterless H-MEM",
+      "status": "verified",
+      "detail": "Official pinned H-MEM engine executed hybrid recall; 0 prior decision records recalled. Persisted per signed-in account."
+    },
+    {
+      "name": "NVIDIA Nemotron",
+      "status": "unavailable",
+      "detail": "Select a Nemotron route in Nightshift. A concrete Nemotron response model must appear in a live receipt before this integration is verified."
+    }
+  ],
+  "modelCalls": 1,
+  "reportedCostUsd": 0,
+  "memoryExecuted": true,
+  "modelEvents": [
+    {
+      "agent": "Skeptic",
+      "action": "Request independent Nightshift critique",
+      "model": "local-runtime/qwen2-5-7b-instruct-q4-k-m",
+      "detail": "Request chatcmpl-9913d7cb-47aa-4b50-9d61-9821d353a63a; receipt rcpt_req_ga75h7xw; 777 input / 203 output tokens; 8924 ms. Requested local-runtime/qwen2-5-7b-instruct-q4-k-m; returned local-runtime/qwen2-5-7b-instruct-q4-k-m. Concrete model identified."
+    }
+  ]
+}

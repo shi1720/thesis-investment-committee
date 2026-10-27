@@ -1,0 +1,2 @@
+export const CONNECTED_EXECUTION_MS=15*60_000;
+export const QUEUED_RESEARCH_MS=30*60_000;

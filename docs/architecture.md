@@ -1,66 +1,144 @@
 # Architecture and trust boundaries
 
-Thesis uses a custom typed research state machine rather than a chat transcript. Computational specialists own quantification and hard gates. Meterless Nightshift supplies a source-constrained skeptical review in connected mode. The evaluator rejects unsupported entity references or evidence IDs and can ask for one bounded repair.
+Primary track: **Reasoning Architecture**. Thesis combines typed decision state,
+computational specialists, persistent memory and bounded model interpretation.
+The public application is [thesis-investing.web.app](https://thesis-investing.web.app).
 
 ```mermaid
 flowchart TD
-  U[Research mandate] --> A[Authenticated API and validation]
-  A --> M[Account-scoped Meterless H-MEM recall]
-  M --> P[Planner and feasibility policy]
-  P --> D{Data mode}
-  D -->|Sample| F[Synthetic fixtures]
-  D -->|Connected| Z[Zetaris federated research view]
-  F --> Q[Quant analyst and fundamental analyst]
-  Z --> Q
-  Q --> S[Skeptic challenges hypotheses]
-  S --> R[Planner revises priorities]
-  R --> G[Risk guardian applies immutable user limits]
-  G --> O{Defensible candidates?}
-  O -->|No| N[Abstention with rejected cases]
-  O -->|Yes and connected| L[Nightshift model critique]
+  U[Investor brief] --> W[Firebase Hosting and React]
+  W --> A[Firebase ID token and Cloud Run API]
+  A --> D{Research mode}
+  D -->|Sample| F[Explicit synthetic fixtures]
+  D -->|Connected| T[Persistent Cloud Tasks job]
+  T --> Z[Authenticated gateway to Zetaris]
+  Z --> V[Three-source federated research view]
+  F --> M[Account-scoped official H-MEM recall]
+  V --> M
+  M --> P[Planner and source validation]
+  P --> Q[Quantification and initial ranking]
+  Q --> S[Skeptic revision tasks]
+  S --> R[Planner applies score and status changes]
+  R --> G[Independent risk and currency gates]
+  G --> C{Qualified research candidates?}
+  C -->|No| N[Explained abstention]
+  C -->|Yes and connected| L[Nightshift qualitative reviewer]
   L --> E[Schema and citation evaluator]
-  E -->|Reject once| L
-  E -->|Pass or escalation| V[Final risk revalidation]
-  O -->|Yes and sample| V
-  N --> H[Persist research and H-MEM context]
-  V --> H
-  H --> X[Saved thesis and exportable research memo]
+  E -->|One repair| L
+  E -->|Pass or explicit degradation| H[Atomic result and memory persistence]
+  C -->|Yes and sample| H
+  N --> H
+  H --> DB[Named Firestore database]
+  DB --> X[Private history, saved thesis and report]
 ```
 
-## Runtime
+## Public and alternate runtimes
 
-- React 19, TypeScript, Vinext and Vite power the interface and route handlers.
-- Cloudflare Workers hosts server-side code. D1 holds account-scoped runs, saved theses, rate counters and H-MEM snapshots.
-- ChatGPT sign-in establishes the platform visitor identity. Server routes authorize every saved record by the stable user ID.
-- The repository's portable local preview emulates sign-in on loopback only. Hosted authentication belongs to the platform, not the application bundle.
-- Sponsor credentials exist only in server environment variables. The browser never chooses a data URL, SQL fragment or model endpoint.
+Firebase Hosting serves the Vite/React web build and rewrites `/api/**` to a
+stateless Node 24 Cloud Run service. Firebase anonymous authentication supplies a
+real browser-owned private workspace without an email signup step. The server
+verifies ID tokens before authorizing personal records. A hash of the verified
+UID partitions records in a dedicated named Firestore database.
 
-## Data and evidence
+The Node build reuses the existing research, provider, report and API validation
+code. Build-time aliases replace only the Sites identity helper, D1 repository
+and Cloudflare environment binding. The alternate Sites/Vinext deployment still
+uses platform identity and D1. A raw Worker that trusts arbitrary Sites identity
+headers must never be exposed directly to the Internet. The public Node API
+explicitly rejects that trust model.
 
-Prices, reported fundamentals and source evidence enter through explicit data contracts. Sample values are synthetic and all provenance records carry `sample:true`. Company investor-relations links in sample mode are reference destinations and do not support the synthetic numbers.
+Firestore stores completed decisions, saved theses, notes, rate counters, current
+H-MEM context and rotated audit archives. Results are compressed and bounded.
+Recent history uses small completion-index records; full exports paginate reads
+and apply Node stream backpressure. No production account persistence depends on
+a Cloud Run container filesystem or ephemeral SQLite.
 
-A connected Zetaris query validates returned identities, scalar ranges, daily closing prices, evidence kinds and source metadata. A real data-layer connection serving fixtures still yields a sample-data report. Live financial evidence must pass freshness and provenance checks. The application recalculates risk from the price series instead of trusting summary fields.
+## Research state and reasoning
 
-Source passages are untrusted. Prompts tell the model to use them as data. Output must refer to a candidate and that candidate's actual evidence IDs. These checks reject invented references but cannot prove a cited claim is true. Human source verification remains necessary.
+The planner compiles an explicit mandate. Data validation checks source identity,
+provenance, scalar ranges, snapshot dates and price-series consistency. The quant
+specialist recomputes annualized return, volatility and peak-to-trough drawdown.
+The initial ranking is stored in shared state before critique.
 
-## State and recovery
+The deterministic skeptic produces revision tasks for valuation, earnings,
+financing, horizon and currency concerns. The planner applies actual score/status
+changes and re-ranks. The risk guardian then applies unrounded hard limits. Tests
+include an initial leader losing its position after critique. Infeasible goals or
+an empty qualified set branch to abstention instead of loosening constraints.
 
-Each signed-in request gets a durable run ID before research starts. An optional idempotency key prevents duplicate completed runs; reuse with changed inputs returns a conflict. Provider failure leaves a failed or explicitly degraded outcome rather than a successful live claim. Research history retrieves completed records. A running request interrupted by process termination can remain unfinished and requires a new request; this is a current limitation rather than a full durable-job queue.
+Foreign-currency securities stay watch-only without aligned FX history. Passing
+local-currency risk checks does not establish suitability in a different base
+currency. USD, INR, CNY, AED and HKD base-currency briefs are accepted. A matching
+HKD listing can qualify for an HKD brief under the same remaining checks.
 
-The UI does not create fake model-completion events while waiting. It renders the actual returned audit trail. Deterministic roles identify their rule model; model requests identify returned provider models and request receipts. H-MEM retains previous decisions per account and does not replace fresh evidence.
+Connected mode sends a compact surviving shortlist through Meterless Nightshift,
+the connected AI provider. The evaluator checks exact candidates, schema, source
+ID membership, source-kind coverage and prohibited numeric/forecast claims. It
+may delegate one repair. Citation membership does not prove factual entailment;
+model prose remains an unverified qualitative interpretation for source review.
+An optional independently configured Nemotron exclusion auditor cannot remove a
+numeric veto. Its separate feature receipts do not imply it handled every cloud
+research run.
 
-## Safety properties
+## Data modes and sponsor boundaries
 
-- A narrative model never changes computed volatility, drawdown or gate limits.
-- A conflict or unsuitable short horizon can cause abstention.
-- Requests have bounded body size, a strict preference schema and same-origin mutation checks.
-- Writes require sign-in. Every read, update and delete of personal records includes the current user ID.
-- Research is rate-limited. Model payloads and repair loops have bounded size and count.
-- JSON and HTML exports escape untrusted text. HTTP errors do not reveal secrets or raw provider bodies.
-- No broker connection, trade execution, allocation optimization, guaranteed return or automated investment action exists.
+The public sample and public connected demonstrations use twenty synthetic
+securities across four named market universes. Company names identify research
+examples; their reference links do not substantiate fabricated fixture numbers.
+A real Zetaris query over those fixtures remains sample-data research.
 
-## Known operational limits
+Zetaris federates price, fundamental and filing-provenance feeds into a validated
+view. Missing joined records remain visible and fail the typed contract. The
+verified source reader uses native JSON arrays for price/provenance and CSV for
+fundamentals. Actual queries have verified twenty rows across the three sources.
+Firestore and D1 are application stores; neither substitutes for this required
+sponsor data layer.
 
-D1 provides durable application storage; it does not satisfy the hackathon's Zetaris data-layer requirement by itself. Zetaris is required for connected financial-source research. Laptop loopback sponsor services are unavailable to a hosted Worker. Deploy reachable authenticated services or use the local connected demonstration.
+A separate optional private personal-research importer has validated one actual
+US security using observed daily closes and official SEC-reported facts. Its
+separate Zetaris namespace has a complete typed record and private field lineage.
+Public evidence exposes only operational counts and checks. No commercial
+redistribution right or broad actual-market coverage is inferred from that work.
 
-The current security controls are implementation safeguards, not a penetration-test certification. Retention, backups, monitoring, load testing, market-data redistribution rights and jurisdiction-specific compliance must be validated before commercial launch.
+The public connected route reaches local sponsor services through a narrow
+authenticated gateway. The gateway allows only the required model operations and
+approved synthetic view queries. It excludes the actual personal-data namespace.
+Provider keys stay local/server-side; Cloud Run receives a separately scoped
+gateway secret. A temporary tunnel and operator-hosted inference are current
+availability dependencies and must become stable managed services for a
+commercial launch.
+
+## Durable dispatch and failure behavior
+
+Sample research completes synchronously. Connected POST requests persist a run,
+enqueue Cloud Tasks work and return 202 with a poll URL. Polling and `/api/jobs`
+restore queued/running work after a page reload. A signed Google OIDC token for
+the approved task service account and exact Cloud Run audience protects the
+internal executor. Task-name headers alone grant no access.
+
+Queued leases last at most thirty minutes; claimed execution is bounded to
+fifteen minutes. A late completion clears only its own active lock. The queue is
+configured for one delivery attempt. Duplicate delivery does not replay a
+possibly billed generation. An interrupted or ambiguous execution becomes an
+explicit failure for review and a new request. Persistent dispatch is implemented;
+resumable paid inference is not claimed.
+
+Idempotency keys prevent duplicate completed or queued requests. Per-account and
+shared provider budgets limit live work. Result and memory writes share a
+transaction. Erasure and memory generations prevent an in-flight result from
+restoring cleared context. Provider failure either fails the task or produces a
+clearly degraded deterministic result, with received usage receipts retained.
+
+## Verified evidence and remaining limits
+
+The repository records nineteen hosted API checks including real Firebase UID
+isolation and erasure, plus a completed public Cloud Tasks to Zetaris to
+Nightshift to H-MEM application run. That connected run took 22.7 seconds and made
+one concrete Qwen call over synthetic inputs. These are execution records, not a
+service-level or performance guarantee.
+
+See [Firebase backend](firebase-backend.md), [data contract](data-contract.md),
+[real-data ingress](real-data-ingestion.md) and [launch readiness](launch-readiness.md).
+External security review, monitoring, backup recovery, sustained load, broader
+licensed coverage, customer benefit and investment-research obligations still
+require validation.

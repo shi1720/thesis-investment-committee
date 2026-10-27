@@ -2311,6 +2311,7 @@
         "Historical max drawdown 33.84% exceeds your 10% limit.",
         "Annualized volatility 19.12% exceeds your 10% limit.",
         "The INR listing adds unmodeled currency exposure against your USD budget.",
+        "Base-currency risk is unverified: this INR listing has no aligned USD FX history. Local-currency risk checks cannot qualify it for the base-currency brief; retain watch-only status.",
         "Synthetic historical annualized return of 13.5% is below your 40% aspiration. This comparison is not a forecast."
       ],
       "bullCase": "Illustrative upside thesis: Deposit growth and funding-cost normalization support the illustrative bank thesis. The source filings must substantiate this mechanism before any investment decision.",
@@ -3468,6 +3469,7 @@
         "Historical max drawdown 25.72% exceeds your 10% limit.",
         "Annualized volatility 22.42% exceeds your 10% limit.",
         "The INR listing adds unmodeled currency exposure against your USD budget.",
+        "Base-currency risk is unverified: this INR listing has no aligned USD FX history. Local-currency risk checks cannot qualify it for the base-currency brief; retain watch-only status.",
         "Synthetic historical annualized return of 14.7% is below your 40% aspiration. This comparison is not a forecast."
       ],
       "bullCase": "Illustrative upside thesis: Specialty therapies create an illustrative growth catalyst. The source filings must substantiate this mechanism before any investment decision.",
@@ -4047,6 +4049,7 @@
         "Historical max drawdown 46.97% exceeds your 10% limit.",
         "Annualized volatility 20.31% exceeds your 10% limit.",
         "The INR listing adds unmodeled currency exposure against your USD budget.",
+        "Base-currency risk is unverified: this INR listing has no aligned USD FX history. Local-currency risk checks cannot qualify it for the base-currency brief; retain watch-only status.",
         "Synthetic historical annualized return of 11.2% is below your 40% aspiration. This comparison is not a forecast."
       ],
       "bullCase": "Illustrative upside thesis: Large enterprise transformation projects support the illustrative recurring-demand thesis. The source filings must substantiate this mechanism before any investment decision.",
@@ -4626,6 +4629,7 @@
         "Historical max drawdown 51.87% exceeds your 10% limit.",
         "Annualized volatility 25.82% exceeds your 10% limit.",
         "The INR listing adds unmodeled currency exposure against your USD budget.",
+        "Base-currency risk is unverified: this INR listing has no aligned USD FX history. Local-currency risk checks cannot qualify it for the base-currency brief; retain watch-only status.",
         "Synthetic historical annualized return of 10.3% is below your 40% aspiration. This comparison is not a forecast."
       ],
       "bullCase": "Illustrative upside thesis: Consumer and digital operations diversify the illustrative business mix. The source filings must substantiate this mechanism before any investment decision.",
@@ -5208,6 +5212,7 @@
         "Debt/equity of 1.52× increases financing exposure.",
         "Quality inputs are below the committee’s 65/100 research threshold.",
         "The INR listing adds unmodeled currency exposure against your USD budget.",
+        "Base-currency risk is unverified: this INR listing has no aligned USD FX history. Local-currency risk checks cannot qualify it for the base-currency brief; retain watch-only status.",
         "Synthetic historical annualized return of 23.7% is below your 40% aspiration. This comparison is not a forecast."
       ],
       "bullCase": "Illustrative upside thesis: Infrastructure execution provides the illustrative growth scenario. The source filings must substantiate this mechanism before any investment decision.",
@@ -5953,7 +5958,7 @@
       "at": "2026-10-27T05:00:00.000Z",
       "agent": "Planner",
       "action": "Revise the research plan after critique",
-      "detail": "Applied the skeptic’s revision tasks and re-ranked actual candidates. NVDA: 65 → 55; HDFCBANK: 53.7 → 51.7; SUNPHARMA: 52.9 → 50.9; TCS: 52.2 → 50.2; RELIANCE: 48.3 → 46.3; ADANIENT: 33.7 → 0 (watch-only); TSLA: 22.7 → 0 (watch-only). Route this revised state to the risk guardian; hard limits remain unchanged.",
+      "detail": "Applied the skeptic’s revision tasks and re-ranked actual candidates. NVDA: 65 → 55; HDFCBANK: 53.7 → 51.7 (watch-only); SUNPHARMA: 52.9 → 50.9 (watch-only); TCS: 52.2 → 50.2 (watch-only); RELIANCE: 48.3 → 46.3 (watch-only); ADANIENT: 33.7 → 0 (watch-only); TSLA: 22.7 → 0 (watch-only). Route this revised state to the risk guardian; hard limits remain unchanged.",
       "status": "completed",
       "iteration": 2,
       "model": "deterministic/research-rules-v1",
@@ -6312,11 +6317,11 @@
   "methodology": [
     "All sample prices, financial metrics, catalysts and scenarios are synthetic assumptions. Investor-relations links are discovery references and do not substantiate fixture numbers. Sample mode replays the fixed fixture clock, independently of the current date.",
     "Risk uses daily adjusted closing prices: CAGR = (last / first)^(252 / return observations) − 1; annualized volatility = sample standard deviation of simple daily returns × √252; maximum drawdown = maximum peak-to-trough decline.",
-    "At least 61 daily closes and dated evidence are required. Live snapshots must be no older than 45 days; sample mode uses the fixed fixture clock. The sample contains 505 closes per security. 252 sessions is a calculation convention, not each exchange’s exact trading calendar.",
+    "At least 61 daily closes and dated evidence are required. Live snapshots and price-source dates must be no older than 45 days; live price and filing provenance cannot be dated more than one day in the future. Older annual filings are allowed as dated sources. Sample mode uses the fixed fixture clock. The sample contains 505 closes per security. 252 sessions is a calculation convention, not each exchange’s exact trading calendar.",
     "Hard volatility and drawdown gates use unrounded computed values. Sector exclusions, data quality and live/sample provenance cannot be overridden by commentary. Latest close must match the last adjusted price within 0.1%; contradictory source-ID collisions exclude every affected security and preserve quarantined evidence.",
     "Ranking weights: quality 30%, risk headroom 25%, growth and margins 20%, valuation heuristic 15%, historical aspiration comparison 10%, followed by explicit skeptic penalties. Scores are relative research priorities, not probabilities.",
     "A horizon of 12 months or less makes otherwise eligible equities watch-only. Conflicting return/risk preferences trigger abstention under an explicit product policy, not a modeled efficient frontier.",
-    "Returns are local-currency price returns; dividends, withholding, fees, FX, taxes, market access, liquidity and portfolio correlations are not modeled. No portfolio optimization or order execution is provided.",
+    "Foreign-currency listings remain watch-only without aligned FX history; local-currency risk metrics do not establish base-currency suitability. Returns are local-currency price returns; dividends, withholding, fees, FX, taxes, market access, liquidity and portfolio correlations are not modeled. No portfolio optimization or order execution is provided.",
     "Stress scenarios apply stated hypothetical shocks. Historical maximum drawdown is an observation, never a stop-loss guarantee or a bound on future losses."
   ],
   "warnings": [
