@@ -1,0 +1,27 @@
+{
+  "schemaVersion": 1,
+  "synthetic": true,
+  "asOf": "2026-10-23",
+  "notice": "Synthetic demonstration dataset. Prices, fundamentals, returns, catalysts and scenarios are fabricated assumptions; they are not current or historical market observations. Company names identify research examples only. Source links are discovery references, not evidence for the fabricated numbers.",
+  "markets": [
+    "US",
+    "India",
+    "China",
+    "UAE"
+  ],
+  "securities": 20,
+  "sourceRows": {
+    "prices": 20,
+    "fundamentals": 20,
+    "filings": 20
+  },
+  "expectedViewRows": 20,
+  "pricesPerSecurity": 505,
+  "sourceSha256": {
+    "prices.jsonl": "0c849a167d3f5f44557ed153e7eb832eb9a296aa5530071e24c3bb7edab06c19",
+    "fundamentals.csv": "a681aab1c30f66547a374afa53021f6586fe8b660646b944758fa443c240a6a5",
+    "filings.jsonl": "dfa8e640279cb2fb1690ca8e814b31fe16658ecd7abe89bfc96559c09ac9c99a",
+    "sample-universe.json": "605e05926eda845e1a6b55b17da440a7c9c4a8167e004ad79a7092027cada0d1"
+  },
+  "liveExecutionVerified": false
+}

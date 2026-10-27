@@ -1,0 +1,27 @@
+{
+  "schema": "thesis.hmem.conformance.v1",
+  "testedAt": "2026-10-27T05:18:34.218436+00:00",
+  "engine": "Official Meterless H-MEM TypeScript reference",
+  "upstreamCommit": "1742dec56a66e58eef9dda2d2b865823758ca8cd",
+  "testSource": "https://github.com/Meterless/Meterless/tree/1742dec56a66e58eef9dda2d2b865823758ca8cd/engines/hmem/conformance",
+  "passed": 13,
+  "total": 13,
+  "checks": [
+    "rv-001",
+    "rv-002",
+    "fd-001",
+    "fd-002",
+    "fd-003",
+    "fd-004",
+    "fd-005",
+    "ro-001",
+    "ro-002",
+    "sg-001",
+    "cg-001",
+    "la-001",
+    "db-001"
+  ],
+  "limitations": [
+    "Conformance tests verify the pinned engine implementation. They do not independently establish durable storage security or financial decision correctness."
+  ]
+}

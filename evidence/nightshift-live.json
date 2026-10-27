@@ -1,0 +1,540 @@
+{
+  "schema": "thesis.sponsor-proof.v1",
+  "project": "Thesis",
+  "startedAt": "2026-10-27T05:15:13.217Z",
+  "finishedAt": "2026-10-27T05:15:36.409Z",
+  "scope": "Real Nightshift inference over included synthetic research examples; Zetaris not exercised by this proof.",
+  "syntheticInputs": true,
+  "financialDataNotice": "All input prices and fundamentals are fabricated research fixtures. Real infrastructure execution is not live market data.",
+  "dataProvider": "Bundled fixtures",
+  "stockCount": 20,
+  "sourceRowsValidated": true,
+  "memory": {
+    "engine": "Meterless H-MEM",
+    "reused": true,
+    "lessonCount": 1,
+    "trace": {
+      "retrievalReason": "hybrid ranking for \"US India investment risk volatility limit 25 drawdown limit 25 target return 12 horizon 36 months.\" (domain: general)",
+      "strategy": "minimal",
+      "scores": {
+        "mem-1": 0.7194
+      }
+    }
+  },
+  "receipts": [
+    {
+      "provider": "Meterless Nightshift",
+      "role": "Skeptic",
+      "requestedModel": "local-runtime/qwen2-5-7b-instruct-q4-k-m",
+      "responseModel": "local-runtime/qwen2-5-7b-instruct-q4-k-m",
+      "resolvedModel": "local-runtime/qwen2-5-7b-instruct-q4-k-m",
+      "nvidiaVerified": false,
+      "requestId": "chatcmpl-058f3c18-e448-4651-aad1-349bbe37b4c2",
+      "latencyMs": 23128,
+      "inputTokens": 822,
+      "outputTokens": 321,
+      "providerCostUsd": 0,
+      "receiptId": "rcpt_req_c9zemzbx",
+      "attempts": 1,
+      "routedProvider": "local-runtime",
+      "receiptBody": {
+        "app": "thesis",
+        "app_policy": {
+          "app": "thesis",
+          "cross_check": "auto",
+          "has_rule": true,
+          "lanes": null,
+          "mode_coerced": false,
+          "premium_budget": null,
+          "privacy": "cloud-ok",
+          "race_width": 6,
+          "requested_mode": "auto",
+          "routed_mode": "auto"
+        },
+        "autopilot": {
+          "ctx_dropped": [],
+          "ctx_unfilterable": false,
+          "envelope": {
+            "allocatable_mb": 0,
+            "pressure": "unknown",
+            "remaining_mb": 0,
+            "used_mb": 0
+          },
+          "needs": {
+            "coding": false,
+            "tools": false,
+            "vision": false
+          },
+          "prompt_tokens": 963,
+          "scout": {
+            "candidates": [
+              {
+                "id": "TREND_ANALYZER",
+                "score": 14
+              },
+              {
+                "id": "EDIT",
+                "score": 12
+              },
+              {
+                "id": "RESEARCH",
+                "score": 8
+              }
+            ],
+            "category": "Data",
+            "confident": false,
+            "mode": "TREND_ANALYZER",
+            "ms": 2.7,
+            "score": 14,
+            "source": "detected",
+            "tier": "C"
+          },
+          "tier_hint": null,
+          "why": [
+            "scout read TREND_ANALYZER (not confident \u2014 no tier opinion)",
+            "~963 prompt tokens \u2014 lanes whose slot cannot hold them are not asked"
+          ]
+        },
+        "bar": null,
+        "budget_degrade": null,
+        "cache": {
+          "losers_reclaimed": 0,
+          "partials_reclaimed": 0,
+          "status": "miss"
+        },
+        "consensus": {
+          "agree": 1,
+          "coherence": null,
+          "detail": "one model handled this \u2014 no cross-model agreement to check",
+          "label": "single route",
+          "level": "solo",
+          "raced": 1,
+          "tone": "neutral",
+          "verified": null
+        },
+        "consensus_escalation": null,
+        "cost": {
+          "actual_usd": 0,
+          "baseline": {
+            "label": "Claude 4.5 Sonnet",
+            "model": "claude-sonnet-4-5-20250929",
+            "source": "fixed-reference"
+          },
+          "naive_usd": 0.007281,
+          "race_overhead_usd": 0,
+          "verifier_usd": 0
+        },
+        "created_at": 1793078136373,
+        "cross_check": {
+          "app": "thesis",
+          "blocking": false,
+          "checks": [],
+          "recommended_action": "allow",
+          "reflex_ms": 0.38,
+          "risk_level": "low",
+          "skip_reason": "tier_a_chat",
+          "status": "skipped",
+          "verifier": "none",
+          "verifier_model": null,
+          "verifier_ms": 0,
+          "verifier_ran": false,
+          "verifier_verdict": null
+        },
+        "debate": null,
+        "decision_id": "req_c9zemzbx",
+        "deliberation": null,
+        "egress": {
+          "coverage": "pattern_floor",
+          "destination": "none",
+          "never_eligible": [],
+          "sent": {
+            "context_sources": [
+              "messages"
+            ],
+            "prompt_chars": 3131,
+            "redacted": []
+          },
+          "withheld": []
+        },
+        "eligible": null,
+        "error": "",
+        "fusion": null,
+        "gen_verifier": null,
+        "graded_weight": null,
+        "hmem": null,
+        "host_pressure": {
+          "battery": null,
+          "pressure": {
+            "battery": {
+              "hard": 0.5,
+              "label": "nominal",
+              "score": 0.18,
+              "sensor": "battery%, charging",
+              "soft": 0.3
+            },
+            "cpu": {
+              "hard": 0.9,
+              "label": "nominal",
+              "score": 0.34,
+              "sensor": "30s load avg",
+              "soft": 0.7
+            },
+            "gpu": {
+              "hard": 0.92,
+              "label": "nominal",
+              "score": 0.38,
+              "sensor": "GPU + VRAM",
+              "soft": 0.75
+            },
+            "memory": {
+              "hard": 0.85,
+              "label": "warm",
+              "score": 0.51,
+              "sensor": "committed/swap",
+              "soft": 0.7
+            },
+            "network": {
+              "hard": 0.85,
+              "label": "nominal",
+              "score": 0.12,
+              "sensor": "RTT to providers",
+              "soft": 0.5
+            },
+            "quota": {
+              "hard": 0.95,
+              "label": "nominal",
+              "score": 0.28,
+              "sensor": "per-key window",
+              "soft": 0.8
+            },
+            "thermal": {
+              "hard": 0.8,
+              "label": "nominal",
+              "score": 0.22,
+              "sensor": "thermal API",
+              "soft": 0.55
+            }
+          },
+          "thermal": "nominal"
+        },
+        "job": null,
+        "mcp": null,
+        "method": null,
+        "mode": "auto",
+        "optimistic": null,
+        "phases": [
+          {
+            "coherence": null,
+            "model": "local-runtime/qwen2-5-7b-instruct-q4-k-m",
+            "ms": 23080,
+            "outputTps": 13.908145580589256,
+            "phase": "final_synthesis",
+            "reflex_decided_in_ms": 0.2,
+            "tier": "A",
+            "tokensIn": 822,
+            "tokensOut": 321
+          }
+        ],
+        "privacy": {
+          "path": "local-only",
+          "redaction": {
+            "applied": false,
+            "spans": 0
+          }
+        },
+        "prompt_preview": "{\"profile\":{\"markets\":[\"US\",\"India\"],\"targetReturn\":12,\"maxVolatility\":25,\"maxDrawdown\":25,\"horizonMonths\":36,\"capital\":25000,\"baseCurrency\":\"USD\",\"excludedSectors\":[],\"mode\":\"samp",
+        "quality_race": null,
+        "reasoning_scaffold": null,
+        "receipt_id": "rcpt_req_c9zemzbx",
+        "refine": null,
+        "request_id": "chatcmpl-058f3c18-e448-4651-aad1-349bbe37b4c2",
+        "requested_mode": "meterless/auto",
+        "routing": {
+          "confidence": null,
+          "escalated": null,
+          "escalated_on_divergence": false,
+          "hedge": null,
+          "hedges_skipped": 0,
+          "of": 1,
+          "policy": "learned-router",
+          "predicted": "local-runtime/qwen2-5-7b-instruct-q4-k-m",
+          "reason": "single-candidate",
+          "width": 1,
+          "winner": "local-runtime/qwen2-5-7b-instruct-q4-k-m"
+        },
+        "savings": {
+          "amount": 0.007281,
+          "baseline_source": "fixed-reference",
+          "currency": "USD",
+          "vs": "Claude 4.5 Sonnet"
+        },
+        "schema": "meterless.compute_receipt.v1",
+        "score": null,
+        "scorecard": null,
+        "status": "ok",
+        "summary": "ok \u00b7 Qwen2.5-7B-Instruct-Q4_K_M \u00b7 Runtime \u00b7 miss \u00b7 $0.0073 saved",
+        "synthesis": null,
+        "test_time_compute": null,
+        "tool_degraded": null,
+        "unmet": null,
+        "usage": {
+          "input_tokens": 822,
+          "latency_ms": 23080,
+          "output_tokens": 321,
+          "output_tps": 13.908145580589256,
+          "total_tokens": 1143
+        },
+        "verdict": null,
+        "verification": null,
+        "winning_route": {
+          "kind": "local",
+          "label": "Qwen2.5-7B-Instruct-Q4_K_M \u00b7 Runtime",
+          "model": "local-runtime/qwen2-5-7b-instruct-q4-k-m",
+          "provider": "local-runtime",
+          "tier": "A"
+        }
+      }
+    }
+  ],
+  "warnings": [],
+  "research": {
+    "id": "sponsor-proof-77e3a100-1711-4d1d-9eb8-1ff0ea755f97",
+    "abstained": false,
+    "eligibleCount": 2,
+    "reviewed": [
+      {
+        "symbol": "V",
+        "bullCase": "Cross-border payment activity could drive significant growth, especially as international transactions become more frequent and convenient. The synthetic return of 13.8% exceeds the 12% target, suggesting potential for higher returns.",
+        "bearCase": "Regulatory changes or the emergence of alternative payment methods could compress the economics, reducing the growth potential. The 17.5% volatility is close to the 25% limit, indicating higher risk.",
+        "invalidation": "A significant decrease in cross-border payment activity or regulatory changes leading to reduced interchange fees would invalidate this thesis.",
+        "evidenceIds": [
+          "fixture-v",
+          "reference-v"
+        ]
+      },
+      {
+        "symbol": "JNJ",
+        "bullCase": "A diversified healthcare business can provide a stable and defensive investment, potentially offering steady returns. The synthetic return of 7.2% might be conservative, but the company's long-term track record could support higher returns.",
+        "bearCase": "Litigation outcomes and product concentration could disrupt the company's cash generation, leading to lower than expected returns. The 15.31% volatility is within the limit but close to the 25% threshold, indicating moderate risk.",
+        "invalidation": "A major lawsuit or product recall could significantly impact the company's financial performance and stock price.",
+        "evidenceIds": [
+          "fixture-jnj",
+          "reference-jnj"
+        ]
+      }
+    ],
+    "events": [
+      {
+        "id": "sponsor-proof-77e3a100-1711-4d1d-9eb8-1ff0ea755f97-event-1",
+        "at": "2026-10-27T05:15:13.233Z",
+        "agent": "Planner",
+        "action": "Compile your research mandate",
+        "detail": "US + India; 36-month horizon; 12% annual return aspiration; volatility \u226425%; historical drawdown \u226425%. USD 25,000 is a research budget, not an allocation order.",
+        "status": "completed",
+        "iteration": 1,
+        "model": "deterministic/research-rules-v1",
+        "evidenceIds": []
+      },
+      {
+        "id": "sponsor-proof-77e3a100-1711-4d1d-9eb8-1ff0ea755f97-event-2",
+        "at": "2026-10-27T05:15:13.233Z",
+        "agent": "Memory",
+        "action": "Recall previous committee decisions",
+        "detail": "Historic research decision: US India investment risk volatility limit 25 drawdown limit 25 target return 12 horizon 36 months. The committee produced a research shortlist. Current evidence and hard limits still govern every outcome.",
+        "status": "completed",
+        "iteration": 1,
+        "model": "deterministic/research-rules-v1",
+        "evidenceIds": []
+      },
+      {
+        "id": "sponsor-proof-77e3a100-1711-4d1d-9eb8-1ff0ea755f97-event-3",
+        "at": "2026-10-27T05:15:13.233Z",
+        "agent": "Data steward",
+        "action": "Establish provenance and listing scope",
+        "detail": "10 securities in the selected market universe. All price paths and fundamentals are synthetic fixtures. Company source links are discovery references, not support for the sample figures.",
+        "status": "completed",
+        "iteration": 1,
+        "model": "deterministic/research-rules-v1",
+        "evidenceIds": [
+          "fixture-msft",
+          "reference-msft",
+          "fixture-v",
+          "reference-v",
+          "fixture-jnj",
+          "reference-jnj",
+          "fixture-nvda",
+          "reference-nvda",
+          "fixture-tsla",
+          "reference-tsla",
+          "fixture-hdfcbank",
+          "reference-hdfcbank",
+          "fixture-tcs",
+          "reference-tcs",
+          "fixture-sunpharma",
+          "reference-sunpharma",
+          "fixture-reliance",
+          "reference-reliance",
+          "fixture-adanient",
+          "reference-adanient"
+        ]
+      },
+      {
+        "id": "sponsor-proof-77e3a100-1711-4d1d-9eb8-1ff0ea755f97-event-4",
+        "at": "2026-10-27T05:15:13.233Z",
+        "agent": "Quant analyst",
+        "action": "Recompute risk from adjusted closing prices",
+        "detail": "Calculated CAGR, sample standard deviation of simple daily returns \u00d7 \u221a252, and peak-to-trough drawdown. 0 source records failed validation. Reported summary metrics were not trusted.",
+        "status": "completed",
+        "iteration": 1,
+        "model": "deterministic/research-rules-v1",
+        "evidenceIds": [
+          "fixture-msft",
+          "fixture-v",
+          "fixture-jnj",
+          "fixture-nvda",
+          "fixture-tsla",
+          "fixture-hdfcbank",
+          "fixture-tcs",
+          "fixture-sunpharma",
+          "fixture-reliance",
+          "fixture-adanient"
+        ]
+      },
+      {
+        "id": "sponsor-proof-77e3a100-1711-4d1d-9eb8-1ff0ea755f97-event-5",
+        "at": "2026-10-27T05:15:13.233Z",
+        "agent": "Fundamental analyst",
+        "action": "Build and rank competing hypotheses",
+        "detail": "Evaluated business quality (30%), risk headroom (25%), growth/margin inputs (20%), valuation heuristic (15%) and historical aspiration comparison (10%). Applied transparent skeptic penalties; historical return is never presented as expected future return.",
+        "status": "completed",
+        "iteration": 1,
+        "model": "deterministic/research-rules-v1",
+        "evidenceIds": [
+          "reference-msft",
+          "reference-v",
+          "reference-jnj",
+          "reference-nvda",
+          "reference-tsla",
+          "reference-hdfcbank",
+          "reference-tcs",
+          "reference-sunpharma",
+          "reference-reliance",
+          "reference-adanient"
+        ]
+      },
+      {
+        "id": "sponsor-proof-77e3a100-1711-4d1d-9eb8-1ff0ea755f97-event-6",
+        "at": "2026-10-27T05:15:13.233Z",
+        "agent": "Skeptic",
+        "action": "Challenge the initial ranking",
+        "detail": "7 theses triggered challenges. SUNPHARMA: The skeptic\u2019s countercase: Regulatory inspections and product concentration can interrupt execution. The INR listing adds unmodeled currency exposure against your USD budget. HDFCBANK: The skeptic\u2019s countercase: Credit-cycle deterioration and deposit competition could pressure returns. The INR listing adds unmodeled currency exposure against your USD budget. TCS: The skeptic\u2019s countercase: Client spending delays and automation-driven pricing pressure could weaken growth. The INR listing adds unmodeled currency exposure against your USD budget. RELIANCE: The skeptic\u2019s countercase: Commodity cyclicality and project capital intensity can reduce free cash flow. The INR listing adds unmodeled currency exposure against your USD budget. NVDA: The skeptic\u2019s countercase: Customer concentration, export controls and high expectations amplify downside risk. The 47.5\u00d7 P/E multiple leaves the thesis sensitive to earnings disappointments.",
+        "status": "warning",
+        "iteration": 1,
+        "model": "deterministic/research-rules-v1",
+        "evidenceIds": [
+          "fixture-sunpharma",
+          "reference-sunpharma",
+          "fixture-hdfcbank",
+          "reference-hdfcbank",
+          "fixture-tcs",
+          "reference-tcs",
+          "fixture-reliance",
+          "reference-reliance",
+          "fixture-nvda",
+          "reference-nvda"
+        ]
+      },
+      {
+        "id": "sponsor-proof-77e3a100-1711-4d1d-9eb8-1ff0ea755f97-event-7",
+        "at": "2026-10-27T05:15:13.233Z",
+        "agent": "Planner",
+        "action": "Revise the research plan after critique",
+        "detail": "Route challenged theses back through the risk guardian; reduce scores for fragile fundamentals, excessive valuation and currency uncertainty. Hard user limits remain unchanged.",
+        "status": "completed",
+        "iteration": 2,
+        "model": "deterministic/research-rules-v1",
+        "evidenceIds": []
+      },
+      {
+        "id": "sponsor-proof-77e3a100-1711-4d1d-9eb8-1ff0ea755f97-event-8",
+        "at": "2026-10-27T05:15:13.233Z",
+        "agent": "Risk guardian",
+        "action": "Veto candidates that breach the mandate",
+        "detail": "8 securities excluded; 2 pass the research screen. MSFT: Historical max drawdown 30.89% exceeds your 25% limit. SUNPHARMA: Historical max drawdown 25.72% exceeds your 25% limit. HDFCBANK: Historical max drawdown 33.84% exceeds your 25% limit. TCS: Historical max drawdown 46.97% exceeds your 25% limit. RELIANCE: Annualized volatility 25.82% exceeds your 25% limit. NVDA: Annualized volatility 48.33% exceeds your 25% limit.",
+        "status": "warning",
+        "iteration": 2,
+        "model": "deterministic/research-rules-v1",
+        "evidenceIds": [
+          "fixture-msft",
+          "reference-msft",
+          "fixture-sunpharma",
+          "reference-sunpharma",
+          "fixture-hdfcbank",
+          "reference-hdfcbank",
+          "fixture-tcs",
+          "reference-tcs",
+          "fixture-reliance",
+          "reference-reliance",
+          "fixture-nvda",
+          "reference-nvda",
+          "fixture-adanient",
+          "reference-adanient",
+          "fixture-tsla",
+          "reference-tsla"
+        ]
+      },
+      {
+        "id": "sponsor-proof-77e3a100-1711-4d1d-9eb8-1ff0ea755f97-event-9",
+        "at": "2026-10-27T05:15:13.233Z",
+        "agent": "Skeptic",
+        "action": "Review the revised shortlist",
+        "detail": "2 candidates remain after critique. Retain a concrete bear case and invalidation trigger for every candidate; no single-stock position sizes or promised returns are generated.",
+        "status": "completed",
+        "iteration": 2,
+        "model": "deterministic/research-rules-v1",
+        "evidenceIds": [
+          "fixture-v",
+          "reference-v",
+          "fixture-jnj",
+          "reference-jnj"
+        ]
+      },
+      {
+        "id": "sponsor-proof-77e3a100-1711-4d1d-9eb8-1ff0ea755f97-event-10",
+        "at": "2026-10-27T05:15:13.233Z",
+        "agent": "Evaluator",
+        "action": "Validate the final decision record",
+        "detail": "Verified 10 decisions, 20 provenance records and every hard risk gate. The shortlist qualifies for further research only. All sample data and deterministic roles are explicitly labeled.",
+        "status": "completed",
+        "iteration": 2,
+        "model": "deterministic/research-rules-v1",
+        "evidenceIds": [
+          "fixture-v",
+          "reference-v",
+          "fixture-jnj",
+          "reference-jnj",
+          "fixture-msft",
+          "reference-msft",
+          "fixture-sunpharma",
+          "reference-sunpharma",
+          "fixture-hdfcbank",
+          "reference-hdfcbank",
+          "fixture-tcs",
+          "reference-tcs",
+          "fixture-reliance",
+          "reference-reliance",
+          "fixture-nvda",
+          "reference-nvda",
+          "fixture-adanient",
+          "reference-adanient",
+          "fixture-tsla",
+          "reference-tsla"
+        ]
+      }
+    ]
+  },
+  "limitations": [
+    "Schema and citation validation are deterministic checks, not independent verification of a model\u2019s financial claims.",
+    "Runtime receipt bodies are retained when supplied; this script does not claim cryptographic signature verification."
+  ]
+}

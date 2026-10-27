@@ -1,0 +1,21 @@
+{
+  "executedAt": "2026-10-27T05:27:19.645Z",
+  "environment": "local production Worker, synthetic platform identity headers",
+  "checks": 14,
+  "results": [
+    "guest cannot read personal history",
+    "authenticated bootstrap exposes all four sample markets",
+    "invalid preferences rejected before research",
+    "cross-origin writes rejected",
+    "real research executes with hard gates and official H-MEM",
+    "idempotent retry returns original result",
+    "idempotency key cannot change mandate",
+    "saved thesis uses server-owned research identity",
+    "saved note updates persist",
+    "print-ready research report preserves provenance",
+    "conflicting mandate abstains before paid inference",
+    "a second account cannot read or edit another account records",
+    "account data export contains research and saved notes",
+    "test saved thesis deletion succeeds"
+  ]
+}

@@ -1,0 +1,586 @@
+{
+  "schema": "thesis.nemotron.exclusion-audit.v1",
+  "startedAt": "2026-10-27T05:31:56.099Z",
+  "finishedAt": "2026-10-27T05:32:03.139Z",
+  "syntheticInputs": true,
+  "notice": "Real NVIDIA Nemotron Mini through Nightshift audits a deterministic risk exclusion over synthetic records. This verifies an implemented optional research feature, not live market observations or financial correctness.",
+  "modelLane": {
+    "model": "Nemotron-Mini-4B-Instruct-Q4_K_M.gguf",
+    "contextPerSlot": 1024,
+    "parallel": 1,
+    "backend": "Nightshift native Metal",
+    "safetyPolicy": "Normal admission controller; no overrides"
+  },
+  "audit": {
+    "symbol": "MSFT",
+    "decision": "request_review",
+    "reasonCode": "synthetic_evidence",
+    "observation": "Synthetic figures require source verification. The historical max drawdown exceeds the supplied limit.",
+    "evidenceIds": [
+      "fixture-msft",
+      "reference-msft"
+    ],
+    "receipts": [
+      {
+        "provider": "Meterless Nightshift",
+        "role": "Exclusion auditor",
+        "requestedModel": "local-runtime/nemotron-mini-4b-instruct-q4-k-m",
+        "responseModel": "local-runtime/nemotron-mini-4b-instruct-q4-k-m",
+        "resolvedModel": "local-runtime/nemotron-mini-4b-instruct-q4-k-m",
+        "nvidiaVerified": true,
+        "requestId": "chatcmpl-be48e004-1576-4bbf-9496-c960a6ecdca7",
+        "latencyMs": 3297,
+        "inputTokens": 377,
+        "outputTokens": 72,
+        "providerCostUsd": 0,
+        "receiptId": "rcpt_req_vl5i98jj",
+        "attempts": 1,
+        "routedProvider": "local-runtime",
+        "receiptBody": {
+          "app": "thesis",
+          "app_policy": {
+            "app": "thesis",
+            "cross_check": "auto",
+            "has_rule": true,
+            "lanes": null,
+            "mode_coerced": false,
+            "premium_budget": null,
+            "privacy": "cloud-ok",
+            "race_width": 6,
+            "requested_mode": "auto",
+            "routed_mode": "auto"
+          },
+          "autopilot": {
+            "ctx_dropped": [
+              {
+                "cap": 1024,
+                "id": "local-runtime/nemotron-mini-4b-instruct-q4-k-m",
+                "lane": "holdline-nemotron",
+                "prompt_tokens": 456
+              }
+            ],
+            "ctx_unfilterable": true,
+            "envelope": {
+              "allocatable_mb": 0,
+              "pressure": "unknown",
+              "remaining_mb": 0,
+              "used_mb": 0
+            },
+            "needs": {
+              "coding": false,
+              "tools": false,
+              "vision": false
+            },
+            "prompt_tokens": 456,
+            "scout": {
+              "candidates": [
+                {
+                  "id": "RESEARCH",
+                  "score": 8
+                },
+                {
+                  "id": "REALTIME_DEVELOPER",
+                  "score": 7
+                },
+                {
+                  "id": "RECALL_OPTIMIZER",
+                  "score": 6
+                }
+              ],
+              "category": "Analysis",
+              "confident": false,
+              "mode": "RESEARCH",
+              "ms": 0.81,
+              "score": 8,
+              "source": "detected",
+              "tier": "C"
+            },
+            "tier_hint": null,
+            "why": [
+              "scout read RESEARCH (not confident — no tier opinion)",
+              "~456 prompt tokens — lanes whose slot cannot hold them are not asked"
+            ]
+          },
+          "bar": null,
+          "budget_degrade": null,
+          "cache": {
+            "losers_reclaimed": 0,
+            "partials_reclaimed": 0,
+            "status": "miss"
+          },
+          "consensus": {
+            "agree": 1,
+            "coherence": null,
+            "detail": "one model handled this — no cross-model agreement to check",
+            "label": "single route",
+            "level": "solo",
+            "raced": 1,
+            "tone": "neutral",
+            "verified": null
+          },
+          "consensus_escalation": null,
+          "cost": {
+            "actual_usd": 0,
+            "baseline": {
+              "label": "Claude 4.5 Sonnet",
+              "model": "claude-sonnet-4-5-20250929",
+              "source": "fixed-reference"
+            },
+            "naive_usd": 0.0022110000000000003,
+            "race_overhead_usd": 0,
+            "verifier_usd": 0
+          },
+          "created_at": 1793079119385,
+          "cross_check": {
+            "app": "thesis",
+            "blocking": false,
+            "checks": [],
+            "recommended_action": "allow",
+            "reflex_ms": 0.51,
+            "risk_level": "low",
+            "skip_reason": "tier_a_chat",
+            "status": "skipped",
+            "verifier": "none",
+            "verifier_model": null,
+            "verifier_ms": 0,
+            "verifier_ran": false,
+            "verifier_verdict": null
+          },
+          "debate": null,
+          "decision_id": "req_vl5i98jj",
+          "deliberation": null,
+          "egress": {
+            "coverage": "pattern_floor",
+            "destination": "none",
+            "never_eligible": [],
+            "sent": {
+              "context_sources": [
+                "messages"
+              ],
+              "prompt_chars": 862,
+              "redacted": []
+            },
+            "withheld": []
+          },
+          "eligible": null,
+          "error": "",
+          "fusion": null,
+          "gen_verifier": null,
+          "graded_weight": null,
+          "hmem": null,
+          "host_pressure": {
+            "battery": null,
+            "pressure": {
+              "battery": {
+                "hard": 0.5,
+                "label": "nominal",
+                "score": 0.18,
+                "sensor": "battery%, charging",
+                "soft": 0.3
+              },
+              "cpu": {
+                "hard": 0.9,
+                "label": "nominal",
+                "score": 0.34,
+                "sensor": "30s load avg",
+                "soft": 0.7
+              },
+              "gpu": {
+                "hard": 0.92,
+                "label": "nominal",
+                "score": 0.38,
+                "sensor": "GPU + VRAM",
+                "soft": 0.75
+              },
+              "memory": {
+                "hard": 0.85,
+                "label": "warm",
+                "score": 0.51,
+                "sensor": "committed/swap",
+                "soft": 0.7
+              },
+              "network": {
+                "hard": 0.85,
+                "label": "nominal",
+                "score": 0.12,
+                "sensor": "RTT to providers",
+                "soft": 0.5
+              },
+              "quota": {
+                "hard": 0.95,
+                "label": "nominal",
+                "score": 0.28,
+                "sensor": "per-key window",
+                "soft": 0.8
+              },
+              "thermal": {
+                "hard": 0.8,
+                "label": "nominal",
+                "score": 0.22,
+                "sensor": "thermal API",
+                "soft": 0.55
+              }
+            },
+            "thermal": "nominal"
+          },
+          "job": null,
+          "mcp": null,
+          "method": null,
+          "mode": "auto",
+          "optimistic": null,
+          "phases": [
+            {
+              "coherence": null,
+              "model": "local-runtime/nemotron-mini-4b-instruct-q4-k-m",
+              "ms": 3256,
+              "outputTps": 22.113022113022115,
+              "phase": "final_synthesis",
+              "reflex_decided_in_ms": 0.2,
+              "tier": "A",
+              "tokensIn": 377,
+              "tokensOut": 72
+            }
+          ],
+          "privacy": {
+            "path": "local-only",
+            "redaction": {
+              "applied": false,
+              "spans": 0
+            }
+          },
+          "prompt_preview": "{\"symbol\":\"MSFT\",\"thesis\":\"Illustrative research hypothesis: enterprise cloud expansion supports the illustrative cash-flow thesis. Validate the source filings before relying on th",
+          "quality_race": null,
+          "reasoning_scaffold": null,
+          "receipt_id": "rcpt_req_vl5i98jj",
+          "refine": null,
+          "request_id": "chatcmpl-be48e004-1576-4bbf-9496-c960a6ecdca7",
+          "requested_mode": "meterless/auto",
+          "routing": {
+            "confidence": null,
+            "escalated": null,
+            "escalated_on_divergence": false,
+            "hedge": null,
+            "hedges_skipped": 0,
+            "of": 1,
+            "policy": "learned-router",
+            "predicted": "local-runtime/nemotron-mini-4b-instruct-q4-k-m",
+            "reason": "single-candidate",
+            "width": 1,
+            "winner": "local-runtime/nemotron-mini-4b-instruct-q4-k-m"
+          },
+          "savings": {
+            "amount": 0.0022110000000000003,
+            "baseline_source": "fixed-reference",
+            "currency": "USD",
+            "vs": "Claude 4.5 Sonnet"
+          },
+          "schema": "meterless.compute_receipt.v1",
+          "score": null,
+          "scorecard": null,
+          "status": "ok",
+          "summary": "ok · Nemotron-Mini-4B-Instruct-Q4_K_M · Runtime · miss · $0.0022 saved",
+          "synthesis": null,
+          "test_time_compute": null,
+          "tool_degraded": null,
+          "unmet": null,
+          "usage": {
+            "input_tokens": 377,
+            "latency_ms": 3256,
+            "output_tokens": 72,
+            "output_tps": 22.113022113022115,
+            "total_tokens": 449
+          },
+          "verdict": null,
+          "verification": null,
+          "winning_route": {
+            "kind": "local",
+            "label": "Nemotron-Mini-4B-Instruct-Q4_K_M · Runtime",
+            "model": "local-runtime/nemotron-mini-4b-instruct-q4-k-m",
+            "provider": "local-runtime",
+            "tier": "A"
+          }
+        }
+      },
+      {
+        "provider": "Meterless Nightshift",
+        "role": "Exclusion auditor repair",
+        "requestedModel": "local-runtime/nemotron-mini-4b-instruct-q4-k-m",
+        "responseModel": "local-runtime/nemotron-mini-4b-instruct-q4-k-m",
+        "resolvedModel": "local-runtime/nemotron-mini-4b-instruct-q4-k-m",
+        "nvidiaVerified": true,
+        "requestId": "chatcmpl-a766fecb-6856-4498-aed5-b92180624c59",
+        "latencyMs": 3740,
+        "inputTokens": 446,
+        "outputTokens": 84,
+        "providerCostUsd": 0,
+        "receiptId": "rcpt_req_lz7ros6b",
+        "attempts": 1,
+        "routedProvider": "local-runtime",
+        "receiptBody": {
+          "app": "thesis",
+          "app_policy": {
+            "app": "thesis",
+            "cross_check": "auto",
+            "has_rule": true,
+            "lanes": null,
+            "mode_coerced": false,
+            "premium_budget": null,
+            "privacy": "cloud-ok",
+            "race_width": 6,
+            "requested_mode": "auto",
+            "routed_mode": "auto"
+          },
+          "autopilot": {
+            "ctx_dropped": [
+              {
+                "cap": 1024,
+                "id": "local-runtime/nemotron-mini-4b-instruct-q4-k-m",
+                "lane": "holdline-nemotron",
+                "prompt_tokens": 554
+              }
+            ],
+            "ctx_unfilterable": true,
+            "envelope": {
+              "allocatable_mb": 0,
+              "pressure": "unknown",
+              "remaining_mb": 0,
+              "used_mb": 0
+            },
+            "needs": {
+              "coding": false,
+              "tools": false,
+              "vision": false
+            },
+            "prompt_tokens": 554,
+            "scout": {
+              "candidates": [
+                {
+                  "id": "RESEARCH",
+                  "score": 8
+                },
+                {
+                  "id": "TREND_ANALYZER",
+                  "score": 8
+                },
+                {
+                  "id": "REALTIME_DEVELOPER",
+                  "score": 7
+                }
+              ],
+              "category": "Analysis",
+              "confident": false,
+              "mode": "RESEARCH",
+              "ms": 1.11,
+              "score": 8,
+              "source": "detected",
+              "tier": "C"
+            },
+            "tier_hint": null,
+            "why": [
+              "scout read RESEARCH (not confident — no tier opinion)",
+              "~554 prompt tokens — lanes whose slot cannot hold them are not asked"
+            ]
+          },
+          "bar": null,
+          "budget_degrade": null,
+          "cache": {
+            "losers_reclaimed": 0,
+            "partials_reclaimed": 0,
+            "status": "miss"
+          },
+          "consensus": {
+            "agree": 1,
+            "coherence": null,
+            "detail": "one model handled this — no cross-model agreement to check",
+            "label": "single route",
+            "level": "solo",
+            "raced": 1,
+            "tone": "neutral",
+            "verified": null
+          },
+          "consensus_escalation": null,
+          "cost": {
+            "actual_usd": 0,
+            "baseline": {
+              "label": "Claude 4.5 Sonnet",
+              "model": "claude-sonnet-4-5-20250929",
+              "source": "fixed-reference"
+            },
+            "naive_usd": 0.0025979999999999996,
+            "race_overhead_usd": 0,
+            "verifier_usd": 0
+          },
+          "created_at": 1793079123132,
+          "cross_check": {
+            "app": "thesis",
+            "blocking": false,
+            "checks": [],
+            "recommended_action": "allow",
+            "reflex_ms": 0.02,
+            "risk_level": "low",
+            "skip_reason": "tier_a_chat",
+            "status": "skipped",
+            "verifier": "none",
+            "verifier_model": null,
+            "verifier_ms": 0,
+            "verifier_ran": false,
+            "verifier_verdict": null
+          },
+          "debate": null,
+          "decision_id": "req_lz7ros6b",
+          "deliberation": null,
+          "egress": {
+            "coverage": "pattern_floor",
+            "destination": "none",
+            "never_eligible": [],
+            "sent": {
+              "context_sources": [
+                "messages"
+              ],
+              "prompt_chars": 1253,
+              "redacted": []
+            },
+            "withheld": []
+          },
+          "eligible": null,
+          "error": "",
+          "fusion": null,
+          "gen_verifier": null,
+          "graded_weight": null,
+          "hmem": null,
+          "host_pressure": {
+            "battery": null,
+            "pressure": {
+              "battery": {
+                "hard": 0.5,
+                "label": "nominal",
+                "score": 0.18,
+                "sensor": "battery%, charging",
+                "soft": 0.3
+              },
+              "cpu": {
+                "hard": 0.9,
+                "label": "nominal",
+                "score": 0.34,
+                "sensor": "30s load avg",
+                "soft": 0.7
+              },
+              "gpu": {
+                "hard": 0.92,
+                "label": "nominal",
+                "score": 0.38,
+                "sensor": "GPU + VRAM",
+                "soft": 0.75
+              },
+              "memory": {
+                "hard": 0.85,
+                "label": "warm",
+                "score": 0.51,
+                "sensor": "committed/swap",
+                "soft": 0.7
+              },
+              "network": {
+                "hard": 0.85,
+                "label": "nominal",
+                "score": 0.12,
+                "sensor": "RTT to providers",
+                "soft": 0.5
+              },
+              "quota": {
+                "hard": 0.95,
+                "label": "nominal",
+                "score": 0.28,
+                "sensor": "per-key window",
+                "soft": 0.8
+              },
+              "thermal": {
+                "hard": 0.8,
+                "label": "nominal",
+                "score": 0.22,
+                "sensor": "thermal API",
+                "soft": 0.55
+              }
+            },
+            "thermal": "nominal"
+          },
+          "job": null,
+          "mcp": null,
+          "method": null,
+          "mode": "auto",
+          "optimistic": null,
+          "phases": [
+            {
+              "coherence": null,
+              "model": "local-runtime/nemotron-mini-4b-instruct-q4-k-m",
+              "ms": 3723,
+              "outputTps": 22.562449637389204,
+              "phase": "final_synthesis",
+              "reflex_decided_in_ms": 0.2,
+              "tier": "A",
+              "tokensIn": 446,
+              "tokensOut": 84
+            }
+          ],
+          "privacy": {
+            "path": "local-only",
+            "redaction": {
+              "applied": false,
+              "spans": 0
+            }
+          },
+          "prompt_preview": "{\"symbol\":\"MSFT\",\"thesis\":\"Illustrative research hypothesis: enterprise cloud expansion supports the illustrative cash-flow thesis. Validate the source filings before relying on th",
+          "quality_race": null,
+          "reasoning_scaffold": null,
+          "receipt_id": "rcpt_req_lz7ros6b",
+          "refine": null,
+          "request_id": "chatcmpl-a766fecb-6856-4498-aed5-b92180624c59",
+          "requested_mode": "meterless/auto",
+          "routing": {
+            "confidence": null,
+            "escalated": null,
+            "escalated_on_divergence": false,
+            "hedge": null,
+            "hedges_skipped": 0,
+            "of": 1,
+            "policy": "learned-router",
+            "predicted": "local-runtime/nemotron-mini-4b-instruct-q4-k-m",
+            "reason": "single-candidate",
+            "width": 1,
+            "winner": "local-runtime/nemotron-mini-4b-instruct-q4-k-m"
+          },
+          "savings": {
+            "amount": 0.0025979999999999996,
+            "baseline_source": "fixed-reference",
+            "currency": "USD",
+            "vs": "Claude 4.5 Sonnet"
+          },
+          "schema": "meterless.compute_receipt.v1",
+          "score": null,
+          "scorecard": null,
+          "status": "ok",
+          "summary": "ok · Nemotron-Mini-4B-Instruct-Q4_K_M · Runtime · miss · $0.0026 saved",
+          "synthesis": null,
+          "test_time_compute": null,
+          "tool_degraded": null,
+          "unmet": null,
+          "usage": {
+            "input_tokens": 446,
+            "latency_ms": 3723,
+            "output_tokens": 84,
+            "output_tps": 22.562449637389204,
+            "total_tokens": 530
+          },
+          "verdict": null,
+          "verification": null,
+          "winning_route": {
+            "kind": "local",
+            "label": "Nemotron-Mini-4B-Instruct-Q4_K_M · Runtime",
+            "model": "local-runtime/nemotron-mini-4b-instruct-q4-k-m",
+            "provider": "local-runtime",
+            "tier": "A"
+          }
+        }
+      }
+    ]
+  }
+}
