@@ -1,6 +1,6 @@
 # Thesis: product and commercial thesis
 
-Built by Shivam Gupta for Open Agent Hackathon 2026. Primary track: The Agent That Can Explain Why.
+Built by Shivam Gupta for Open Agent Hackathon 2026. Primary track: Reasoning Architecture.
 
 ## The problem
 

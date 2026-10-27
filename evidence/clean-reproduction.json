@@ -1,0 +1,107 @@
+{
+  "schema": "thesis.clean-checkout-reproduction.v1",
+  "finishedAt": "2026-10-27T05:37:14.267690+00:00",
+  "source": "/Users/shivamgupta/Documents/Codex/2026-10-27/can-we-build-something-to-help-2/outputs/thesis",
+  "isolatedCheckout": "/Users/shivamgupta/Documents/Codex/2026-10-27/can-we-build-something-to-help-2/work/clean-repro",
+  "sourceEditedByThisTask": false,
+  "copiedFiles": 191,
+  "envExampleIncluded": true,
+  "excluded": [
+    "node_modules",
+    ".git",
+    "dist",
+    ".dev.vars",
+    ".env files except .env.example",
+    ".wrangler",
+    ".sites-runtime",
+    "work",
+    "outputs",
+    "*.tsbuildinfo",
+    "OS metadata"
+  ],
+  "environment": {
+    "node": "v22.16.0",
+    "npm": "10.9.2",
+    "platform": "macOS portable Sites profile; loopback-only Worker"
+  },
+  "checks": [
+    {
+      "command": "npm ci",
+      "passed": true,
+      "installedPackages": 688,
+      "log": "work/clean-repro-npm-ci.log"
+    },
+    {
+      "command": "npm run setup",
+      "passed": true,
+      "productionBuild": true,
+      "freshLocalMigrationsApplied": 2,
+      "log": "work/clean-repro-setup-first.log"
+    },
+    {
+      "command": "npm run typecheck",
+      "passed": true,
+      "log": "work/clean-repro-typecheck.log"
+    },
+    {
+      "command": "npm test",
+      "passed": true,
+      "tests": 50,
+      "failed": 0,
+      "skipped": 0,
+      "todo": 0,
+      "log": "work/clean-repro-tests.log"
+    },
+    {
+      "command": "npm run setup (second run)",
+      "passed": true,
+      "migrationLedgerUnchanged": true,
+      "ledgerHashUnchanged": true,
+      "ledgerMtimeUnchanged": true,
+      "databaseMigrationExecutions": 0,
+      "log": "work/clean-repro-setup-second.log"
+    },
+    {
+      "command": "npm start -- --port 5194",
+      "passed": true,
+      "healthHttpStatus": 200,
+      "serverStoppedAfterTests": true
+    },
+    {
+      "command": "THESIS_TEST_URL=http://127.0.0.1:5194 THESIS_TEST_TRUSTED_HEADERS=1 npm run test:api",
+      "passed": true,
+      "checks": 14,
+      "environment": "local production Worker, synthetic platform identity headers",
+      "log": "work/clean-repro-api-tests.log"
+    }
+  ],
+  "migrationLedger": {
+    "0000_omniscient_kate_bishop.sql": "6a2f2b3c5e80cd49c9bc085064f0f32ce372ad54c252d17a24cc396ed3199a11",
+    "0001_stormy_menace.sql": "e8ed5e2e3bc0f217649487343117bf797f797c35edf537b4b057cba0c312a813"
+  },
+  "secretScan": {
+    "actualSecretsFound": false,
+    "scope": "All copied UTF-8 source and evidence; known private key/provider-key/JWT/credential-URL patterns",
+    "intentionalTestFixtureHits": [
+      {
+        "path": "tests/providers.test.ts",
+        "kind": "credential_url",
+        "occurrences": 1,
+        "classification": "intentional fake credential URL used to test rejection; example.test domain"
+      }
+    ],
+    "limitation": "Heuristic scan, not an external security audit."
+  },
+  "instructionsAccurate": true,
+  "reproductionBugs": [],
+  "harnessNotes": [
+    "One initial start attempt overlapped the second build and saw temporarily absent dist/server/wrangler.json. Starting after build completion passed. This was test-harness sequencing, not a source defect.",
+    "Sponsor services were not called; the tested research was explicitly synthetic sample mode.",
+    "Source evidence/api-tests.json was not replaced; the test wrote only into the isolated copy."
+  ],
+  "limitations": [
+    "No sponsor credentials were copied. This test does not establish connected sponsor availability.",
+    "API tests used synthetic trusted platform headers against the private loopback Worker. Hosted identity boundary requires separate deployed verification.",
+    "Browser layout/accessibility testing was not performed by this clean-checkout check."
+  ]
+}

@@ -41,6 +41,7 @@ import {
   Zap,
 } from "lucide-react";
 import { defaultProfile, markets } from "@/lib/contracts";
+import { isSyntheticStock, researchPresentation } from "@/lib/research/provenance";
 import type {
   Bootstrap,
   Market,
@@ -128,7 +129,9 @@ function Sparkline({
   prices,
   color = "#5067e9",
   large = false,
+  synthetic = true,
 }: {
+  synthetic?: boolean;
   prices: number[];
   color?: string;
   large?: boolean;
@@ -152,7 +155,7 @@ function Sparkline({
       className={large ? "sparkline large" : "sparkline"}
       viewBox={`0 0 ${w} ${h}`}
       role="img"
-      aria-label="Synthetic sample price path, not a forecast"
+      aria-label={synthetic ? "Synthetic sample price path, not a forecast" : "Observed adjusted closing prices, not a forecast"}
       preserveAspectRatio="none"
     >
       <defs>
@@ -298,6 +301,8 @@ export default function Home() {
     ...defaultProfile,
   });
   const [run, setRun] = useState<ResearchRun | null>(null);
+  const presentation=researchPresentation(run);
+  const hasRealData=presentation.hasObservedData;
   const [history, setHistory] = useState<ResearchRun[]>([]);
   const [watchlist, setWatchlist] = useState<SavedThesis[]>([]);
   const [running, setRunning] = useState(false);
@@ -717,7 +722,7 @@ export default function Home() {
           <div className="topbar-actions">
             <span className="topbar-sample">
               <span />{" "}
-              {run?.mode === "live" ? "Connected research" : "Sample workspace"}
+              {presentation.label}
             </span>
             <button
               className="icon-button"
@@ -882,8 +887,8 @@ export default function Home() {
                   </div>
                 </div>
                 <div className="stats-mode">
-                  <Status tone={run?.mode === "live" ? "green" : "amber"}>
-                    {run?.mode === "live" ? "Connected mode" : "Sample data"}
+                  <Status tone={hasRealData ? "green" : "amber"}>
+                    {hasRealData ? "Connected mode" : "Sample data"}
                   </Status>
                   <button
                     className="text-button"
@@ -1040,7 +1045,7 @@ export default function Home() {
                         </div>
                       </div>
                       <div className="select-field">
-                        <label htmlFor="drawdown">Drawdown ceiling</label>
+                        <label htmlFor="drawdown">Drawdown tolerance</label>
                         <div className="select-wrap">
                           <select
                             id="drawdown"
@@ -1216,7 +1221,7 @@ export default function Home() {
                       </div>
                       <h2>
                         {run
-                          ? "An informed shortlist."
+                          ? run.abstained ? "Your limits come first." : "An informed shortlist."
                           : "A world of possibilities."}
                       </h2>
                       <p>
@@ -1241,17 +1246,17 @@ export default function Home() {
                     )}
                   </div>
                   <div
-                    className={`sample-notice ${run?.mode === "live" ? "live-notice" : ""}`}
+                    className={`sample-notice ${hasRealData ? "live-notice" : ""}`}
                   >
                     <span className="notice-icon">
-                      {run?.mode === "live" ? (
+                      {hasRealData ? (
                         <Database size={15} />
                       ) : (
                         <FlaskIcon />
                       )}
                     </span>
                     <p>
-                      {run?.mode === "live" ? (
+                      {hasRealData ? (
                         <>
                           <strong>Connected research.</strong> Check each
                           source’s observation date, data provenance and model
@@ -1275,6 +1280,12 @@ export default function Home() {
                       </button>
                     )}
                   </div>
+                  {presentation.reviewIncomplete && (
+                    <div className="banner error" role="alert">
+                      <TriangleAlert size={18}/>
+                      <div><strong>Primary AI review is incomplete.</strong><span>The quantitative screen is available. Inspect the committee trace and retry connected research before relying on model commentary.</span></div>
+                    </div>
+                  )}
                   {profileChanged && (
                     <div className="pending-brief">
                       <RefreshCw size={14} />
@@ -1545,7 +1556,7 @@ export default function Home() {
                                     </div>
                                     <div className="stock-metrics">
                                       <div>
-                                        <span>Sample annual return</span>
+                                        <span>{isSyntheticStock(stock) ? "Sample annual return" : "Historical annual return"}</span>
                                         <strong
                                           className={
                                             stock.annualReturn >= 0
@@ -1571,6 +1582,7 @@ export default function Home() {
                                       <div className="sparkline-cell">
                                         <Sparkline
                                           prices={stock.prices}
+                                          synthetic={isSyntheticStock(stock)}
                                           color={
                                             opportunity?.status === "excluded"
                                               ? "#a6adbd"
@@ -1579,7 +1591,7 @@ export default function Home() {
                                                 : "#6e83ee"
                                           }
                                         />
-                                        <span>Sample path</span>
+                                        <span>{isSyntheticStock(stock) ? "Sample path" : "Observed path"}</span>
                                       </div>
                                     </div>
                                     <div className="stock-card-bottom">
@@ -2481,21 +2493,21 @@ export default function Home() {
             <div className="detail-data-warning">
               <FlaskIcon />
               <span>
-                {run?.mode === "live"
+                {hasRealData
                   ? "Source dates and provider provenance are attached to the run."
                   : "All displayed prices and fundamentals are synthetic sample assumptions."}
               </span>
             </div>
             <div className="detail-price">
               <div>
-                <span>Sample price · {selected.currency}</span>
+                <span>{isSyntheticStock(selected) ? "Sample price" : "Observed adjusted close"} · {selected.currency}</span>
                 <strong>{money(selected.price, selected.currency)}</strong>
               </div>
-              <span>Fixture as of {date(selected.asOf)}</span>
+              <span>{isSyntheticStock(selected) ? "Fixture as of" : "Observed as of"} {date(selected.asOf)}</span>
             </div>
-            <Sparkline prices={selected.prices} large />
+            <Sparkline prices={selected.prices} synthetic={isSyntheticStock(selected)} large />
             <div className="chart-caption">
-              <span>Synthetic observation window</span>
+              <span>{isSyntheticStock(selected) ? "Synthetic observation window" : "Observed price window"}</span>
               <span>Listing currency · no FX adjustment</span>
             </div>
             <div className="detail-metrics">
@@ -2518,7 +2530,7 @@ export default function Home() {
                 <strong>{pct(-Math.abs(selected.maxDrawdown))}</strong>
               </div>
               <div>
-                <span>P/E · sample</span>
+                <span>{isSyntheticStock(selected) ? "P/E · sample" : "P/E"}</span>
                 <strong>{format(selected.pe)}×</strong>
               </div>
             </div>
@@ -2673,7 +2685,7 @@ export default function Home() {
               <tbody>
                 {[
                   [
-                    "Sample annual return",
+                    hasRealData ? "Historical annual return" : "Sample annual return",
                     (s: Stock) => pct(s.annualReturn, true),
                   ],
                   [
@@ -2685,21 +2697,21 @@ export default function Home() {
                     (s: Stock) => pct(-Math.abs(s.maxDrawdown)),
                   ],
                   ["Sector", (s: Stock) => s.sector],
-                  ["Sample P/E", (s: Stock) => `${format(s.pe)}×`],
+                  [hasRealData ? "P/E" : "Sample P/E", (s: Stock) => `${format(s.pe)}×`],
                   [
-                    "Revenue growth · sample",
+                    hasRealData ? "Revenue growth" : "Revenue growth · sample",
                     (s: Stock) => pct(s.revenueGrowth),
                   ],
                   [
-                    "Operating margin · sample",
+                    hasRealData ? "Operating margin" : "Operating margin · sample",
                     (s: Stock) => pct(s.operatingMargin),
                   ],
                   [
-                    "Debt / equity · sample",
+                    hasRealData ? "Debt / equity" : "Debt / equity · sample",
                     (s: Stock) => format(s.debtToEquity),
                   ],
                   [
-                    "Dividend yield · sample",
+                    hasRealData ? "Dividend yield" : "Dividend yield · sample",
                     (s: Stock) => pct(s.dividendYield),
                   ],
                   ["The opportunity", (s: Stock) => s.catalyst],
@@ -2725,8 +2737,7 @@ export default function Home() {
           </div>
           <div className="compare-disclaimer">
             <FlaskIcon />
-            Sample metrics and assumptions. Cross-market figures are in their
-            listing currencies.
+            {hasRealData ? "Observed source metrics." : "Sample metrics and assumptions."} Cross-market figures are in their listing currencies.
           </div>
         </Modal>
       )}
@@ -2844,7 +2855,7 @@ export default function Home() {
           <p>
             {run.profile.markets.join(", ")} · Annual return goal{" "}
             {run.profile.targetReturn}% · Volatility ceiling{" "}
-            {run.profile.maxVolatility}% · Drawdown ceiling{" "}
+            {run.profile.maxVolatility}% · Drawdown tolerance{" "}
             {run.profile.maxDrawdown}% · Horizon {run.profile.horizonMonths}{" "}
             months
           </p>
@@ -2858,7 +2869,7 @@ export default function Home() {
               </h2>
               <p>{s.thesis}</p>
               <p>
-                Sample annual return: {pct(s.annualReturn)} · Volatility:{" "}
+                {isSyntheticStock(s) ? "Sample annual return" : "Historical annual return"}: {pct(s.annualReturn)} · Volatility:{" "}
                 {pct(s.annualVolatility)} · Drawdown: {pct(s.maxDrawdown)} · Fit
                 score: {s.score}
               </p>

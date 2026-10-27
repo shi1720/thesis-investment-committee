@@ -4,7 +4,7 @@
 
 A global stock research committee that checks your risk limits, challenges the thesis, explains rejected candidates and can decline to make a pick.
 
-Built by **Shivam Gupta**, with AI-assisted engineering, for **Open Agent Hackathon 2026**. Primary track: **The Agent That Can Explain Why**.
+Built by **Shivam Gupta**, with AI-assisted engineering, for **Open Agent Hackathon 2026**. Primary track: **Reasoning Architecture**.
 
 ![Thesis research workspace](evidence/ui-results.png)
 
@@ -60,7 +60,7 @@ Connected mode adds an independent Nightshift qualitative critique. The evaluato
 
 H-MEM stores and retrieves account-scoped historical decisions with source provenance. Older context rotates out of the bounded active snapshot; audit entries move into separate D1 archives before rotation. Deleting a run clears aggregate memory and archives so deleted context cannot reappear through recall. Remaining run history can rebuild context on the next request.
 
-See [architecture](docs/architecture.md) and [research/data contract](docs/data-contract.md).
+See [architecture](docs/architecture.md) and [research/data contract](docs/data-contract.md). Reproducible [sample mandates and complete outputs](examples/research/) include US/India, China/UAE, and a conflicting return goal.
 
 ## Sponsor integration status
 
@@ -69,7 +69,7 @@ See [architecture](docs/architecture.md) and [research/data contract](docs/data-
 | Meterless H-MEM | Official pinned TypeScript engine, actual hybrid recall and decision memory | Automated feature tests and upstream conformance tests run without credentials |
 | Meterless Nightshift | Source-constrained skeptical research review | A fresh real Qwen review with concrete model and runtime receipt is retained in [proof](evidence/nightshift-live.json) |
 | Zetaris | Federates price, fundamental and filing-provenance sources into `thesis.research_universe` | Adapter, three source files, registration SQL, contract tests and seeding verifier are included; only a retained successful instance proof establishes live execution |
-| NVIDIA Nemotron | Optional concrete model through Nightshift | Not qualified merely because a model is listed or downloaded. Claim working use only after a successful feature receipt |
+| NVIDIA Nemotron | Optional independent exclusion auditor through Nightshift | [Two concrete Nemotron Mini receipts](evidence/nemotron-live.json) verify the implemented feature over synthetic inputs. This standalone proof does not establish the complete connected workflow |
 
 Configuration is not verification. A real sponsor request over synthetic records remains a **sample-data demonstration**. Connected source failures do not silently turn into a successful live result.
 

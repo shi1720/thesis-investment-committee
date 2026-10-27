@@ -1,0 +1,14 @@
+{
+  "markets": [
+    "US",
+    "India"
+  ],
+  "targetReturn": 40,
+  "maxVolatility": 10,
+  "maxDrawdown": 10,
+  "horizonMonths": 36,
+  "capital": 25000,
+  "baseCurrency": "USD",
+  "excludedSectors": [],
+  "mode": "sample"
+}

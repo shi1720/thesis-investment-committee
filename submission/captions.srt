@@ -1,0 +1,70 @@
+1
+00:00:00,000 --> 00:00:12,000
+A research committee for decisions
+that deserve a second opinion.
+
+2
+00:00:12,000 --> 00:00:30,000
+Choose markets, a return goal,
+volatility and drawdown tolerance.
+
+3
+00:00:30,000 --> 00:00:50,000
+Fit scores measure alignment.
+They never override failed risk gates.
+
+4
+00:00:50,000 --> 00:01:10,000
+A synthetic NVDA example fails
+the investor’s numerical risk limits.
+
+5
+00:01:10,000 --> 00:01:22,000
+Sample analytical roles are deterministic.
+Actual model calls are labeled separately.
+
+6
+00:01:22,000 --> 00:01:34,000
+The planner revisits challenged cases.
+H-MEM retains account-scoped context.
+
+7
+00:01:34,000 --> 00:01:48,000
+Stress scenarios are explicit assumptions,
+not forecasts or probabilities.
+
+8
+00:01:48,000 --> 00:02:02,000
+Synthetic figures remain labeled.
+Source links invite independent verification.
+
+9
+00:02:02,000 --> 00:02:16,000
+Keep the invalidation condition
+beside your own research note.
+
+10
+00:02:16,000 --> 00:02:26,000
+Reopen the original brief,
+review and evidence record.
+
+11
+00:02:26,000 --> 00:02:46,000
+A 40% return goal with tighter risk limits
+produces no qualified shortlist here.
+
+12
+00:02:46,000 --> 00:02:56,000
+This sample run used H-MEM.
+Model executions keep separate receipts.
+
+13
+00:02:56,000 --> 00:03:10,000
+Qwen and Nemotron ran through Nightshift.
+Zetaris live verification remains pending.
+
+14
+00:03:10,000 --> 00:03:18,000
+Built by Shivam Gupta
+with AI-assisted engineering.
+

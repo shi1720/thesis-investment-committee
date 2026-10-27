@@ -1030,8 +1030,8 @@ textarea {
 .run-button {
   width: 100%;
   font-size: 9.5px;
-  background: #7184e6;
-  border-color: #7184e6;
+  background: var(--blue);
+  border-color: var(--blue);
 }
 .run-button > svg:last-child {
   margin-left: auto;

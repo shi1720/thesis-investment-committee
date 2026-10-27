@@ -1,0 +1,14 @@
+{
+  "model": "NVIDIA Nemotron-Mini-4B-Instruct",
+  "upstream": "https://huggingface.co/nvidia/Nemotron-Mini-4B-Instruct",
+  "registry": "https://ollama.com/library/nemotron-mini:4b",
+  "registryManifest": "https://registry.ollama.ai/v2/library/nemotron-mini/manifests/4b",
+  "parameters": "4.19B",
+  "quantization": "Q4_K_M",
+  "license": "NVIDIA AI Foundation Models Community License",
+  "localWeightSha256": "sha256:1dcbd925825b41744ddc2fc3047db6d3ad0aecf8d336f4fadc044eaaf79779d5",
+  "registryModelSha256": "sha256:1dcbd925825b41744ddc2fc3047db6d3ad0aecf8d336f4fadc044eaaf79779d5",
+  "weightsMatchRegistry": true,
+  "bytes": 2697386784,
+  "note": "Model data is not redistributed in the project. A matching registry digest establishes provenance of these local bytes, not output correctness."
+}

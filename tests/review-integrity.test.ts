@@ -71,3 +71,47 @@ test('identical shared methodology provenance remains valid for multiple compani
   assert.equal(run.evidence.filter(e=>e.id==='shared-methodology').length,1);
   assert.ok(run.opportunities.every(s=>s.status==='qualified'));
 });
+
+function datedLiveRecord(priceDate:string,filingDate='2025-06-30') {
+  // Contract-only fixture: relabeling here tests validation, not live-data proof.
+  const source=structuredClone(sampleUniverse.find(s=>s.symbol==='V')!);
+  source.asOf='2026-10-27';
+  source.evidence=source.evidence.map(e=>({...e,sample:false,url:`https://example.test/contract-only/${e.kind}`,asOf:e.kind==='prices'?priceDate:filingDate}));
+  return source;
+}
+
+test('a fresh stock wrapper cannot launder stale underlying live price provenance',async()=>{
+  const stock=datedLiveRecord('2010-01-01');
+  const run=await runResearch({...defaultProfile,mode:'live'},{...clock,stocks:[stock]});
+  assert.equal(run.eligibleCount,0);
+  assert.equal(run.abstained,true);
+  assert.equal(run.opportunities[0].status,'excluded');
+  assert.ok(run.opportunities[0].reasons.some(r=>/price provenance.*45 days/i.test(r)));
+});
+
+test('future live price or filing publication dates cannot qualify',async()=>{
+  for(const kind of ['prices','filing'] as const){
+    const stock=datedLiveRecord('2026-10-27');
+    stock.evidence.find(e=>e.kind===kind)!.asOf='2026-10-29';
+    const run=await runResearch({...defaultProfile,mode:'live'},{...clock,stocks:[stock]});
+    assert.equal(run.opportunities[0].status,'excluded',`${kind} evidence must not be future-dated`);
+    assert.ok(run.opportunities[0].reasons.some(r=>r.includes('future-dated')&&r.includes(kind==='prices'?'Price':'Filing')));
+  }
+});
+
+test('live price freshness boundary allows forty-five days and old annual filings',async()=>{
+  const stock=datedLiveRecord('2026-09-12','2025-06-30');
+  const run=await runResearch({...defaultProfile,mode:'live'},{...clock,stocks:[stock]});
+  assert.equal(run.eligibleCount,1);
+  assert.equal(run.opportunities[0].status,'qualified');
+  const beyond=datedLiveRecord('2026-09-11T23:59:59Z','2025-06-30');
+  const rejected=await runResearch({...defaultProfile,mode:'live'},{...clock,stocks:[beyond]});
+  assert.equal(rejected.eligibleCount,0);
+});
+
+test('sample provenance validation continues to replay the fixture clock in later years',async()=>{
+  const current=await runResearch(defaultProfile,clock);
+  const replay=await runResearch(defaultProfile,{...clock,now:new Date('2030-10-27T00:00:00Z')});
+  assert.equal(replay.eligibleCount,current.eligibleCount);
+  assert.deepEqual(replay.opportunities,current.opportunities);
+});

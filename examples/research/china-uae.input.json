@@ -1,0 +1,14 @@
+{
+  "markets": [
+    "China",
+    "UAE"
+  ],
+  "targetReturn": 10,
+  "maxVolatility": 30,
+  "maxDrawdown": 35,
+  "horizonMonths": 60,
+  "capital": 25000,
+  "baseCurrency": "AED",
+  "excludedSectors": [],
+  "mode": "sample"
+}

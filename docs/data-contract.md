@@ -92,6 +92,17 @@ anchor form. Set `sample: true` on synthetic data and keep that flag through all
 infrastructure, model and export layers. A real server does not make synthetic
 source content real.
 
+Live freshness is checked at both levels. The security `asOf` and every
+`kind: prices` provenance date must be no more than 45 days old relative to the
+run's evaluation time. A fresh wrapper date cannot make an old price source
+current. Price and filing evidence dates more than one day in the future are
+rejected; the one-day tolerance accommodates date-only/time-zone boundaries.
+Exactly 45 days is allowed. An older annual filing remains a legitimate dated
+source and is not subject to the price-age limit, though its relevance and
+reporting period still require review. Sample mode replays the fixed synthetic
+fixture clock and does not claim current financial observations, even when the
+application runs years later.
+
 ## Replacing fixtures with real data
 
 Replace each physical source with an appropriately licensed vendor or primary

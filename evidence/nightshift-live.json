@@ -1,8 +1,8 @@
 {
   "schema": "thesis.sponsor-proof.v1",
   "project": "Thesis",
-  "startedAt": "2026-10-27T05:15:13.217Z",
-  "finishedAt": "2026-10-27T05:15:36.409Z",
+  "startedAt": "2026-10-27T05:34:30.796Z",
+  "finishedAt": "2026-10-27T05:35:00.531Z",
   "scope": "Real Nightshift inference over included synthetic research examples; Zetaris not exercised by this proof.",
   "syntheticInputs": true,
   "financialDataNotice": "All input prices and fundamentals are fabricated research fixtures. Real infrastructure execution is not live market data.",
@@ -29,12 +29,12 @@
       "responseModel": "local-runtime/qwen2-5-7b-instruct-q4-k-m",
       "resolvedModel": "local-runtime/qwen2-5-7b-instruct-q4-k-m",
       "nvidiaVerified": false,
-      "requestId": "chatcmpl-058f3c18-e448-4651-aad1-349bbe37b4c2",
-      "latencyMs": 23128,
-      "inputTokens": 822,
-      "outputTokens": 321,
+      "requestId": "chatcmpl-526cb34d-26eb-4ad7-9370-c8ee54e58e72",
+      "latencyMs": 29645,
+      "inputTokens": 851,
+      "outputTokens": 216,
       "providerCostUsd": 0,
-      "receiptId": "rcpt_req_c9zemzbx",
+      "receiptId": "rcpt_req_hx5lp5c2",
       "attempts": 1,
       "routedProvider": "local-runtime",
       "receiptBody": {
@@ -65,7 +65,7 @@
             "tools": false,
             "vision": false
           },
-          "prompt_tokens": 963,
+          "prompt_tokens": 1004,
           "scout": {
             "candidates": [
               {
@@ -84,15 +84,15 @@
             "category": "Data",
             "confident": false,
             "mode": "TREND_ANALYZER",
-            "ms": 2.7,
+            "ms": 2.8,
             "score": 14,
             "source": "detected",
             "tier": "C"
           },
           "tier_hint": null,
           "why": [
-            "scout read TREND_ANALYZER (not confident \u2014 no tier opinion)",
-            "~963 prompt tokens \u2014 lanes whose slot cannot hold them are not asked"
+            "scout read TREND_ANALYZER (not confident — no tier opinion)",
+            "~1004 prompt tokens — lanes whose slot cannot hold them are not asked"
           ]
         },
         "bar": null,
@@ -105,7 +105,7 @@
         "consensus": {
           "agree": 1,
           "coherence": null,
-          "detail": "one model handled this \u2014 no cross-model agreement to check",
+          "detail": "one model handled this — no cross-model agreement to check",
           "label": "single route",
           "level": "solo",
           "raced": 1,
@@ -120,17 +120,17 @@
             "model": "claude-sonnet-4-5-20250929",
             "source": "fixed-reference"
           },
-          "naive_usd": 0.007281,
+          "naive_usd": 0.0057929999999999995,
           "race_overhead_usd": 0,
           "verifier_usd": 0
         },
-        "created_at": 1793078136373,
+        "created_at": 1793079300513,
         "cross_check": {
           "app": "thesis",
           "blocking": false,
           "checks": [],
           "recommended_action": "allow",
-          "reflex_ms": 0.38,
+          "reflex_ms": 0.28,
           "risk_level": "low",
           "skip_reason": "tier_a_chat",
           "status": "skipped",
@@ -141,7 +141,7 @@
           "verifier_verdict": null
         },
         "debate": null,
-        "decision_id": "req_c9zemzbx",
+        "decision_id": "req_hx5lp5c2",
         "deliberation": null,
         "egress": {
           "coverage": "pattern_floor",
@@ -151,7 +151,7 @@
             "context_sources": [
               "messages"
             ],
-            "prompt_chars": 3131,
+            "prompt_chars": 3123,
             "redacted": []
           },
           "withheld": []
@@ -226,13 +226,13 @@
           {
             "coherence": null,
             "model": "local-runtime/qwen2-5-7b-instruct-q4-k-m",
-            "ms": 23080,
-            "outputTps": 13.908145580589256,
+            "ms": 29615,
+            "outputTps": 7.293601215600203,
             "phase": "final_synthesis",
             "reflex_decided_in_ms": 0.2,
             "tier": "A",
-            "tokensIn": 822,
-            "tokensOut": 321
+            "tokensIn": 851,
+            "tokensOut": 216
           }
         ],
         "privacy": {
@@ -245,9 +245,9 @@
         "prompt_preview": "{\"profile\":{\"markets\":[\"US\",\"India\"],\"targetReturn\":12,\"maxVolatility\":25,\"maxDrawdown\":25,\"horizonMonths\":36,\"capital\":25000,\"baseCurrency\":\"USD\",\"excludedSectors\":[],\"mode\":\"samp",
         "quality_race": null,
         "reasoning_scaffold": null,
-        "receipt_id": "rcpt_req_c9zemzbx",
+        "receipt_id": "rcpt_req_hx5lp5c2",
         "refine": null,
-        "request_id": "chatcmpl-058f3c18-e448-4651-aad1-349bbe37b4c2",
+        "request_id": "chatcmpl-526cb34d-26eb-4ad7-9370-c8ee54e58e72",
         "requested_mode": "meterless/auto",
         "routing": {
           "confidence": null,
@@ -263,7 +263,7 @@
           "winner": "local-runtime/qwen2-5-7b-instruct-q4-k-m"
         },
         "savings": {
-          "amount": 0.007281,
+          "amount": 0.0057929999999999995,
           "baseline_source": "fixed-reference",
           "currency": "USD",
           "vs": "Claude 4.5 Sonnet"
@@ -272,23 +272,23 @@
         "score": null,
         "scorecard": null,
         "status": "ok",
-        "summary": "ok \u00b7 Qwen2.5-7B-Instruct-Q4_K_M \u00b7 Runtime \u00b7 miss \u00b7 $0.0073 saved",
+        "summary": "ok · Qwen2.5-7B-Instruct-Q4_K_M · Runtime · miss · $0.0058 saved",
         "synthesis": null,
         "test_time_compute": null,
         "tool_degraded": null,
         "unmet": null,
         "usage": {
-          "input_tokens": 822,
-          "latency_ms": 23080,
-          "output_tokens": 321,
-          "output_tps": 13.908145580589256,
-          "total_tokens": 1143
+          "input_tokens": 851,
+          "latency_ms": 29615,
+          "output_tokens": 216,
+          "output_tps": 7.293601215600203,
+          "total_tokens": 1067
         },
         "verdict": null,
         "verification": null,
         "winning_route": {
           "kind": "local",
-          "label": "Qwen2.5-7B-Instruct-Q4_K_M \u00b7 Runtime",
+          "label": "Qwen2.5-7B-Instruct-Q4_K_M · Runtime",
           "model": "local-runtime/qwen2-5-7b-instruct-q4-k-m",
           "provider": "local-runtime",
           "tier": "A"
@@ -298,15 +298,15 @@
   ],
   "warnings": [],
   "research": {
-    "id": "sponsor-proof-77e3a100-1711-4d1d-9eb8-1ff0ea755f97",
+    "id": "sponsor-proof-a7f83928-23a0-4212-82ce-5a3d49994e9d",
     "abstained": false,
     "eligibleCount": 2,
     "reviewed": [
       {
         "symbol": "V",
-        "bullCase": "Cross-border payment activity could drive significant growth, especially as international transactions become more frequent and convenient. The synthetic return of 13.8% exceeds the 12% target, suggesting potential for higher returns.",
-        "bearCase": "Regulatory changes or the emergence of alternative payment methods could compress the economics, reducing the growth potential. The 17.5% volatility is close to the 25% limit, indicating higher risk.",
-        "invalidation": "A significant decrease in cross-border payment activity or regulatory changes leading to reduced interchange fees would invalidate this thesis.",
+        "bullCase": "Cross-border payment activity could provide a growth driver, potentially benefiting from increasing global commerce.",
+        "bearCase": "Regulatory changes or the rise of alternative payment methods could compress the economics, impacting the business model.",
+        "invalidation": "Significant changes in global trade policies or a major shift towards alternative payment systems could invalidate the growth thesis.",
         "evidenceIds": [
           "fixture-v",
           "reference-v"
@@ -314,9 +314,9 @@
       },
       {
         "symbol": "JNJ",
-        "bullCase": "A diversified healthcare business can provide a stable and defensive investment, potentially offering steady returns. The synthetic return of 7.2% might be conservative, but the company's long-term track record could support higher returns.",
-        "bearCase": "Litigation outcomes and product concentration could disrupt the company's cash generation, leading to lower than expected returns. The 15.31% volatility is within the limit but close to the 25% threshold, indicating moderate risk.",
-        "invalidation": "A major lawsuit or product recall could significantly impact the company's financial performance and stock price.",
+        "bullCase": "A diversified healthcare business could offer defensive qualities, benefiting from stable demand and consistent cash flows.",
+        "bearCase": "Litigation outcomes or product concentration could disrupt the company's cash generation, affecting its financial stability.",
+        "invalidation": "Major litigation setbacks or a significant product recall could invalidate the defensive research case.",
         "evidenceIds": [
           "fixture-jnj",
           "reference-jnj"
@@ -325,19 +325,19 @@
     ],
     "events": [
       {
-        "id": "sponsor-proof-77e3a100-1711-4d1d-9eb8-1ff0ea755f97-event-1",
-        "at": "2026-10-27T05:15:13.233Z",
+        "id": "sponsor-proof-a7f83928-23a0-4212-82ce-5a3d49994e9d-event-1",
+        "at": "2026-10-27T05:34:30.818Z",
         "agent": "Planner",
         "action": "Compile your research mandate",
-        "detail": "US + India; 36-month horizon; 12% annual return aspiration; volatility \u226425%; historical drawdown \u226425%. USD 25,000 is a research budget, not an allocation order.",
+        "detail": "US + India; 36-month horizon; 12% annual return aspiration; volatility ≤25%; historical drawdown ≤25%. USD 25,000 is a research budget, not an allocation order.",
         "status": "completed",
         "iteration": 1,
         "model": "deterministic/research-rules-v1",
         "evidenceIds": []
       },
       {
-        "id": "sponsor-proof-77e3a100-1711-4d1d-9eb8-1ff0ea755f97-event-2",
-        "at": "2026-10-27T05:15:13.233Z",
+        "id": "sponsor-proof-a7f83928-23a0-4212-82ce-5a3d49994e9d-event-2",
+        "at": "2026-10-27T05:34:30.818Z",
         "agent": "Memory",
         "action": "Recall previous committee decisions",
         "detail": "Historic research decision: US India investment risk volatility limit 25 drawdown limit 25 target return 12 horizon 36 months. The committee produced a research shortlist. Current evidence and hard limits still govern every outcome.",
@@ -347,8 +347,8 @@
         "evidenceIds": []
       },
       {
-        "id": "sponsor-proof-77e3a100-1711-4d1d-9eb8-1ff0ea755f97-event-3",
-        "at": "2026-10-27T05:15:13.233Z",
+        "id": "sponsor-proof-a7f83928-23a0-4212-82ce-5a3d49994e9d-event-3",
+        "at": "2026-10-27T05:34:30.818Z",
         "agent": "Data steward",
         "action": "Establish provenance and listing scope",
         "detail": "10 securities in the selected market universe. All price paths and fundamentals are synthetic fixtures. Company source links are discovery references, not support for the sample figures.",
@@ -379,11 +379,11 @@
         ]
       },
       {
-        "id": "sponsor-proof-77e3a100-1711-4d1d-9eb8-1ff0ea755f97-event-4",
-        "at": "2026-10-27T05:15:13.233Z",
+        "id": "sponsor-proof-a7f83928-23a0-4212-82ce-5a3d49994e9d-event-4",
+        "at": "2026-10-27T05:34:30.818Z",
         "agent": "Quant analyst",
         "action": "Recompute risk from adjusted closing prices",
-        "detail": "Calculated CAGR, sample standard deviation of simple daily returns \u00d7 \u221a252, and peak-to-trough drawdown. 0 source records failed validation. Reported summary metrics were not trusted.",
+        "detail": "Calculated CAGR, sample standard deviation of simple daily returns × √252, and peak-to-trough drawdown. 0 source records failed validation. Reported summary metrics were not trusted.",
         "status": "completed",
         "iteration": 1,
         "model": "deterministic/research-rules-v1",
@@ -401,11 +401,11 @@
         ]
       },
       {
-        "id": "sponsor-proof-77e3a100-1711-4d1d-9eb8-1ff0ea755f97-event-5",
-        "at": "2026-10-27T05:15:13.233Z",
+        "id": "sponsor-proof-a7f83928-23a0-4212-82ce-5a3d49994e9d-event-5",
+        "at": "2026-10-27T05:34:30.818Z",
         "agent": "Fundamental analyst",
-        "action": "Build and rank competing hypotheses",
-        "detail": "Evaluated business quality (30%), risk headroom (25%), growth/margin inputs (20%), valuation heuristic (15%) and historical aspiration comparison (10%). Applied transparent skeptic penalties; historical return is never presented as expected future return.",
+        "action": "Build the initial uncritiqued ranking",
+        "detail": "Initial leaders: V (83.2), MSFT (78.2), JNJ (72.9). Evaluated business quality (30%), risk headroom (25%), growth/margin inputs (20%), valuation heuristic (15%) and historical aspiration comparison (10%). These are research heuristics; historical return is not expected future return.",
         "status": "completed",
         "iteration": 1,
         "model": "deterministic/research-rules-v1",
@@ -423,11 +423,11 @@
         ]
       },
       {
-        "id": "sponsor-proof-77e3a100-1711-4d1d-9eb8-1ff0ea755f97-event-6",
-        "at": "2026-10-27T05:15:13.233Z",
+        "id": "sponsor-proof-a7f83928-23a0-4212-82ce-5a3d49994e9d-event-6",
+        "at": "2026-10-27T05:34:30.818Z",
         "agent": "Skeptic",
         "action": "Challenge the initial ranking",
-        "detail": "7 theses triggered challenges. SUNPHARMA: The skeptic\u2019s countercase: Regulatory inspections and product concentration can interrupt execution. The INR listing adds unmodeled currency exposure against your USD budget. HDFCBANK: The skeptic\u2019s countercase: Credit-cycle deterioration and deposit competition could pressure returns. The INR listing adds unmodeled currency exposure against your USD budget. TCS: The skeptic\u2019s countercase: Client spending delays and automation-driven pricing pressure could weaken growth. The INR listing adds unmodeled currency exposure against your USD budget. RELIANCE: The skeptic\u2019s countercase: Commodity cyclicality and project capital intensity can reduce free cash flow. The INR listing adds unmodeled currency exposure against your USD budget. NVDA: The skeptic\u2019s countercase: Customer concentration, export controls and high expectations amplify downside risk. The 47.5\u00d7 P/E multiple leaves the thesis sensitive to earnings disappointments.",
+        "detail": "7 theses triggered revision tasks. SUNPHARMA: The INR listing adds unmodeled currency exposure against your USD budget. HDFCBANK: The INR listing adds unmodeled currency exposure against your USD budget. TCS: The INR listing adds unmodeled currency exposure against your USD budget. NVDA: The 47.5× P/E multiple leaves the thesis sensitive to earnings disappointments. RELIANCE: The INR listing adds unmodeled currency exposure against your USD budget.",
         "status": "warning",
         "iteration": 1,
         "model": "deterministic/research-rules-v1",
@@ -438,29 +438,48 @@
           "reference-hdfcbank",
           "fixture-tcs",
           "reference-tcs",
+          "fixture-nvda",
+          "reference-nvda",
           "fixture-reliance",
           "reference-reliance",
-          "fixture-nvda",
-          "reference-nvda"
+          "fixture-adanient",
+          "reference-adanient",
+          "fixture-tsla",
+          "reference-tsla"
         ]
       },
       {
-        "id": "sponsor-proof-77e3a100-1711-4d1d-9eb8-1ff0ea755f97-event-7",
-        "at": "2026-10-27T05:15:13.233Z",
+        "id": "sponsor-proof-a7f83928-23a0-4212-82ce-5a3d49994e9d-event-7",
+        "at": "2026-10-27T05:34:30.818Z",
         "agent": "Planner",
         "action": "Revise the research plan after critique",
-        "detail": "Route challenged theses back through the risk guardian; reduce scores for fragile fundamentals, excessive valuation and currency uncertainty. Hard user limits remain unchanged.",
+        "detail": "Applied the skeptic’s revision tasks and re-ranked actual candidates. SUNPHARMA: 72.8 → 70.8; HDFCBANK: 72.1 → 70.1; TCS: 68 → 66; NVDA: 66 → 56; RELIANCE: 62 → 60; ADANIENT: 40.2 → 6.2 (watch-only); TSLA: 26.1 → 0 (watch-only). Route this revised state to the risk guardian; hard limits remain unchanged.",
         "status": "completed",
         "iteration": 2,
         "model": "deterministic/research-rules-v1",
-        "evidenceIds": []
+        "evidenceIds": [
+          "fixture-sunpharma",
+          "reference-sunpharma",
+          "fixture-hdfcbank",
+          "reference-hdfcbank",
+          "fixture-tcs",
+          "reference-tcs",
+          "fixture-nvda",
+          "reference-nvda",
+          "fixture-reliance",
+          "reference-reliance",
+          "fixture-adanient",
+          "reference-adanient",
+          "fixture-tsla",
+          "reference-tsla"
+        ]
       },
       {
-        "id": "sponsor-proof-77e3a100-1711-4d1d-9eb8-1ff0ea755f97-event-8",
-        "at": "2026-10-27T05:15:13.233Z",
+        "id": "sponsor-proof-a7f83928-23a0-4212-82ce-5a3d49994e9d-event-8",
+        "at": "2026-10-27T05:34:30.818Z",
         "agent": "Risk guardian",
         "action": "Veto candidates that breach the mandate",
-        "detail": "8 securities excluded; 2 pass the research screen. MSFT: Historical max drawdown 30.89% exceeds your 25% limit. SUNPHARMA: Historical max drawdown 25.72% exceeds your 25% limit. HDFCBANK: Historical max drawdown 33.84% exceeds your 25% limit. TCS: Historical max drawdown 46.97% exceeds your 25% limit. RELIANCE: Annualized volatility 25.82% exceeds your 25% limit. NVDA: Annualized volatility 48.33% exceeds your 25% limit.",
+        "detail": "8 securities excluded; 2 pass the research screen. Initial leaders: V (83.2), MSFT (78.2), JNJ (72.9). Final qualified leaders: V (83.2), JNJ (72.9). MSFT: Historical max drawdown 30.89% exceeds your 25% limit. SUNPHARMA: Historical max drawdown 25.72% exceeds your 25% limit. HDFCBANK: Historical max drawdown 33.84% exceeds your 25% limit. TCS: Historical max drawdown 46.97% exceeds your 25% limit. RELIANCE: Historical max drawdown 51.87% exceeds your 25% limit. NVDA: Historical max drawdown 61.2% exceeds your 25% limit.",
         "status": "warning",
         "iteration": 2,
         "model": "deterministic/research-rules-v1",
@@ -484,8 +503,8 @@
         ]
       },
       {
-        "id": "sponsor-proof-77e3a100-1711-4d1d-9eb8-1ff0ea755f97-event-9",
-        "at": "2026-10-27T05:15:13.233Z",
+        "id": "sponsor-proof-a7f83928-23a0-4212-82ce-5a3d49994e9d-event-9",
+        "at": "2026-10-27T05:34:30.818Z",
         "agent": "Skeptic",
         "action": "Review the revised shortlist",
         "detail": "2 candidates remain after critique. Retain a concrete bear case and invalidation trigger for every candidate; no single-stock position sizes or promised returns are generated.",
@@ -500,8 +519,8 @@
         ]
       },
       {
-        "id": "sponsor-proof-77e3a100-1711-4d1d-9eb8-1ff0ea755f97-event-10",
-        "at": "2026-10-27T05:15:13.233Z",
+        "id": "sponsor-proof-a7f83928-23a0-4212-82ce-5a3d49994e9d-event-10",
+        "at": "2026-10-27T05:34:30.818Z",
         "agent": "Evaluator",
         "action": "Validate the final decision record",
         "detail": "Verified 10 decisions, 20 provenance records and every hard risk gate. The shortlist qualifies for further research only. All sample data and deterministic roles are explicitly labeled.",
@@ -534,7 +553,7 @@
     ]
   },
   "limitations": [
-    "Schema and citation validation are deterministic checks, not independent verification of a model\u2019s financial claims.",
+    "Schema and citation validation are deterministic checks, not independent verification of a model’s financial claims.",
     "Runtime receipt bodies are retained when supplied; this script does not claim cryptographic signature verification."
   ]
 }

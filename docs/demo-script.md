@@ -1,6 +1,6 @@
 # Thesis demo recording
 
-Built by Shivam Gupta with AI-assisted engineering. Primary track: **The Agent That Can Explain Why**.
+Built by Shivam Gupta with AI-assisted engineering. Primary track: **Reasoning Architecture (Track 3)**.
 
 Target duration: **3 minutes 30 seconds**, at roughly 130 words per minute with short pauses. Record at 1440×1000 or 1440×900. The numbered actions below are production directions, not spoken copy. The speech-only version is `outputs/submission/demo-script.txt` relative to the task workspace.
 
@@ -9,9 +9,9 @@ Target duration: **3 minutes 30 seconds**, at roughly 130 words per minute with 
 - Use a clean signed-in research workspace. Never record environment variables, proxy tokens or provider settings containing credentials.
 - Keep sample mode selected. Use US + India, 12% annual return goal, 25% volatility, 25% drawdown, 3 years and a USD25,000 research budget. These are research constraints, not a portfolio allocation.
 - Run this default brief once and verify the result before recording. In the included fixtures, Visa and Johnson & Johnson pass the default hard gates. If fixtures change, describe the actual output and update the recording script.
-- Have the sanitized `evidence/nightshift-live.json` receipt ready in an editor, showing provider, concrete model, latency, input/output tokens and receipt ID. Keep the entire receipt on screen if possible, with no secret configuration.
+- Have the sanitized Nightshift Qwen receipt and `evidence/nemotron-live.json` ready in an editor, showing provider, concrete model, latency, input/output tokens and receipt IDs. Keep the entire receipt on screen if possible, with no secret configuration.
 - For the abstention sequence, use 40% return goal, 5% volatility, 5% drawdown, and a 6-month horizon. Verify that the committee abstains before inference.
-- Sponsor status in this script reflects the retained proof available on 27 October2026. Update the Zetaris sentence only after a fresh successful query proof exists. Do not imply NVIDIA execution without a successful concrete Nemotron receipt.
+- Sponsor status reflects retained proofs from 27 October 2026. Qwen and an optional Nemotron exclusion audit have real model receipts over synthetic inputs. Zetaris live verification remains pending. Keep that distinction visible.
 
 ## Run of show and word-for-word narration
 
@@ -53,15 +53,15 @@ Target duration: **3 minutes 30 seconds**, at roughly 130 words per minute with 
 
 ### 2:45–3:15 — Sponsor proof and honest status
 
-**Action:** Show Integrations. Cut to the sanitized Nightshift receipt and H-MEM conformance result. If Zetaris proof is still absent, show its pending status without implying a completed integration.
+**Action:** Show Integrations. Cut to the sanitized Qwen receipt, the two Nemotron audit receipts and H-MEM conformance result. Show the final Nemotron `request_review` classification. Preserve Zetaris pending status without implying a complete connected run.
 
-> The official H-MEM reference engine passes its thirteen conformance checks. A retained Nightshift execution identifies the actual Qwen model and its request receipt. The Zetaris adapter and federation setup are implemented, while live Zetaris verification remains pending in this version. No successful NVIDIA model contribution is claimed. Real infrastructure execution over synthetic inputs remains sample research.
+> The official H-MEM reference engine passes its thirteen conformance checks. Nightshift is the primary model gateway. A real Qwen review and a separate NVIDIA Nemotron Mini exclusion audit retain concrete model receipts. Nemotron requested a planner recheck, while the original numeric veto stayed binding. Zetaris live verification remains pending. These are working infrastructure features over synthetic data.
 
 ### 3:15–3:30 — Why it can become a product
 
 **Action:** End on the workspace or slide8. Fade to the cover with your name.
 
-> The commercial hypothesis is a nineteen-dollar monthly research habit: fewer unsupported convictions and a reusable decision record. Data licensing, user validation and launch reviews come next. Thesis makes the counterargument part of the product, before the investor commits.
+> The architecture keeps adaptive critique, durable state and hard guarantees separate. The commercial hypothesis is a nineteen-dollar monthly research habit: fewer unsupported convictions and a reusable decision record. Data licensing, user validation and launch reviews come next. Thesis makes the counterargument part of the product, before the investor commits.
 
 ## Capture and editing notes
 
@@ -70,5 +70,5 @@ Target duration: **3 minutes 30 seconds**, at roughly 130 words per minute with 
 - Keep the synthetic sample label visible throughout the product sequence. Company investor-relations links are discovery references and do not verify the sample fundamentals.
 - Display the concrete Nightshift model ID at least once. A routing alias or model-catalog entry alone does not establish a working model lane.
 - If live Zetaris validation succeeds after this script is written, replace the pending sentence with: “This retained Zetaris query federates the synthetic price and fundamental sources used by the committee.” Only use that sentence if the retained proof actually shows those sources.
-- If NVIDIA succeeds later, name the exact returned Nemotron model and show its working receipt. Otherwise retain the explicit limitation.
+- The NVIDIA proof identifies `local-runtime/nemotron-mini-4b-instruct-q4-k-m` and two real receipts, including bounded repair. Describe it as the optional exclusion-audit feature over synthetic data. It does not establish the full Zetaris-connected workflow or financial correctness.
 - This is a recording script and run of show. The video, narration and upload still require a human recording step.

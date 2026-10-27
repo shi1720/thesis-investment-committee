@@ -46,7 +46,21 @@ function validateStock(stock: Stock, now: Date, live: boolean): {issues: string[
   if (!Array.isArray(stock.evidence) || stock.evidence.length === 0) issues.push('No source provenance is attached.');
   else {
     if (stock.evidence.some(e => !e.id || !e.excerpt || !e.publisher || !Number.isFinite(Date.parse(e.asOf)) || !(/^https:\/\//.test(e.url) || (e.sample && /^#sample-[a-z0-9-]+$/.test(e.url))))) issues.push('Source provenance is incomplete or uses an unsafe URL.');
-    if (live && stock.evidence.some(e => e.sample)) issues.push('Sample evidence cannot qualify as live financial evidence.');
+    if (live) {
+      if (stock.evidence.some(e => e.sample)) issues.push('Sample evidence cannot qualify as live financial evidence.');
+      for (const evidence of stock.evidence) {
+        const sourceDate = Date.parse(evidence.asOf);
+        if (!Number.isFinite(sourceDate)) continue; // Incomplete provenance is already rejected above.
+        if (evidence.kind==='prices' && now.getTime()-sourceDate>45*DAY_MS) {
+          issues.push(`Price provenance ${evidence.id} is more than 45 days old. A fresh security snapshot cannot replace a current price source.`);
+        }
+        if ((evidence.kind==='prices'||evidence.kind==='filing') && sourceDate>now.getTime()+DAY_MS) {
+          issues.push(`${evidence.kind==='prices'?'Price':'Filing'} provenance ${evidence.id} is future-dated by more than one day.`);
+        }
+        // Older annual filings are legitimate dated sources. Their relevance
+        // still needs review; a price-source age limit is not a filing-age limit.
+      }
+    }
   }
   return {issues,quant};
 }
@@ -244,7 +258,7 @@ export async function runResearch(rawProfile: ResearchProfile, options:ResearchO
   ],memory:{reused:lessons.length>0,lessons},durationMs:Math.max(0,Date.now()-started),cost:{modelCalls:0,estimatedUsd:0,actualUsd:0},methodology:[
     isLive?'Source provenance accompanies the supplied financial inputs. Retrieved source content is untrusted evidence; the deterministic validator cannot establish that a provider’s claims are factually correct.':'All sample prices, financial metrics, catalysts and scenarios are synthetic assumptions. Investor-relations links are discovery references and do not substantiate fixture numbers. Sample mode replays the fixed fixture clock, independently of the current date.',
     'Risk uses daily adjusted closing prices: CAGR = (last / first)^(252 / return observations) − 1; annualized volatility = sample standard deviation of simple daily returns × √252; maximum drawdown = maximum peak-to-trough decline.',
-    'At least 61 daily closes and dated evidence are required. Live snapshots must be no older than 45 days; sample mode uses the fixed fixture clock. The sample contains 505 closes per security. 252 sessions is a calculation convention, not each exchange’s exact trading calendar.',
+    'At least 61 daily closes and dated evidence are required. Live snapshots and price-source dates must be no older than 45 days; live price and filing provenance cannot be dated more than one day in the future. Older annual filings are allowed as dated sources. Sample mode uses the fixed fixture clock. The sample contains 505 closes per security. 252 sessions is a calculation convention, not each exchange’s exact trading calendar.',
     'Hard volatility and drawdown gates use unrounded computed values. Sector exclusions, data quality and live/sample provenance cannot be overridden by commentary. Latest close must match the last adjusted price within 0.1%; contradictory source-ID collisions exclude every affected security and preserve quarantined evidence.',
     'Ranking weights: quality 30%, risk headroom 25%, growth and margins 20%, valuation heuristic 15%, historical aspiration comparison 10%, followed by explicit skeptic penalties. Scores are relative research priorities, not probabilities.',
     'A horizon of 12 months or less makes otherwise eligible equities watch-only. Conflicting return/risk preferences trigger abstention under an explicit product policy, not a modeled efficient frontier.',
