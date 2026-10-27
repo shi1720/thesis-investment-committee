@@ -1,0 +1,17 @@
+import {createHash} from 'node:crypto';
+import {safeSourceUrl} from '../../lib/ai/search';
+import type {InstrumentRef} from '../../lib/finance/contracts';
+const cached=new Map<string,{expires:number;value:unknown}>();
+/** Public GDELT metadata only. Article bodies and arbitrary source URLs are never fetched. */
+export async function publicNews(instruments:InstrumentRef[],query?:string,signal?:AbortSignal){
+ const terms=query?.trim().slice(0,200)||instruments.slice(0,4).map(i=>i.name||i.symbol).join(' OR ');
+ if(!terms)return {status:'partial',data:[],provenance:{provider:'GDELT',fetchedAt:new Date().toISOString(),asOf:null,sourceUrl:'https://api.gdeltproject.org/api/v2/doc/doc'},warnings:['Add companies to your portfolio or watchlist to follow relevant news.']};
+ const clean=terms.replace(/[\u0000-\u001f\u007f<>]/g,' ').replace(/[^\p{L}\p{N}\s&.()'-]/gu,' ').slice(0,200),cacheKey=createHash('sha256').update(clean).digest('hex'),prior=cached.get(cacheKey);if(prior&&prior.expires>Date.now())return structuredClone(prior.value);
+ const url=new URL('https://api.gdeltproject.org/api/v2/doc/doc');url.search=new URLSearchParams({query:clean,mode:'artlist',format:'json',maxrecords:'12',timespan:'7d',sort:'datedesc'}).toString();
+ const provenance={provider:'GDELT',fetchedAt:new Date().toISOString(),asOf:null,sourceUrl:'https://api.gdeltproject.org/api/v2/doc/doc'};
+ try{const response=await fetch(url,{redirect:'error',signal:signal?AbortSignal.any([signal,AbortSignal.timeout(15000)]):AbortSignal.timeout(15000)});if(!response.ok){await response.body?.cancel();return {status:response.status===429?'rate_limited':'unavailable',data:[],provenance,warnings:['The public news index is currently unavailable. No generated headlines were substituted.']};}
+ const reader=response.body?.getReader();if(!reader)throw Error();let size=0;const chunks:Uint8Array[]=[];for(;;){const {done,value}=await reader.read();if(done)break;size+=value.length;if(size>500000){await reader.cancel();throw Error();}chunks.push(value);}const body=JSON.parse(Buffer.concat(chunks).toString('utf8')) as {articles?:Record<string,unknown>[]};
+ const articles=(body.articles??[]).slice(0,12).flatMap(a=>{const href=safeSourceUrl(a.url),headline=typeof a.title==='string'?a.title.replace(/[\u0000-\u001f]/g,' ').slice(0,300):'',raw=typeof a.seendate==='string'?a.seendate:'',match=raw.match(/^(\d{4})(\d{2})(\d{2})T(\d{2})(\d{2})(\d{2})Z$/),date=match?`${match[1]}-${match[2]}-${match[3]}T${match[4]}:${match[5]}:${match[6]}Z`:null;if(!href||!headline||!date||!Number.isFinite(Date.parse(date)))return[];return [{id:createHash('sha256').update(href).digest('hex').slice(0,20),headline,title:headline,summary:'',url:href,source:typeof a.domain==='string'?a.domain:new URL(href).hostname,publishedAt:null,indexedAt:date,dateType:'index_observed',instrument:null}];});
+ const result={status:articles.length?'ok':'partial',data:articles,provenance,warnings:['The displayed index timestamp is when GDELT observed the article, not a confirmed publisher publication date. Headlines alone are not full articles. News matches can be incomplete or ambiguous.']};cached.set(cacheKey,{expires:Date.now()+600000,value:result});if(cached.size>100)cached.delete(cached.keys().next().value!);return result;
+ }catch{return {status:'unavailable',data:[],provenance,warnings:['News could not be retrieved. No generated headlines were substituted.']};}
+}

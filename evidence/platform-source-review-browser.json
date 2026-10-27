@@ -1,0 +1,199 @@
+{
+  "schema": "thesis.hosted-source-review-browser.v1",
+  "url": "https://thesis-investing.web.app",
+  "reportId": "795f939a-ca18-480e-a8e4-6dfe32f8d5a7",
+  "status": "completed",
+  "startedAt": "2026-10-27T13:28:57.409Z",
+  "completedAt": "2026-10-27T13:29:16.216Z",
+  "workflow": "source_review",
+  "evidenceRecordCount": 8,
+  "sourcePlan": {
+    "planning": "deterministic_source_plan",
+    "coverage": "fundamentals_only",
+    "decision": "missing_market_evidence",
+    "missing": [
+      "quote",
+      "history"
+    ]
+  },
+  "modelAudit": {
+    "intendedPasses": 1,
+    "actualCalls": 1,
+    "acceptedCounterchecks": 1,
+    "agreesWithCodePlan": true,
+    "modelDiversity": false,
+    "validationScope": "Structured schema, supplied source-ID membership and agreement with the deterministic source plan. No claim of prose fact-checking or an investment recommendation."
+  },
+  "modelReceipts": [
+    {
+      "id": "rcpt_req_5knb4y86",
+      "role": "skeptic",
+      "provider": "nightshift",
+      "requestedModel": "local-runtime/nemotron-mini-4b-instruct-q4-k-m",
+      "responseModel": "local-runtime/nemotron-mini-4b-instruct-q4-k-m",
+      "startedAt": "2026-10-27T13:29:08.064Z",
+      "latencyMs": 8041,
+      "inputTokens": 447,
+      "outputTokens": 63,
+      "reportedCostUsd": 0,
+      "status": "completed"
+    }
+  ],
+  "dataLayerReceipts": [
+    {
+      "provider": "Zetaris",
+      "status": "verified",
+      "actual": true,
+      "queriedAt": "2026-10-27T13:29:07.545Z",
+      "sourceAsOf": "2026-07-31",
+      "payloadHash": "b68fe0716ddb49d14d05557984eddce107640156d852fb880cc5dbd64a04a934"
+    },
+    {
+      "provider": "Zetaris",
+      "status": "not_applicable",
+      "actual": false,
+      "queriedAt": null,
+      "sourceAsOf": null,
+      "payloadHash": null
+    },
+    {
+      "provider": "Zetaris",
+      "status": "not_applicable",
+      "actual": false,
+      "queriedAt": null,
+      "sourceAsOf": null,
+      "payloadHash": null
+    }
+  ],
+  "memory": {
+    "engine": "Meterless H-MEM",
+    "reused": true,
+    "count": 1,
+    "contextPresent": true,
+    "historical": true,
+    "untrusted": true,
+    "currentFinancialEvidence": false
+  },
+  "uiChecks": {
+    "readinessSummary": true,
+    "nativeDeliveryReceipt": true,
+    "concreteModelReceipt": true,
+    "historicalContextExpandedAndLabeled": true,
+    "phoneWidth": 390,
+    "phoneHorizontalOverflow": false,
+    "defaultViewportRestored": true,
+    "restoredViewport": {
+      "width": 1280,
+      "height": 720,
+      "pageWidth": 1280
+    }
+  },
+  "hosting": {
+    "deployedAt": "2026-10-27T13:39:28.337Z",
+    "url": "https://thesis-investing.web.app",
+    "version": "sites/thesis-investing/versions/3e01dc9369b6ef25",
+    "release": "sites/thesis-investing/releases/1793108368337000",
+    "files": 5
+  },
+  "build": {
+    "typecheck": "passed",
+    "webBuild": "passed",
+    "javascript": "index-CvaydcMF.js",
+    "stylesheet": "index-O_1xxCJF.css"
+  },
+  "precedingFailure": {
+    "status": "incomplete",
+    "code": "source_unavailable",
+    "modelCalls": 0,
+    "sourcesWithheld": true,
+    "retainedAsPrivateQAOnly": true
+  },
+  "captures": [
+    {
+      "file": "/Users/shivamgupta/Documents/Codex/2026-10-27/can-we-build-something-to-help-2/outputs/submission/platform-demo-captures/source-overview.jpg",
+      "capturedAt": "2026-10-27T13:44:55.956Z",
+      "sha256": "7b36a1b9806d90d3d2118a899b887850eb7a223e6a647908ea323a0c0182246e",
+      "width": 1280,
+      "height": 720,
+      "pageWidth": 1280,
+      "javascript": [
+        "https://thesis-investing.web.app/assets/index-CvaydcMF.js"
+      ],
+      "kind": "Actual browser screenshot",
+      "retouched": false
+    },
+    {
+      "file": "/Users/shivamgupta/Documents/Codex/2026-10-27/can-we-build-something-to-help-2/outputs/submission/platform-demo-captures/zetaris-sources.jpg",
+      "capturedAt": "2026-10-27T13:44:14.097Z",
+      "sha256": "6a56e3f179431520e82e60a14fd91f762462da2ac3e7201186fda5269ecdaa95",
+      "width": 1280,
+      "height": 720,
+      "pageWidth": 1280,
+      "javascript": [
+        "https://thesis-investing.web.app/assets/index-CvaydcMF.js"
+      ],
+      "kind": "Actual browser screenshot",
+      "retouched": false
+    },
+    {
+      "file": "/Users/shivamgupta/Documents/Codex/2026-10-27/can-we-build-something-to-help-2/outputs/submission/platform-demo-captures/nvidia-receipt.jpg",
+      "capturedAt": "2026-10-27T13:44:14.715Z",
+      "sha256": "f1242675f6de91a52a69a01625ab754138ab4acf722fd5684ddb8673944942a0",
+      "width": 1280,
+      "height": 720,
+      "pageWidth": 1280,
+      "javascript": [
+        "https://thesis-investing.web.app/assets/index-CvaydcMF.js"
+      ],
+      "kind": "Actual browser screenshot",
+      "retouched": false
+    },
+    {
+      "file": "/Users/shivamgupta/Documents/Codex/2026-10-27/can-we-build-something-to-help-2/outputs/submission/platform-demo-captures/historical-context.jpg",
+      "capturedAt": "2026-10-27T13:44:13.482Z",
+      "sha256": "205c7933ea9b9abe77be1bb3134e261c634d59468a8b4da2469b90d6adf311a8",
+      "width": 1280,
+      "height": 720,
+      "pageWidth": 1280,
+      "javascript": [
+        "https://thesis-investing.web.app/assets/index-CvaydcMF.js"
+      ],
+      "kind": "Actual browser screenshot",
+      "retouched": false
+    },
+    {
+      "file": "/Users/shivamgupta/Documents/Codex/2026-10-27/can-we-build-something-to-help-2/outputs/submission/platform-demo-captures/phone-historical-context.jpg",
+      "capturedAt": "2026-10-27T13:46:51.456Z",
+      "sha256": "a3fbb9396209b13bc29316507dc862762e39a99ea6516e864e993c47c72467c7",
+      "width": 390,
+      "height": 844,
+      "pageWidth": 390,
+      "javascript": [
+        "https://thesis-investing.web.app/assets/index-CvaydcMF.js"
+      ],
+      "kind": "Actual browser screenshot",
+      "retouched": false
+    },
+    {
+      "file": "/Users/shivamgupta/Documents/Codex/2026-10-27/can-we-build-something-to-help-2/outputs/submission/platform-demo-captures/phone-nvidia-receipt.jpg",
+      "capturedAt": "2026-10-27T13:46:51.974Z",
+      "sha256": "06024b8d72227e4c5d066a6ab95d11da5ef8f9dd0f338b2fd7ce260c360128f2",
+      "width": 390,
+      "height": 844,
+      "pageWidth": 390,
+      "javascript": [
+        "https://thesis-investing.web.app/assets/index-CvaydcMF.js"
+      ],
+      "kind": "Actual browser screenshot",
+      "retouched": false
+    }
+  ],
+  "privacy": "This metadata omits UIDs, emails, owner hashes, raw historical text and private exports. The captures show only the illustrative AAPL history, explicitly labeled historical and untrusted.",
+  "continuousRecordingClaimed": false,
+  "modelCallsForFinalCapture": 0,
+  "sourceHashes": {
+    "components/thesis-platform.tsx": "31ac8a9b98eb5c99d432a0079a441e96752af2439ed9ff61bb24080eb860ac6d",
+    "app/platform.css": "ceb25adf0cced8e67137023f1668a064c9db3e8f7bf07c7b68837083f214a781",
+    "lib/client/firebase-auth.ts": "45b979fbeab506c326277625e491ee79c0e2b160ffa1d8433f958fc7fb7ed197"
+  }
+}

@@ -1,0 +1,204 @@
+{
+  "testedAt": "2026-10-27T10:51:13.816831+00:00",
+  "environment": "Real Firebase anonymous identities and the actual platform API on loopback port 5198 through port 5199, with the named Firestore store. Disposable UI records only. A temporary local fault proxy injected the explicitly identified bootstrap outage.",
+  "source": {
+    "components/thesis-platform.tsx": "a10ec9dd3c6c26e4d701ace9e7ae86aa778e5bf902bbea24593c546b7d160417",
+    "app/platform.css": "3a653095697ea9bf939cb9a0a0ae305b3cee4482659e7dcbdd539b19c27610cd",
+    "lib/client/firebase-auth.ts": "45b979fbeab506c326277625e491ee79c0e2b160ffa1d8433f958fc7fb7ed197"
+  },
+  "passed": [
+    {
+      "area": "Portfolio ledger",
+      "evidence": "Created AAPL opening BUY of2units at100USD, then edited unit price to105 and fees to1. UI showed211USDcost basis and105.50USDaverage cost after server bootstrap and reload. No quote or market value was fabricated."
+    },
+    {
+      "area": "Markets",
+      "evidence": "24listing metadata records across four regions. Searchable Technology filter plus US-only region selection returned3instruments. Quotes remained unavailable without an entitled source."
+    },
+    {
+      "area": "Watchlist",
+      "evidence": "Added AAPL and saved a clearly marked disposable research note through the actual API. Instrument drawer changed from Watch to Watching after bootstrap."
+    },
+    {
+      "area": "Deadline plan",
+      "evidence": "Four-step wizard created an INR100000,24-month firm home goal with20000 emergency reserve. Actual server result allocated80000 to deadline reserve and20000 to immediate reserve, conditional, without a selected deposit product or invented yield."
+    },
+    {
+      "area": "Alternative and missing data",
+      "evidence": "Adjusted to a flexible60-month General wealth goal. Result was needs_data with no accepted market candidate, visible optional-AI-unconfigured state, four candidate exclusions and four unavailable source checks."
+    },
+    {
+      "area": "Durable jobs",
+      "evidence": "Observed actual queued/running metadata and final completed plan in Agent runs. Reopened nested PlatformJob.result as a plan. Fixed a completion-history omission found in this flow."
+    },
+    {
+      "area": "Settings",
+      "evidence": "NVIDIA is the default and unconfigured. Actual Nightshift operator catalog discovery returned account-listed model IDs, labeled compatibility unverified. No inference check or model assignment was claimed."
+    },
+    {
+      "area": "Data routing",
+      "evidence": "Saved Alpha Vantage as explicit history source, saw server reload/saved state, then restored global inheritance. No entitlement checkbox was assumed."
+    },
+    {
+      "area": "Masked key",
+      "evidence": "Saved only the explicitly fake disposable OpenAI test value ending1234. UI reported Key saved, not inference checked. No provider request was sent with that value."
+    },
+    {
+      "area": "News",
+      "evidence": "Real GDELT attempt returned unavailable. UI retained actual source label and empty state, with no generated replacement headlines."
+    },
+    {
+      "area": "Responsive",
+      "evidence": "Visually inspected1366x900 desktop Markets,768x1024 tablet Portfolio/Settings,390x844 phone Portfolio/Settings/Plan. DOM measured page width exactly768 and390 at those viewports, with no horizontal page overflow."
+    },
+    {
+      "area": "Keyboard",
+      "evidence": "Observed mobile navigation opening with first control focused and Escape restoring focus to its menu trigger. Wizard advances focus and scrolls to the next step heading."
+    },
+    {
+      "area": "Google cancellation",
+      "evidence": "Cancelled the rejected pre-fix Firebase handler popup. Reload still showed the original211USDdisposable ledger, confirming that failed entry did not discard the guest workspace."
+    },
+    {
+      "area": "In-app destructive confirmations",
+      "evidence": "Replaced all four window.confirm calls in the production platform component: transaction deletion, workspace erasure, AI-key removal and data-key removal. Actual transaction dialog was keyboard-cancelled with Escape. Its disposable 123 USD record remained, and focus returned to the row Delete button. Initial focus was the safe Close dialog control."
+    },
+    {
+      "area": "Anonymous identity reset during bootstrap failure",
+      "evidence": "In an isolated IAB guest, recorded one AAPL BUY for 123 USD and saved only a fake OpenAI test value ending 5678, without a provider call. Used the in-app account-erasure confirmation. The actual DELETE succeeded and the identity changed. A 5-second delayed bootstrap 503 exposed only clean loading/error UI, with no previous portfolio or provider settings. Retry loading was captured. After removing the fault and retrying, the new guest showed Transactions 0, cost basis 0 USD and an unconfigured OpenAI key field."
+    },
+    {
+      "area": "Post-fix isolated Google cancellation",
+      "evidence": "Started Continue with Google from the verified empty IAB guest. No Google popup was exposed in that browser tab inventory. The attempt eventually displayed Google sign-in was cancelled. Your workspace is unchanged. Reload retained the private guest and zero transactions. No credentials, consent, account link, Google workspace or merge was accessed."
+    }
+  ],
+  "unverified": [
+    {
+      "area": "Google SSO",
+      "reason": "Root independently verified the corrected auth-domain referrer and handler API 200. Post-fix IAB entry exposed no chooser and ended in cancellation. Native Codex inspection was explicitly disallowed by the computer-use safety boundary and was not retried through another route. No full Google sign-in, consent, linked-account collision, real Google-to-Google switch or workspace merge was completed. Shared Chrome was left untouched while another input workflow was active."
+    },
+    {
+      "area": "Entitled source scan",
+      "reason": "No entitled market key was provided. Scan disabled state was reviewed; live factors/history results were not exercised in UI. Parent owns backend factor/adapter tests."
+    },
+    {
+      "area": "TradingView",
+      "reason": "Observed a blank pre-fix embed. Fixed StrictMode initialization, official sizing and load-based readiness with explicit timeout fallback. Successful post-fix chart content was not visually confirmed."
+    },
+    {
+      "area": "News article timestamps",
+      "reason": "Nullable index-time rendering is implemented, but the real news source returned unavailable, so no live article timestamp view was exercised."
+    },
+    {
+      "area": "Existing Google account switch during outage",
+      "reason": "The actual failure check covered disposable anonymous-identity reset. Switching between existing signed-in Google accounts was not exercised and is not implied by that result."
+    }
+  ],
+  "screenshots": {
+    "status": "Actual UI PNG captures, without reconstruction or retouching. Files 01 and 02 are from the earlier Chrome guest; files 03 through 10 are from the separate disposable IAB guest. File 06 captures the controlled 503; file 07 captures clean Retry loading.",
+    "files": [
+      {
+        "path": "evidence/platform-ui/01-disposable-ledger-before-reset.png",
+        "width": 390,
+        "height": 844,
+        "sha256": "11810f34fe8e77f8d5bad1849277085047090e11830a1585f5b1e706c21fa2d2",
+        "originalCaptureSha256": "de97894506f1cd8b2cd7382923aaa533a1b7007e4153498b9d8cef95e48e77ed"
+      },
+      {
+        "path": "evidence/platform-ui/02-restored-desktop-before-reset.png",
+        "width": 1512,
+        "height": 805,
+        "sha256": "5aa6ea88198816cfecdae04070575ab8ebef09a339f737a14fb3698e84dd3e22",
+        "originalCaptureSha256": "4b51cd8d24c33663ae626b7817c0fdf4a51a4cf83febc594d1704a3bd22bae80"
+      },
+      {
+        "path": "evidence/platform-ui/03-in-app-confirmation.png",
+        "width": 1280,
+        "height": 720,
+        "sha256": "efb10cce144732c5868f4d695d9229e34e28115dfceb85b4730c6807409146ad",
+        "originalCaptureSha256": "d7ef047fb1e9e2a6ff99a94d89a90b5dfc6820c3df9cc53d0d53633c9c59ca4b"
+      },
+      {
+        "path": "evidence/platform-ui/04-isolated-disposable-settings.png",
+        "width": 1280,
+        "height": 720,
+        "sha256": "83a7f7b46d65ad8285bf5e3568edd741afd74b528ef63f995713a6d9340dc4c7",
+        "originalCaptureSha256": "1c7cb72cfc442ecff5e89372b42e0b45750822a58106597e3aa7bc373e40db32"
+      },
+      {
+        "path": "evidence/platform-ui/05-private-guest-erasure-dialog.png",
+        "width": 1280,
+        "height": 720,
+        "sha256": "9f592b28dc1d07e81cc9e1492bc031f7859ed036ad7add864d88fb32b1b84007",
+        "originalCaptureSha256": "dec9fa3fdd54c5c25233d6d8349aa2fe7ef2c7beb41fff17e3fb2ccbae8cc2ce"
+      },
+      {
+        "path": "evidence/platform-ui/06-identity-change-cleared-state.png",
+        "width": 1280,
+        "height": 720,
+        "sha256": "89e35d0c1e7388023c070bc45d3f61ff2022f655a913d4e923d82cd12846fdf5",
+        "originalCaptureSha256": "1fdb5f8c78e28761369faf314943900620165a6b7864471dcc75831810417dea"
+      },
+      {
+        "path": "evidence/platform-ui/07-new-identity-retry-loading.png",
+        "width": 1280,
+        "height": 720,
+        "sha256": "fa4f936199b8e4dcbf85d43cbec0866b06667ea3edad7d949cf942b050345acd",
+        "originalCaptureSha256": "b6f1a6c16a8574d6ddddd95c4765d397b3346ea207c2a961bb2bed2622ee3596"
+      },
+      {
+        "path": "evidence/platform-ui/08-recovered-empty-private-portfolio.png",
+        "width": 1280,
+        "height": 720,
+        "sha256": "ca27c4e5ddd626c97e9ec4e4b599c15e69a72d17b4272d94ea9935c1b6170d36",
+        "originalCaptureSha256": "b776c8d16c29ff6469cc827bfa5eb852932632929a395001e875f27f581ed352"
+      },
+      {
+        "path": "evidence/platform-ui/09-recovered-empty-provider-settings.png",
+        "width": 1280,
+        "height": 720,
+        "sha256": "525f354528a7e50e0b00cb36c1eb7a443cef5d0c69d3441592d8b0d89916194b",
+        "originalCaptureSha256": "4b78d5e5fbe0f5425eb93c81a5ae1f88cae75ff65e92816e336f3c69d9b6966d"
+      },
+      {
+        "path": "evidence/platform-ui/10-isolated-google-entry-cancelled.png",
+        "width": 1280,
+        "height": 720,
+        "sha256": "7f84c3c0a8fb123651bbb4b7a8d88294454fa4f906f40fc8f792e80f2c9637e0",
+        "originalCaptureSha256": "a9c31c4ed8cf7437053bedeaf2a7aa3903da63b79da511db378258cb10832a77"
+      }
+    ],
+    "encoding": "The browser returned JPEG bytes. Original capture bytes are retained in work/frontend-review/capture-originals. Deliverables were re-encoded as actual PNG without cropping, resizing, reconstruction or retouching."
+  },
+  "cleanup": {
+    "normalViteSession": 52824,
+    "normalProxy": "127.0.0.1:5198 -> 127.0.0.1:5199",
+    "temporaryProxyStopped": true,
+    "temporary5201ViteStopped": true,
+    "remainingLocalTab": "Earlier Chrome tab 2022764977 may remain. The isolated IAB QA tab was closed after verifying its workspace was empty.",
+    "remainingTestData": "The isolated IAB fixture trade and fake key ending 5678 were erased and the recovered workspace verified empty. The earlier Chrome guest may still contain one 211 USD disposable trade, one watchlist note, two plans and the fake key ending 1234, with its stale native confirmation pending. Shared Chrome was not touched during competing input. No real user holdings or Google workspace were erased.",
+    "viewport": "The earlier Chrome-specific override was cleared with actual measured width/pageWidth 1512. Current IAB screenshots use its unmodified 1280 by 720 viewport.",
+    "temporaryFaultViteStopped": true
+  },
+  "reviewGate": "No new recording, deck publication, upload or submission work resumed. App flow still requires user review/feedback before media production.",
+  "buildChecks": {
+    "typecheck": "passed: npx tsc --noEmit",
+    "webBuild": "passed: npx vite build --config vite.web.config.ts, Vite 8.0.13",
+    "webJS": "553.60 kB minified / 162.02 kB gzip",
+    "webCSS": "302.06 kB minified / 52.17 kB gzip",
+    "warning": "Vite emits a non-fatal single JavaScript chunk over 500 kB warning. No code split was introduced during this bounded freeze."
+  },
+  "resumedQA": {
+    "at": "2026-10-27T10:33:40.152497+00:00",
+    "nativeRecovery": "Cancelled the original stale5198confirmation, recovering Chrome APIs. A repeated reset attempt was stopped before acceptance because another Chrome input stream changed the native tab picker. No Google login or workspace merge occurred.",
+    "screenshotFiles": [
+      "evidence/platform-ui/01-disposable-ledger-before-reset.png",
+      "evidence/platform-ui/02-restored-desktop-before-reset.png"
+    ],
+    "restoredViewport": {
+      "width": 1512,
+      "pageWidth": 1512
+    },
+    "remainingBoundary": "Historical pre-modal attempt only. Superseded by the successful isolated IAB privacy reset/failure/recovery check described above. The old shared Chrome native confirmation may still need cancellation when that browser is idle."
+  }
+}

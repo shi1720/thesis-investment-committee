@@ -10,7 +10,7 @@ run('npm', ['run', 'typecheck']);
 run('npm', ['test']);
 run('npm', ['run', 'build:web']);
 run('gcloud', ['builds', 'submit', `--project=${project}`, '--config=cloudbuild.api.yaml', `--substitutions=_IMAGE=${image}`, '--quiet']);
-run('gcloud', ['run', 'deploy', 'thesis-api', `--project=${project}`, '--region=us-central1', `--image=${image}`, `--service-account=thesis-runtime@${project}.iam.gserviceaccount.com`, '--allow-unauthenticated', '--memory=512Mi', '--cpu=1', '--concurrency=16', '--timeout=600', '--max-instances=2', '--min-instances=0', `--env-vars-file=${environment}`, '--set-secrets=NIGHTSHIFT_API_KEY=thesis-provider-gateway:1,ZETARIS_API_KEY=thesis-provider-gateway:1', '--quiet']);
+run('gcloud', ['run', 'deploy', 'thesis-api', `--project=${project}`, '--region=us-central1', `--image=${image}`, `--service-account=thesis-runtime@${project}.iam.gserviceaccount.com`, '--allow-unauthenticated', '--memory=512Mi', '--cpu=1', '--concurrency=16', '--timeout=900', '--max-instances=2', '--min-instances=0', `--env-vars-file=${environment}`, '--set-secrets=NIGHTSHIFT_API_KEY=thesis-provider-gateway:1,ZETARIS_API_KEY=thesis-provider-gateway:1,THESIS_SETTINGS_KEY=thesis-settings-master:1,THESIS_ZETARIS_LAYER_KEY=thesis-provider-gateway:1', '--quiet']);
 // Hosting release follows a healthy API deployment, never races its creation.
 run('node', ['scripts/deploy-firebase-hosting.mjs']);
 run('npm', ['run', 'test:firebase']);

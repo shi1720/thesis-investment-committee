@@ -1,0 +1,36 @@
+{
+  "schema": "thesis.zetaris.bounded-concurrency-proof.v1",
+  "verifiedAt": "2026-10-27T13:14:55.949Z",
+  "scope": "Three concurrent fresh-owner public SEC cached-snapshot observations against an isolated loopback gateway using the new bounded admission queue and actual native Zetaris SQL. No model calls. This does not itself verify hosted browser execution.",
+  "sourceMode": "cached_snapshot",
+  "modelCalls": 0,
+  "activeLimit": 2,
+  "pendingLimit": 16,
+  "sourceWaitLimitMs": 30000,
+  "results": [
+    {
+      "index": 0,
+      "httpStatus": 200,
+      "elapsedMs": 16209,
+      "status": "verified",
+      "payloadHash": "1158b074720b4869627fe654d59ba7e16e0276ff68f018b31f3a26b54e51346f",
+      "diagnostics": []
+    },
+    {
+      "index": 1,
+      "httpStatus": 200,
+      "elapsedMs": 16157,
+      "status": "verified",
+      "payloadHash": "1158b074720b4869627fe654d59ba7e16e0276ff68f018b31f3a26b54e51346f",
+      "diagnostics": []
+    },
+    {
+      "index": 2,
+      "httpStatus": 200,
+      "elapsedMs": 22256,
+      "status": "verified",
+      "payloadHash": "1158b074720b4869627fe654d59ba7e16e0276ff68f018b31f3a26b54e51346f",
+      "diagnostics": []
+    }
+  ]
+}

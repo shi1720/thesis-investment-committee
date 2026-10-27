@@ -1,0 +1,45 @@
+{
+  "schema": "thesis.sec-public-source.v2",
+  "testedAt": "2026-10-27T11:58:46.259Z",
+  "syntheticInputs": false,
+  "dataMode": "cached_snapshot",
+  "status": "partial",
+  "issuer": {
+    "cik": "0000320193",
+    "symbol": "AAPL",
+    "name": "Apple Inc."
+  },
+  "sourceUrl": "https://data.sec.gov/api/xbrl/companyfacts/CIK0000320193.json",
+  "originalRequestTimestamp": "2026-10-27T06:07:06.496229+00:00",
+  "exactResponseCompletionTimestamp": null,
+  "sourceAsOf": "2026-07-31",
+  "fiscalPeriod": "2026-06-27",
+  "metricAvailability": {
+    "pe": false,
+    "priceToBook": false,
+    "roe": true,
+    "operatingMargin": true,
+    "debtToEquity": true,
+    "revenueGrowth": true,
+    "dividendYield": false,
+    "marketCap": false,
+    "eps": true
+  },
+  "numericFactCount": 11,
+  "filingCount": 30,
+  "refresh": {
+    "status": "unavailable",
+    "attemptedAt": "2026-10-27T11:48:16.981Z",
+    "warnings": [
+      "SEC access was limited. No retry or bypass was attempted."
+    ]
+  },
+  "warnings": [
+    "Fresh SEC refresh is unavailable; using a visibly dated cached snapshot.",
+    "Dated cached public SEC snapshot. This is not a fresh or live fetch.",
+    "Official SEC reported facts are dated statements, not current market quotes or independently audited product calculations.",
+    "Quote-dependent valuation, capitalization and dividend-yield fields remain unavailable. Fiscal periods and filing publication dates are separate.",
+    "SEC access was limited. No retry or bypass was attempted."
+  ],
+  "notice": "Actual previously captured public SEC facts, explicitly dated cached snapshot. Fresh access was limited. No quote, market return, vendor trial data, private key, portfolio holding or user preference is included. Zetaris round-trip requires its separate receipt."
+}

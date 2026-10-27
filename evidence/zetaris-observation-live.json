@@ -1,0 +1,59 @@
+{
+  "schema": "thesis.zetaris-observation-actual-proof.v1",
+  "verifiedAt": "2026-10-27T12:46:24.438Z",
+  "scope": "Actual bounded owner-scoped stage/register/SchemaStore SELECT readback of dated SEC-only cached snapshot; no vendor prices or investor preferences in public proof.",
+  "sourceMode": "cached_snapshot",
+  "sourceAsOf": "2026-07-31",
+  "receipts": [
+    {
+      "provider": "Zetaris",
+      "status": "verified",
+      "actual": true,
+      "queriedAt": "2026-10-27T12:46:17.016Z",
+      "sourceAsOf": "2026-07-31",
+      "message": "Actual normalized source data was staged and queried through the owner-scoped Zetaris view.",
+      "ownerHash": "d8bab7337b5a5a35a3cd187dc975795a3e32cafdfa57e767db5dfd657864caae",
+      "recordKey": "4416475e89302b5ab1c1b2428e56ef2bc693a5d47ca59430f7e0d2e53f37d24d",
+      "payloadHash": "1158b074720b4869627fe654d59ba7e16e0276ff68f018b31f3a26b54e51346f",
+      "view": "thesis_owner_d8bab7337b5a5a35a3cd187dc975795a.observations"
+    },
+    {
+      "provider": "Zetaris",
+      "status": "verified",
+      "actual": true,
+      "queriedAt": "2026-10-27T12:46:22.481Z",
+      "sourceAsOf": "2026-07-31",
+      "message": "Actual normalized source data was staged and queried through the owner-scoped Zetaris view.",
+      "ownerHash": "d8bab7337b5a5a35a3cd187dc975795a3e32cafdfa57e767db5dfd657864caae",
+      "recordKey": "4416475e89302b5ab1c1b2428e56ef2bc693a5d47ca59430f7e0d2e53f37d24d",
+      "payloadHash": "1158b074720b4869627fe654d59ba7e16e0276ff68f018b31f3a26b54e51346f",
+      "view": "thesis_owner_d8bab7337b5a5a35a3cd187dc975795a.observations"
+    }
+  ],
+  "erasure": {
+    "at": "2026-10-27T12:43:35.633Z",
+    "scope": "Actual owned source-file erasure and durable stale-operation fence on the actual local Zetaris bridge. Public dated SEC facts only, no vendor observations or investor preferences.",
+    "before": {
+      "provider": "Zetaris",
+      "status": "verified",
+      "actual": true,
+      "queriedAt": "2026-10-27T12:43:32.243Z",
+      "sourceAsOf": "2026-07-31",
+      "message": "Actual normalized source data was staged and queried through the owner-scoped Zetaris view.",
+      "ownerHash": "04c7e2ff4c2759f53572e4679c17218c351adb4809537186122a8c14bdc0bff6",
+      "recordKey": "4416475e89302b5ab1c1b2428e56ef2bc693a5d47ca59430f7e0d2e53f37d24d",
+      "payloadHash": "1158b074720b4869627fe654d59ba7e16e0276ff68f018b31f3a26b54e51346f",
+      "view": "thesis_owner_04c7e2ff4c2759f53572e4679c17218c.observations"
+    },
+    "eraseAcknowledged": true,
+    "staleOperationRejected": true,
+    "remainingSourceFiles": 0,
+    "durableFencePresent": true,
+    "gatewayRestartStaleRejected": true,
+    "restartTestAt": "2026-10-27T12:50:30.528Z"
+  },
+  "limitations": [
+    "Delivery hash/owner identity is verified; financial truth and source freshness are not independently attested.",
+    "Source/temporary files are deleted and old operations fenced; empty metadata, hash-only tombstone and operator/vendor audit-backup policy remain separate."
+  ]
+}

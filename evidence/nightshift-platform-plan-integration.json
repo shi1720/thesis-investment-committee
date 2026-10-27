@@ -1,0 +1,92 @@
+{
+  "verifiedAt": "2026-10-27T10:31:53.833Z",
+  "scope": "Actual authenticated native Nightshift catalog, nonce inference and seeded personal-plan critique. No market-data key or financial source was substituted.",
+  "base": "http://127.0.0.1:5199",
+  "model": "local-runtime/qwen2-5-7b-instruct-q4-k-m",
+  "catalogModels": 67,
+  "connectionReceipt": {
+    "id": "2acce1ac-dcc3-41ab-a37c-455c7d9306d8",
+    "role": "connection_test",
+    "provider": "nightshift",
+    "requestedModel": "local-runtime/qwen2-5-7b-instruct-q4-k-m",
+    "responseModel": "local-runtime/qwen2-5-7b-instruct-q4-k-m",
+    "startedAt": "2026-10-27T10:30:51.898Z",
+    "latencyMs": 16776,
+    "inputTokens": 61,
+    "outputTokens": 37,
+    "reasoningTokens": null,
+    "reportedCostUsd": 0,
+    "requestId": "chatcmpl-0decc148-7ef7-4969-839a-8c57edf2adb3",
+    "status": "completed"
+  },
+  "totalAllocated": 10000,
+  "budgetConserved": true,
+  "aiReview": {
+    "status": "failed",
+    "message": "The model failed the bounded schema and evidence checks. No invalid narrative was accepted."
+  },
+  "reportStatus": "failed",
+  "stages": [],
+  "receipts": [
+    {
+      "id": "b9351aea-3c2f-4231-8721-654215855db5",
+      "role": "planner",
+      "provider": "nightshift",
+      "requestedModel": "local-runtime/qwen2-5-7b-instruct-q4-k-m",
+      "responseModel": "local-runtime/qwen2-5-7b-instruct-q4-k-m",
+      "startedAt": "2026-10-27T10:31:17.537Z",
+      "latencyMs": 7451,
+      "inputTokens": 297,
+      "outputTokens": 237,
+      "reasoningTokens": null,
+      "reportedCostUsd": 0,
+      "requestId": "chatcmpl-2cc5c3a9-ff6e-46fa-8caf-e13557bf0921",
+      "status": "completed"
+    },
+    {
+      "id": "3e00a1cb-fd28-4bcb-b338-c572fbdd1a72",
+      "role": "fundamentals",
+      "provider": "nightshift",
+      "requestedModel": "local-runtime/qwen2-5-7b-instruct-q4-k-m",
+      "responseModel": "local-runtime/qwen2-5-7b-instruct-q4-k-m",
+      "startedAt": "2026-10-27T10:31:28.331Z",
+      "latencyMs": 9741,
+      "inputTokens": 1018,
+      "outputTokens": 250,
+      "reasoningTokens": null,
+      "reportedCostUsd": 0,
+      "requestId": "chatcmpl-179bd5bf-6a14-4905-9430-8728e603ca27",
+      "status": "invalid_output",
+      "errorCode": "unsupported_numeric_claim"
+    },
+    {
+      "id": "d0ab6760-7e4a-4629-af29-8881175832fc",
+      "role": "fundamentals",
+      "provider": "nightshift",
+      "requestedModel": "local-runtime/qwen2-5-7b-instruct-q4-k-m",
+      "responseModel": "local-runtime/qwen2-5-7b-instruct-q4-k-m",
+      "startedAt": "2026-10-27T10:31:41.428Z",
+      "latencyMs": 6952,
+      "inputTokens": 1061,
+      "outputTokens": 212,
+      "reasoningTokens": null,
+      "reportedCostUsd": 0,
+      "requestId": "chatcmpl-b220fdf1-ca01-41a8-a988-db13e90297d9",
+      "status": "invalid_output",
+      "errorCode": "unsupported_forecast"
+    }
+  ],
+  "persistedJobReceipts": 3,
+  "limitations": [
+    "Qualitative model analysis is unverified. Citation membership checks do not establish factual entailment.",
+    "Historical performance does not predict returns. Portfolio weights and risk constraints remain deterministic.",
+    "Source excerpts and user notes are untrusted context. Search snippets are not independently verified.",
+    "Actual provider charges may be unknown; token and call limits do not guarantee a monetary ceiling.",
+    "The mandate does not provide specific symbols, and no current market facts are available. This poses a significant limitation in conducting a quantitative analysis.",
+    "The lack of a return target or product rate makes it challenging to align the proposed allocation with specific financial objectives."
+  ],
+  "error": {
+    "code": "model_validation",
+    "message": "The model failed the bounded schema and evidence checks. No invalid narrative was accepted."
+  }
+}

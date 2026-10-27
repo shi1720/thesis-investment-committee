@@ -1,0 +1,6 @@
+import test from 'node:test';
+import assert from 'node:assert/strict';
+import {reserveCredits} from '../server/platform/quota';
+test('rolling quota cannot burst across a wall-clock minute boundary',()=>{const first=reserveCredits({},59900,8,{minute:8,day:800});assert.ok(first.allowed);const next=reserveCredits(first.state!,60100,1,{minute:8,day:800});assert.equal(next.allowed,false);assert.equal(next.retryAfterSeconds,60);assert.equal(reserveCredits(first.state!,119901,1,{minute:8,day:800}).allowed,true);});
+test('daily quota survives empty rolling-minute windows and resets at UTC midnight',()=>{const first=reserveCredits({},86300000,5,{minute:8,day:5});assert.ok(first.allowed);assert.equal(reserveCredits(first.state!,86390000,1,{minute:8,day:5}).allowed,false);const reset=reserveCredits(first.state!,86400001,1,{minute:8,day:5});assert.ok(reset.allowed);assert.equal(reset.state!.dayCount,1);});
+test('credit-weighted endpoints reserve their full cost, not one nominal request',()=>{const first=reserveCredits({},100000,50,{minute:55,day:100});assert.ok(first.allowed);const next=reserveCredits(first.state!,100010,6,{minute:55,day:100});assert.equal(next.allowed,false);assert.equal(first.state!.dayCount,50);});

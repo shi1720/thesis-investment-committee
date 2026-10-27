@@ -1,0 +1,37 @@
+{
+  "verifiedAt": "2026-10-27T11:32:40.738Z",
+  "base": "http://127.0.0.1:5199",
+  "checks": 26,
+  "results": [
+    "Platform health is reachable",
+    "Workspace requires a verified Firebase identity",
+    "A new workspace starts empty with NVIDIA selected",
+    "Mutations reject an unrelated web origin",
+    "Purpose-specific data sources persist and validate",
+    "Market and sector filters return real listing metadata without invented quotes",
+    "Missing market credentials produce an explicit data gap",
+    "A quantitative scan requires an explicitly entitled source",
+    "FIFO holdings, fees and realized gains reconcile without a fabricated valuation",
+    "Overselling and deleting a required acquisition are rejected",
+    "Editing an acquisition recalculates the complete ledger",
+    "Currencies remain separate until an actual FX valuation exists",
+    "Another account cannot read or modify private transactions",
+    "Watchlists persist with account isolation",
+    "Provider credentials are masked in settings responses",
+    "Workspace export includes saved records and excludes raw credentials",
+    "Deleting a provider key removes authenticated model access",
+    "Market data requires explicit entitlement confirmation and supports key deletion",
+    "Planning rejects fractional cents and incomplete market splits",
+    "Plan scheduling is durable and idempotent",
+    "Agent job results are private to their owner",
+    "An actual two-year plan reserves principal and conserves the exact budget",
+    "A full immediate-needs reserve handles zero investable budget without fictional positions",
+    "Completed plans survive a fresh workspace load",
+    "Removing a finished plan also retires its historical memory",
+    "Workspace reset removes records, plans and account credentials"
+  ],
+  "limitations": [
+    "Direct NVIDIA, OpenAI, Anthropic, Gemini and entitled stock-data inference require account keys; this suite never substitutes financial data.",
+    "Google popup sign-in and account-link collision are covered separately by browser and contract checks."
+  ]
+}

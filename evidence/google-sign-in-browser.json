@@ -1,0 +1,19 @@
+{
+  "verifiedAt": "2026-10-27T13:29:14.104Z",
+  "url": "https://thesis-investing.web.app",
+  "browser": "Chrome",
+  "scope": "Actual existing-Google-account sign-in, copy-first empty-guest merge and authenticated reload. The separate illustrated IAB portfolio was not used.",
+  "checks": {
+    "accountChooser": true,
+    "googleIdentityVisible": true,
+    "existingAccountMergeCompleted": true,
+    "authenticatedAfterReload": true,
+    "sourceGuestTrades": 0,
+    "sourceGuestRuns": 0,
+    "sourceGuestWatchlist": 0,
+    "googleIdentityDeleted": false
+  },
+  "limitations": [
+    "No password reset or credential changes were performed. No private identity values or tokens are included in this evidence."
+  ]
+}

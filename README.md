@@ -2,139 +2,65 @@
 
 **Conviction, with a counterargument.**
 
-A global stock research committee that checks your risk limits, challenges the thesis, explains rejected candidates and can decline to make a pick.
+A portfolio and investment research workspace with personal goal planning, observed market evidence, quantitative screens and specialist AI critique.
 
-**[Open the app](https://thesis-investing.web.app)**. A private guest workspace opens automatically. No brokerage login is required.
+[Open Thesis](https://thesis-investing.web.app). A private guest workspace opens automatically. Connect Google to keep access across browsers and devices.
 
-Built by **Shivam Gupta**, with AI-assisted engineering. Submission track: **Reasoning Architecture**.
+## The application
 
-![Thesis research workspace](evidence/ui-results.png)
+- Record buys and sells, edit transactions, reconcile FIFO or average acquisition cost, and inspect realized gains. Currency groups remain separate without an actual FX valuation. Missing or stale quotes are withheld from aggregate valuations.
+- Explore US, India, China and UAE listings. Choose multiple sectors, search provider listings and save a watchlist. The initial catalog contains verified listing metadata, not fabricated prices or fundamentals.
+- View dated API history or a separately attributed official TradingView chart. Embedded chart data is never extracted into AI, portfolio P&L or allocation calculations.
+- Run an explicit bounded quantitative cohort scan. Value, quality, price momentum excluding the latest month, and low-volatility ranks require sufficient dated peers. A composite requires all four factors. Missing descriptors remain unavailable.
+- Review dated public SEC filing facts for supported snapshots through actual owner-scoped Zetaris readback. A managed NVIDIA Nemotron countercheck runs through Nightshift against a deterministic source plan. Missing quotes/history stay binding, and official H-MEM recalls historical context separately.
+- With compatible configured models and source access, run planner, fundamentals, quantitative, news, skeptic and evaluator stages with actual model calls, bounded source tools, source IDs, receipts, critique and validation. Historical memory uses the official Meterless H-MEM engine with account namespaces and erasure generations.
+- Build a plan from amount, country, currency, goal, horizon, loss comfort and optional market preferences. Deterministic sizing conserves every currency cent, applies position/sector/market limits and checks observed risk. An optional AI critique cannot change weights. A firm essential goal within two years reserves principal instead of forcing equity exposure.
+- Configure NVIDIA, OpenAI, Anthropic, Gemini or the operator Nightshift route. NVIDIA is the default selection. Authenticated model catalogs are discovered dynamically; actual inference testing is a separate action. Assign providers and models by agent role.
+- Configure entitled Finnhub, Twelve Data or Alpha Vantage feeds, with explicit sources by purpose. Keys are encrypted per account. Provider quotas, missing entitlements and unavailable histories are surfaced rather than replaced with synthetic data. Optional Brave or Tavily enables general web search. Public GDELT headlines keep index dates distinct from publication dates.
 
-## What you can do
+No automatic trading, deposit yield, expected return or eligibility to buy a foreign security is assumed. Allocation applies to the new lump sum, not a full portfolio rebalance. Recorded trades require broker reconciliation for corporate actions and unrecorded income.
 
-- Select US, India, China and UAE research universes, an annual return aspiration, annualized-volatility comfort, drawdown tolerance, horizon, capital and reporting currency.
-- Run a typed committee: planner, data steward, quantitative analyst, fundamental analyst, skeptic, risk guardian, evaluator and memory.
-- Inspect actual critique/revision branches and hard exclusions. A high fit score never bypasses a risk gate.
-- Compare up to three companies, inspect bull and bear cases, review stress assumptions and follow the source register.
-- Save a thesis with an invalidation condition, edit notes, reopen prior research, and export a print-ready dossier or JSON.
-- Recall prior decisions through the **official Meterless H-MEM engine**, while recalculating current risk from prices.
-- Use connected research with **Zetaris** as the financial-source data layer and **Meterless Nightshift** as the primary and sole connected AI provider.
+## Try the workflow
 
-There is no trade execution, brokerage connection or promise of future returns. This is research support, not an audited investment advisory service.
+1. Open the app in a private guest workspace. In Investment plan, choose a home goal, USD10,000, India residence,24 months and a firm deadline. Review the risk and optional market choices, then create the plan. Expect a conditional principal reserve with exact budget conservation, not invented stock returns or deposit rates.
+2. Add an illustrative manual holding only if desired. A user-entered purchase price is recorded cost, not a current market quote. The separate TradingView chart retains attribution.
+3. Open AAPL in Markets and choose Review source evidence. The completed source review shows original-dated SEC snapshot facts, a verified Zetaris read, the actual Nightshift/NVIDIA receipt and binding missing quote/history. Repeat after completion to inspect relevant historical context. Managed reviews depend on the operator runtime and are rate limited.
+4. For broader research or quantified allocations, configure compatible model accounts and appropriately entitled market-data keys in Settings. Catalog discovery does not establish inference capability. Source outages and insufficient histories remain visible.
 
-## Start from a clean checkout
+## Run and deploy
 
-Requirements: Node.js 24 LTS (24.12+) and npm. No sponsor credentials are needed for sample mode.
+Node.js 24.12 or newer is required.
 
 ```bash
 npm ci
-npm run setup
-npm run dev
-```
-
-Open the **Local URL printed by the server**. Choose **Sign in**. The portable development server simulates a single synthetic local account, `seedy@sites.test`. It strips caller-supplied identity headers. Hosted sign-in belongs to the Sites platform, and the development shim is absent from production builds.
-
-If another project uses the default port:
-
-```bash
-npm run dev -- --port 5188
-```
-
-`npm run setup` builds the Worker and applies each checked-in local D1 migration once, tracking applied file hashes in ignored local state. Subsequent runs skip unchanged migrations. Local and hosted databases are separate.
-
-## A reproducible walkthrough
-
-1. Keep the default US + India mandate: 12% return aspiration, 25% volatility, 25% historical drawdown, 36 months.
-2. Run the committee. In this synthetic fixture, two companies pass. Inspect Visa's countercase and invalidation conditions.
-3. View excluded cases. NVIDIA's illustrative high growth does not override its measured risk breaches.
-4. Open **Committee** and inspect the real rule transitions and H-MEM recall event. Sample deterministic roles identify their rule model rather than pretending an LLM ran.
-5. Save a thesis, add a note, compare companies and export the research record.
-6. Change the aspiration to 40%, volatility to 10%, drawdown to 10%. The committee abstains and makes no model request.
-7. Enable **Connected** under **Capital & preferences** only after configuring and verifying the sponsor services.
-
-All 20 sample companies use **synthetic price paths, financial inputs and catalysts**. The fixture clock is fixed for repeatable judging. Real-company investor-relations links are discovery references; they do not substantiate the synthetic numbers. This build does not establish investment performance.
-
-## Why this is an agent system
-
-The computational specialists perform separate work over shared typed state. The skeptic produces revision tasks. The planner applies those tasks to scores and statuses, and the risk guardian independently vetoes breaches. Tests demonstrate a skeptic changing the initial winning rank. Contradictory preferences branch to abstention instead of loosening the mandate.
-
-Connected mode adds an independent Nightshift qualitative critique. The evaluator checks candidate identities, citation membership, required source kinds, output schema and prohibited numerical/forecast claims. A rejected response gets one repair attempt. These controls do not establish semantic truth: model prose remains an unverified interpretation for human review. Failed generations retain their model receipts and usage accounting.
-
-H-MEM stores and retrieves account-scoped historical decisions with source provenance. Older context rotates out of the bounded active snapshot; audit entries move into separate account-scoped archives before rotation. Deleting a run clears aggregate memory and archives so deleted context cannot reappear through recall. Remaining run history can rebuild context on the next request.
-
-See [architecture](docs/architecture.md) and [research/data contract](docs/data-contract.md). Reproducible [sample mandates and complete outputs](examples/research/) include US/India, China/UAE, and a conflicting return goal.
-
-## Sponsor integration status
-
-| Technology | Working role | Evidence boundary |
-| --- | --- | --- |
-| Meterless H-MEM | Official pinned TypeScript engine, actual hybrid recall and decision memory | Automated feature tests and upstream conformance tests run without credentials |
-| Meterless Nightshift | Source-constrained skeptical research review | [Actual public-URL queued research](evidence/firebase-connected-application.json) and a fresh [Qwen review](evidence/nightshift-live.json) retain concrete model and receipt identity |
-| Zetaris | Federates price, fundamental and filing-provenance sources into `thesis.research_universe` | [Actual three-source federation](evidence/zetaris-live.json) delivered all 20 validated fixtures; the [complete public-URL run](evidence/firebase-connected-application.json) queried the view through the application |
-| NVIDIA Nemotron | Optional independent exclusion auditor through Nightshift | [Two concrete Nemotron Mini receipts](evidence/nemotron-live.json) verify the implemented feature over synthetic inputs. This standalone proof does not establish the complete connected workflow |
-
-Configuration is not verification. A real sponsor request over synthetic records remains a **sample-data demonstration**. Connected source failures do not silently turn into a successful live result.
-
-### Configure connected research
-
-```bash
-cp .env.example .dev.vars
-```
-
-Replace placeholders locally, or set environment variables through your hosting service. Never commit secrets. Put NVIDIA keys in Nightshift's Providers settings, not in Thesis.
-
-Read [sponsor setup](docs/sponsor-setup.md). Run the fixture exporter and seed a licensed Zetaris instance:
-
-```bash
-npm run fixtures:export
-npx tsx scripts/sponsor-seed.ts
-npm run sponsor:proof
-```
-
-The seed script performs explicit setup mutations against the configured instance. Review the configuration and [SQL](data/zetaris/register.sql) first. The app itself only issues bounded read-only queries against an allowlisted configured view.
-
-The Firebase application uses a narrow authenticated gateway to the operator-owned local services. The public view contains synthetic fixtures; the personal-use real-company namespace is never exposed by that gateway. The cloud sample workflow runs independently. See [Firebase deployment](docs/firebase-deployment.md).
-
-## Verification
-
-```bash
 npm run typecheck
 npm test
-npm run build
 npm run build:web
 npm run build:api
 ```
 
-For API integration tests against the local development server:
+The production application uses Firebase Hosting, Google Cloud Run, Firebase Authentication, a dedicated named Firestore database and authenticated Cloud Tasks. See [Firebase deployment](docs/firebase-deployment.md). The API requires its server environment and an application encryption key from Secret Manager. Configure personal provider keys inside Settings, never in the browser bundle or repository.
 
 ```bash
-THESIS_TEST_URL=http://127.0.0.1:5188 npm run test:api
+THESIS_CLOUD_ENV=/absolute/private/cloudrun.env.yaml npm run deploy:firebase
 ```
 
-The script uses the synthetic local account, creates identified test records and removes those records afterward. Do not run it against a real user workspace. Tests cover authentication, cross-origin mutation refusal, validated research, idempotency, saved-record identity, note persistence, reports and abstention.
+The deployment script builds, tests, deploys the API, releases Hosting and runs isolated authenticated checks against the hosted application. `npm run test:firebase` creates disposable anonymous accounts and removes their workspace data and identities afterward. `THESIS_TEST_URL` supports loopback development; `THESIS_TEST_ORIGIN` supplies its allowed web origin.
 
-For multi-account isolation checks, run the **built Worker locally** with `npm start -- --port 5190`, then use `THESIS_TEST_URL=http://127.0.0.1:5190 THESIS_TEST_TRUSTED_HEADERS=1 npm run test:api`. This test supplies synthetic platform identity headers. Never expose that raw local Worker publicly without the hosting authentication boundary.
+## Project presentation
 
-## Deployment
+[Watch the narrated walkthrough](https://www.youtube.com/watch?v=5PKiqeFUydY). [Pitch deck](submission/thesis-pitch-deck.pdf) and [editable PowerPoint](submission/thesis-pitch-deck.pptx). The narrated product walkthrough uses actual captured application views, clearly labeled illustrative inputs and a generic AI-generated voice. English captions are retained in `submission/thesis-product-demo.en.srt`.
 
-The main public deployment is **https://thesis-investing.web.app**, using Firebase Hosting, Firebase Authentication, a dedicated named Firestore database, Cloud Run and Cloud Tasks. Connected requests queue durably and the browser polls or reconnects after reload. Reports, notes, exports and deletion enforce the verified Firebase account identity.
+## Evidence and limits
 
-```bash
-THESIS_CLOUD_ENV=/absolute/private/path/cloudrun.env.yaml npm run deploy:firebase
-```
+The current source has automated finance, FX, provider-contract, encryption, planning, account-merge, memory and quota tests. Authenticated API checks exercise real Firestore persistence, ownership, ledger edits, masked settings, exact-budget plans, job polling and erasure. The evidence directory records the verification time and scope.
 
-This clean deployment script runs checks, builds a fresh Linux container, deploys the API, releases Hosting and runs isolated hosted tests. See [deployment guide](docs/firebase-deployment.md) and [backend architecture](docs/firebase-backend.md). The browser configuration key is intentionally public, restricted to authentication APIs and Thesis hostnames. Server secrets remain in Secret Manager.
+The direct NVIDIA, OpenAI, Anthropic and Gemini adapters have contract coverage. A dedicated temporary Gemini key successfully discovered its live catalog; its inference attempts returned HTTP 402 because that account required billing/credits. The temporary key was deleted and no generation was replayed. Successful inference with those accounts still requires appropriately credited account keys. No entitled stock-data key is bundled. A successful live catalog or quote does not prove another endpoint's coverage or entitlement. The operator Nightshift connection has separately completed actual local inference; its temporary gateway has no uptime guarantee.
 
-The original Sites build remains supported for credential-free local reproduction with local D1 and its platform identity boundary. It is a separate deployment path, with separate records. `.openai/hosting.json` and the checked-in Drizzle migrations belong to that path.
+Historical evidence from the earlier focused research committee remains in the repository. It includes real Zetaris and Nightshift round trips plus explicitly synthetic source-contract fixtures. Those records are not current prices and the production portfolio UI has no synthetic-data mode. The focused v2 source-risk workflow is verified separately in `evidence/source-review-live.json` and `evidence/zetaris-observation-live.json`. Native personal provider paths are optional and are not a claim that every provider has completed live inference.
 
-CI checks installation, TypeScript, 84 automated tests and all three production builds. [Hosted verification](evidence/firebase-api-tests.json) records 19 checks, including two-account isolation; [connected execution](evidence/firebase-connected-application.json) records an actual Cloud Tasks job through Zetaris, Nightshift and H-MEM. These tests are not an external security audit. See [SECURITY.md](SECURITY.md) and [launch readiness](docs/launch-readiness.md).
+[Financial methodology](docs/finance-methodology.md) explains the arithmetic and its limits. [Data and privacy](https://thesis-investing.web.app/privacy.html) describes storage and account controls. Model citation membership checks do not prove factual entailment.
 
-## Product and economics
+## Source
 
-The initial commercial hypothesis is a $19/month research workspace for self-directed investors, with bounded model use and saved decision dossiers. This is proposed pricing, not validated demand or revenue. Data licensing, market access, jurisdiction-specific obligations and customer willingness to pay require validation. See [product thesis](docs/product-strategy.md).
-
-## Acknowledgments and pre-existing components
-
-New Thesis product code was authored during this build. Pre-existing open-source components include the Vinext/Sites starter, React, Cloudflare tooling, Drizzle, Zod, Lucide and Meterless H-MEM. Sponsor API knowledge and an existing local Nightshift installation were reused from earlier setup work. The application does not reuse another product's business logic or claim its test receipts as Thesis evidence.
-
-Project source is MIT licensed. Vendored H-MEM retains Apache-2.0, its pinned commit and attribution. Other components retain their licenses.
+The maintained branch is `main`: [shi1720/thesis-investment-committee](https://github.com/shi1720/thesis-investment-committee). Built by Shivam Gupta with AI-assisted engineering.

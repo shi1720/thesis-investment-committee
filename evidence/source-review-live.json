@@ -1,0 +1,169 @@
+{
+  "schema": "thesis.source-risk-countercheck.actual-components.v1",
+  "verifiedAt": "2026-10-27T12:46:24.438Z",
+  "scope": "Approved original-dated public SEC facts through actual local Zetaris SQL, deterministic source planning, actual NVIDIA Nemotron Mini through Meterless Nightshift, then an official H-MEM follow-up. Component integration proof; hosted browser/Firestore execution is verified separately.",
+  "sourceMode": "cached_snapshot",
+  "currentSECFetchVerified": false,
+  "syntheticObservations": false,
+  "sourceLimitations": [
+    "No current quote, adjusted price history, valuation ratio, forecast return or investment order is supplied by this proof.",
+    "Cached snapshot metadata preserves original recorded retrieval and source filing/fiscal dates. The data-layer query time is not a source publication time."
+  ],
+  "architecture": {
+    "planning": "deterministic_source_plan",
+    "modelPasses": 1,
+    "modelDiversity": false,
+    "model": "local-runtime/nemotron-mini-4b-instruct-q4-k-m",
+    "inferenceProvider": "Meterless Nightshift",
+    "memoryEngine": "Official Meterless H-MEM",
+    "memoryCommit": "1742dec56a66e58eef9dda2d2b865823758ca8cd",
+    "memoryPersistenceScope": "Private proof-file snapshots; hosted Firestore executor persistence is separate."
+  },
+  "localResourceProfile": {
+    "sparkDriverHeap": "1g",
+    "apiMaximumHeap": "512m",
+    "vendorUIRunning": false,
+    "modelContextTokens": 1024,
+    "normalAdmission": true,
+    "simultaneousDataLayerAndModel": true,
+    "availabilityClaim": "Observed ready and successful for these bounded runs; not a load/high-availability guarantee."
+  },
+  "runs": [
+    {
+      "status": "completed",
+      "workflow": "source_review",
+      "sourceAudit": {
+        "decision": "missing_market_evidence",
+        "missing": [
+          "quote",
+          "history"
+        ],
+        "planning": "deterministic_source_plan",
+        "modelPasses": 1,
+        "deterministicCoverage": "fundamentals_only",
+        "criticAgreement": true,
+        "critic": {
+          "coverage": "fundamentals_only",
+          "blockingGap": "quote",
+          "evidenceIds": [
+            "src_2e73b3155c7be764",
+            "src_ced05c6ebaeb1fc6"
+          ]
+        },
+        "modelDiversity": false
+      },
+      "evidenceCount": 8,
+      "dataLayerReceipts": [
+        {
+          "provider": "Zetaris",
+          "status": "verified",
+          "actual": true,
+          "queriedAt": "2026-10-27T12:46:17.016Z",
+          "sourceAsOf": "2026-07-31",
+          "message": "Actual normalized source data was staged and queried through the owner-scoped Zetaris view.",
+          "ownerHash": "d8bab7337b5a5a35a3cd187dc975795a3e32cafdfa57e767db5dfd657864caae",
+          "recordKey": "4416475e89302b5ab1c1b2428e56ef2bc693a5d47ca59430f7e0d2e53f37d24d",
+          "payloadHash": "1158b074720b4869627fe654d59ba7e16e0276ff68f018b31f3a26b54e51346f",
+          "view": "thesis_owner_d8bab7337b5a5a35a3cd187dc975795a.observations"
+        }
+      ],
+      "memory": {
+        "engine": "Meterless H-MEM",
+        "reused": false,
+        "count": 0,
+        "historicalContextIncluded": false
+      },
+      "modelReceipts": [
+        {
+          "id": "rcpt_req_ejydereu",
+          "role": "skeptic",
+          "provider": "nightshift",
+          "requestedModel": "local-runtime/nemotron-mini-4b-instruct-q4-k-m",
+          "responseModel": "local-runtime/nemotron-mini-4b-instruct-q4-k-m",
+          "startedAt": "2026-10-27T12:46:17.033Z",
+          "latencyMs": 2770,
+          "inputTokens": 398,
+          "outputTokens": 63,
+          "reasoningTokens": null,
+          "reportedCostUsd": 0,
+          "requestId": "chatcmpl-3a4cbebf-3e11-4e57-876e-5e47cdf62afe",
+          "status": "completed"
+        }
+      ],
+      "budget": {
+        "modelCalls": 1,
+        "toolCalls": 3,
+        "knownTokens": 461,
+        "unknownUsageCalls": 0
+      }
+    },
+    {
+      "status": "completed",
+      "workflow": "source_review",
+      "sourceAudit": {
+        "decision": "missing_market_evidence",
+        "missing": [
+          "quote",
+          "history"
+        ],
+        "planning": "deterministic_source_plan",
+        "modelPasses": 1,
+        "deterministicCoverage": "fundamentals_only",
+        "criticAgreement": true,
+        "critic": {
+          "coverage": "fundamentals_only",
+          "blockingGap": "quote",
+          "evidenceIds": [
+            "src_2e73b3155c7be764",
+            "src_ced05c6ebaeb1fc6"
+          ]
+        },
+        "modelDiversity": false
+      },
+      "evidenceCount": 8,
+      "dataLayerReceipts": [
+        {
+          "provider": "Zetaris",
+          "status": "verified",
+          "actual": true,
+          "queriedAt": "2026-10-27T12:46:22.481Z",
+          "sourceAsOf": "2026-07-31",
+          "message": "Actual normalized source data was staged and queried through the owner-scoped Zetaris view.",
+          "ownerHash": "d8bab7337b5a5a35a3cd187dc975795a3e32cafdfa57e767db5dfd657864caae",
+          "recordKey": "4416475e89302b5ab1c1b2428e56ef2bc693a5d47ca59430f7e0d2e53f37d24d",
+          "payloadHash": "1158b074720b4869627fe654d59ba7e16e0276ff68f018b31f3a26b54e51346f",
+          "view": "thesis_owner_d8bab7337b5a5a35a3cd187dc975795a.observations"
+        }
+      ],
+      "memory": {
+        "engine": "Meterless H-MEM",
+        "reused": true,
+        "count": 1,
+        "historicalContextIncluded": true
+      },
+      "modelReceipts": [
+        {
+          "id": "rcpt_req_dmjhw4we",
+          "role": "skeptic",
+          "provider": "nightshift",
+          "requestedModel": "local-runtime/nemotron-mini-4b-instruct-q4-k-m",
+          "responseModel": "local-runtime/nemotron-mini-4b-instruct-q4-k-m",
+          "startedAt": "2026-10-27T12:46:22.485Z",
+          "latencyMs": 1951,
+          "inputTokens": 442,
+          "outputTokens": 63,
+          "reasoningTokens": null,
+          "reportedCostUsd": 0,
+          "requestId": "chatcmpl-7b2679ef-7eb3-43c9-a0a8-85a0da38a741",
+          "status": "completed"
+        }
+      ],
+      "budget": {
+        "modelCalls": 1,
+        "toolCalls": 3,
+        "knownTokens": 505,
+        "unknownUsageCalls": 0
+      }
+    }
+  ]
+}

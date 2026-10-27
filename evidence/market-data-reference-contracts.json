@@ -1,0 +1,43 @@
+{
+  "schema": "thesis.market-data-reference-contracts.v1",
+  "testedAt": "2026-10-27T08:18:29.960409+00:00",
+  "scope": "Bounded official public-demo reference schema checks only. Production requires user-owned keys and appropriate entitlements; no default demo fallback.",
+  "probes": [
+    {
+      "provider": "Twelve Data",
+      "endpoint": "https://api.twelvedata.com/statistics",
+      "httpStatus": 200,
+      "schemaKeys": [
+        "meta",
+        "statistics"
+      ],
+      "observationValuesRedacted": true
+    },
+    {
+      "provider": "Alpha Vantage",
+      "endpoint": "https://www.alphavantage.co/query?function=GLOBAL_QUOTE",
+      "httpStatus": 200,
+      "schemaKeys": [
+        "Global Quote"
+      ],
+      "observationValuesRedacted": true
+    },
+    {
+      "provider": "Twelve Data",
+      "endpoint": "https://api.twelvedata.com/time_series",
+      "httpStatus": 200,
+      "requestedAdjustment": "splits",
+      "barCount": 400,
+      "currency": "USD",
+      "timezone": "America/New_York",
+      "firstSourceDate": "2025-03-25",
+      "lastSourceDate": "2026-10-26",
+      "observationValuesRedacted": true
+    }
+  ],
+  "limitations": [
+    "No user key has been tested by these reference probes.",
+    "Successful public demonstration requests do not prove commercial display, redistribution or hosted-processing rights.",
+    "No raw price, fundamental values, derived returns, private API keys or model recommendations are included."
+  ]
+}

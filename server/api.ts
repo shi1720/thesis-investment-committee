@@ -1,6 +1,8 @@
 import {createServer,type IncomingMessage} from 'node:http';
 import {Readable} from 'node:stream';
 import {pathToFileURL} from 'node:url';
+import {handlePlatformRoute} from './platform/routes';
+import {executePlatformJob} from './platform/executor';
 import {responseToNode} from './firebase/node-response';
 import * as bootstrap from '../app/api/bootstrap/route';
 import * as health from '../app/api/health/route';
@@ -27,6 +29,9 @@ function webRequest(incoming:IncomingMessage):Request{const headers=new Headers(
 function context(id=''){return {params:Promise.resolve({id:decodeURIComponent(id)})};}
 async function dispatch(request:Request):Promise<Response>{
  const url=new URL(request.url),path=url.pathname,method=request.method;
+ if(process.env.PLATFORM_V2==='true'&&path==='/api/health')return handlePlatformRoute(new Request(request.url.replace('/api/health','/api/platform/health'),request));
+ if(path.startsWith('/api/platform/'))return handlePlatformRoute(request);
+ if(process.env.PLATFORM_V2==='true'&&['/api/bootstrap','/api/research'].includes(path))return json({error:'Use the portfolio, planning and observed-source research workspace.',code:'LEGACY_ENDPOINT_RETIRED'},410);
  if(path==='/api/jobs'&&method==='GET'){const user=await requireUser();return json({jobs:await pendingJobs(user.userId)});}
  const poll=path.match(/^\/api\/runs\/([^/]+)$/);
  if(poll&&method==='GET'){const user=await requireUser(),id=validId(decodeURIComponent(poll[1])),run=await getRun(user.userId,id);if(run)return json(run);const job=await jobStatus(user.userId,id);if(job)return json(job,job.status==='failed'?422:202);throw new HttpError(404,'Research run not found.','NOT_FOUND');}
@@ -40,7 +45,8 @@ async function internalJob(request:Request){if(request.method!=='POST'||!await v
  return withFirebaseRequest({user:{userId,displayName:'Background research',email:null,fullName:null},startedAt:Date.now()},async()=>{try{const{run,memorySnapshot}=await executeResearch(userId,profile,id);await completeRun(userId,run,memorySnapshot);return json({id,status:'completed'});}catch{await failRun(userId,id);return json({id,status:'failed',message:'Research failed. Inspect its private status before creating a new request.'},200);}});
 }
 export function createApiServer(){const server=createServer(async(incoming,out)=>{try{const request=webRequest(incoming),startedAt=Date.now();let response:Response;
- if(new URL(request.url).pathname==='/_internal/research-jobs')response=await internalJob(request);
+ if(new URL(request.url).pathname==='/_internal/platform-jobs'){if(request.method!=='POST'||!await verifyTaskRequest(request.headers))response=json({error:'Task authentication required.'},401);else{const value=await readJson(request,2048) as Record<string,unknown>;if(typeof value.userId!=='string'||!value.userId.startsWith('firebase:')||typeof value.id!=='string')throw new HttpError(400,'Invalid job identity.','INVALID_JOB');response=json(await executePlatformJob(value.userId,validId(value.id)));}}
+ else if(new URL(request.url).pathname==='/_internal/research-jobs')response=await internalJob(request);
  else{const user=await verifyFirebaseRequest(request.headers,token=>firebaseAdmin().auth.verifyIdToken(token));response=await withFirebaseRequest({user,startedAt},()=>dispatch(request));}
  await responseToNode(response,out);
  }catch(error){if(out.headersSent||out.destroyed||out.writableEnded){if(!out.destroyed)out.destroy();return;}await responseToNode(error instanceof FirebaseAuthenticationError?json({error:'Your sign-in token is invalid or expired. Sign in again.',code:error.code},401):errorResponse(error),out);}});server.requestTimeout=30_000;server.headersTimeout=10_000;return server;}

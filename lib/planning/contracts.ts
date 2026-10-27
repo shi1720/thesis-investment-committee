@@ -1,0 +1,16 @@
+import {z} from 'zod';
+import {markets} from '../contracts';
+import type {StructuredResearchReport} from '../ai/types';
+export const planProfileSchema=z.object({
+ amount:z.number().finite().positive().min(100).max(1e12),baseCurrency:z.string().regex(/^[A-Z]{3}$/),
+ residenceCountry:z.enum(['India','US','China','UAE','Other']),goal:z.enum(['growth','income','capital_preservation','specific_purchase']),goalDescription:z.string().trim().max(1000).default(''),
+ horizonMonths:z.number().int().min(3).max(600),principalNeededAtHorizon:z.boolean().default(true),riskComfort:z.enum(['cautious','balanced','adventurous']).default('balanced'),
+ maxVolatility:z.number().finite().min(0).max(80),maxLoss:z.number().finite().min(0).max(80),
+ preferredMarkets:z.array(z.enum(markets)).min(1).max(4),allowForeign:z.boolean().default(false),
+ marketWeights:z.partialRecord(z.enum(markets),z.number().finite().min(0).max(100)).optional(),
+ sectors:z.array(z.string().max(80)).max(12).default([]),emergencyReserve:z.number().finite().min(0).max(1e12).default(0),monthlyContribution:z.number().finite().min(0).max(1e9).default(0),
+ maxPositionWeight:z.number().finite().min(1).max(25).default(10),maxSectorWeight:z.number().finite().min(5).max(50).default(30),includeETFs:z.boolean().default(true),includeStocks:z.boolean().default(true),includeDeposits:z.boolean().default(true),
+}).strict().superRefine((p,ctx)=>{for(const field of ['amount','emergencyReserve','monthlyContribution'] as const)if(Math.abs(p[field]*100-Math.round(p[field]*100))>1e-5)ctx.addIssue({code:'custom',path:[field],message:'Use at most two currency decimals.'});if(p.emergencyReserve>p.amount)ctx.addIssue({code:'custom',path:['emergencyReserve'],message:'Reserve cannot exceed your investment budget.'});if(p.marketWeights){const sum=Object.values(p.marketWeights).reduce((a,b)=>a+b,0);if(Math.abs(sum-100)>.01)ctx.addIssue({code:'custom',path:['marketWeights'],message:'The preferred market split must add to100% of the equity portion.'});for(const [market,weight]of Object.entries(p.marketWeights))if(weight>0&&!p.preferredMarkets.includes(market as typeof markets[number]))ctx.addIssue({code:'custom',path:['marketWeights'],message:'Each weighted market must also be selected.'});}});
+export type PlanProfile=z.infer<typeof planProfileSchema>;
+export interface PlanAllocationRow {id:string;name:string;symbol:string|null;market:string|null;sector:string|null;assetClass:string;amount:number;weightPercent:number;currency:string;units:number|null;price:number|null;priceCurrency?:string|null;priceAsOf:string|null;reason:string;risks:string[];status:'research_candidate'|'reserve'|'conditional';sourceIds:string[]}
+export interface PersonalizedPlan {id:string;createdAt:string;status:'ready_for_review'|'conditional'|'needs_data';profile:PlanProfile;summary:string;allocations:PlanAllocationRow[];totalAllocated:number;unallocated:number;estimatedVolatility:number|null;stressLoss:number|null;checks:{name:string;passed:boolean|null;detail:string}[];assumptions:string[];risks:string[];nextSteps:string[];research:StructuredResearchReport|null;methodology:{label:string;url:string}[];scenarios?:{name:string;assumption:string;lossAmount:number;endingAmount:number;probability:null}[];alternatives?:{name:string;description:string;profilePatch:Partial<PlanProfile>}[];allocationDetails?:unknown}

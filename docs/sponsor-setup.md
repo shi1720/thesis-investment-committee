@@ -1,8 +1,56 @@
 # Sponsor integration setup and verification
 
-Thesis uses a real Meterless H-MEM engine in every research session. Connected research additionally reads the investment universe through Zetaris and sends the bounded skeptical review to Meterless Nightshift. No other model provider is called directly.
+## Current V2 source workflow
 
-**Data truth:** the included twenty-company universe is synthetic. Real sponsor execution over these records verifies the software integrations; it does not turn the examples into live market observations. All sample evidence remains labeled. An optional private personal-use US importer has produced a validated actual record in a separate verified Zetaris namespace. This is a limited actual-data path, not licensed commercial coverage of the four markets.
+The portfolio and account state live in Firestore. Actual usable **quote, history and fundamentals observations pass through Zetaris before cache writes, portfolio math, planning or agents consume them** when `THESIS_ZETARIS_LAYER_REQUIRED=true`. Native market-provider adapters remain the entitled upstream sources; they do not bypass the required financial source layer. Persistent cache hits and saved quote fallbacks are verified again. Missing/failed source delivery yields unavailable data, never synthetic replacements.
+
+The keyless US source path uses the approved, original-dated AAPL/MSFT public SEC snapshots in `data/sec-snapshots/`. These contain observed filing facts and document provenance, with `dataMode: cached_snapshot`. The current attempted SEC refresh returned access-limited/unavailable, so **fresh SEC retrieval is not verified**. The source review makes no additional refresh attempt. Fiscal periods, filing dates and original recorded retrieval metadata remain visible. A successful Zetaris query verifies delivery integrity; it does not refresh source age, prove financial truth or create market prices. Quote-dependent ratios stay null.
+
+“Review source evidence” uses deterministic source planning and a bounded model countercheck using the concrete `local-runtime/nemotron-mini-4b-instruct-q4-k-m` model through Meterless Nightshift. There is **one model pass and no model diversity claim**. Code planning is labeled separately from inference. The model returns a tiny schema of source coverage, a blocking gap and supplied evidence IDs. Server validation checks coverage, exact model identity and source binding; a model cannot approve an investment, invent prices/history, override an allocation or remove deterministic source gaps. At most two model calls including one repair are allowed. The decoding schema restricts citation IDs to the actual supplied enum; coverage and current-gap checks remain server enforced. Missing model availability produces an explicit incomplete report with usage/cost unknown when the provider did not report them.
+
+Official Meterless H-MEM provides owner-scoped historical decision recall and audit archives. Historical decisions do not qualify as present financial evidence. Successful research/source reviews are remembered through the platform executor; deletion invalidates aggregate memory and stale results. Native NVIDIA, OpenAI, Anthropic and Gemini BYOK remain optional user settings with live catalogs, encrypted server-only keys and real connection tests. Native NVIDIA correctly waits for the user's key. This is distinct from the operator's local Nemotron route through Nightshift.
+
+### Protected observation bridge
+
+Configure only on the trusted application server:
+
+```dotenv
+THESIS_ZETARIS_LAYER_URL=https://YOUR_AUTHENTICATED_GATEWAY_ORIGIN
+THESIS_ZETARIS_LAYER_KEY=DEDICATED_HIGH_ENTROPY_SERVER_SECRET
+THESIS_ZETARIS_LAYER_REQUIRED=true
+NIGHTSHIFT_BASE_URL=https://YOUR_AUTHENTICATED_GATEWAY_ORIGIN/v1
+NIGHTSHIFT_API_KEY=DEDICATED_HIGH_ENTROPY_SERVER_SECRET
+```
+
+The gateway operator runs `node scripts/provider-gateway.mjs` with private `THESIS_GATEWAY_KEY_FILE`, `THESIS_CONNECTION_STATUS_FILE` and optionally `THESIS_ZETARIS_DRIVER_CONTAINER` paths. The status file references the private Zetaris credential file and Nightshift Runtime token file. Native sponsor/admin services stay loopback-only; a TLS tunnel reaches the narrow authenticated gateway. Cloud secrets are stored in Secret Manager, never shipped to the browser. The server gateway secret is distinct from native upstream credentials.
+
+`POST /private-observations/roundtrip` accepts only a bounded normalized actual observation, opaque owner hash, kind, record key and original server operation start time. It stages JSON-array records into a named persistent customer-data volume, registers a fixed derived Lightning datasource and SchemaStore view, refreshes that source and reads exactly the matching owner/key/payload hash through actual Zetaris SQL. The returned canonical envelope must match the original hash exactly. No arbitrary SQL, path, host, administration endpoint or provider secret is accepted. Bodies are capped, redirects are refused, and failure messages omit upstream contents. Explicit synthetic/sample flags and credential/identity fields are rejected. This is source delivery integrity under trusted upstream adapters, not independent source attestation.
+
+Owner identifiers are SHA-256 derived; directories have restricted filesystem permissions. This deployment uses one trusted operator/organization and one active gateway writer. It does not claim separate database principals for every customer, high availability or custom application AES encryption of Zetaris source files. Portfolio holdings, goals, user identity and API keys are never staged. Application BYOK encryption and Firestore state are separate from this observation store. A maximum of sixty-four source files per owner is retained; older-than-seventy-two-hour files are removed during subsequent staging. Operators must apply a lifecycle policy for inactive owners and runtime/backups.
+
+`POST /private-observations/erase` removes the owner's staged source and temporary files and invalidates its fixed Spark table cache. A persistent opaque owner/erasedAt tombstone prevents operations started before erasure from recreating files, including after gateway restart. The application passes the original operation start before source fetching. Empty datasource/view metadata and the hash-only fence may remain; vendor audit logs/backups follow the operator's separate retention policy. The application requires a matching owner/fence acknowledgement, not just HTTP 200.
+
+The gateway admits at most two active protected operations, with sixteen bounded FIFO waiters. Observations can wait up to thirty seconds; an initial model dispatch or erasure can wait up to ten seconds, leaving time inside its thirty-second client budget. Catalog discovery waits at most five seconds. Waiting requests that disconnect or expire are removed before upstream dispatch. Admission does not replay a generation, retry a provider 429, or change identity/hash gates. Upstream 429 and Retry-After remain forwarded. An already dispatched generation can still have unknown usage if its client cancels. Failure diagnostics record only enumerated component/phase/operation and HTTP status; they omit user identity, keys, bodies and financial values.
+
+The older public synthetic SQL endpoint remains restricted to `thesis.research_universe` and cannot select an owner namespace. Synthetic demonstrations never count as actual observations in the new bridge.
+
+### Verification and operating limits
+
+`tests/zetaris-layer.test.ts`, `tests/source-review.test.ts` and `tests/gateway.test.ts` exercise mocked contracts, privacy boundaries, erasure fencing, model substitution and bounded invalid-output handling. They are not live sponsor proofs. Actual probe receipts belong in `evidence/` as sanitized metadata; full responses and operator configuration stay under ignored `work/private-proofs/`.
+
+The current bounded local verification keeps the API at 512m maximum heap and Spark driver at 1g, with the unused vendor UI stopped. Actual SQL readback and normal Mini admission worked together; this is not a load or high-availability benchmark. Existing supported resource controls are `ZSPARK_DRIVER_MEM` and `ZETARIS_API_MAX_HEAP`. Changes require recreating the affected services, preserving named volumes and verifying SQL again. Spark documents a [one-gigabyte driver default](https://spark.apache.org/docs/latest/configuration.html#application-properties); that is not a capacity guarantee for arbitrary workloads. Nightshift's normal memory and thermal admission remains authoritative. If the local machine cannot keep the data layer and model ready together, a sequential component proof must be labeled operator-managed, with no always-on service claim. An unavailable model or source leaves the review incomplete.
+
+### Current actual proof receipts
+
+[Source-risk countercheck proof](../evidence/source-review-live.json) records two completed executions of the final focused workflow. Each performed an actual Zetaris readback and one accepted exact Nemotron Mini call through Nightshift. The follow-up recalled the preceding real source-gap decision with the pinned official H-MEM engine. The model used 398/63 then 442/63 input/output tokens, reported zero inference-provider USD, and preserved missing quote/history. This does not measure hosting, hardware or other infrastructure cost. The proof uses private file persistence for engine snapshots; hosted browser and Firestore end-to-end execution remain a separate verification step.
+
+[Observation and erasure proof](../evidence/zetaris-observation-live.json) records actual owner/payload SQL receipts, a matching erase acknowledgement, zero remaining owned source files, and rejection of a stale operation both before and after gateway restart. Full envelopes, any historical context text and operator configuration stay in ignored work files. The published metadata contains no provider keys, investor preferences, raw vendor observations, prompt previews or model narratives.
+
+Restart the gateway after recreating the Zetaris driver so its process-local datasource registration cache is rebuilt. The native API exposes public SQL on 8888 and internal authentication on 8889; the optional vendor UI is a separate service on 3000. Use the actual configured loopback ports, with no public exposure of native services.
+
+## Legacy V1 verification and sample committee
+
+The sections below document the original sample-universe committee and earlier isolated sponsor verification. They are retained for reproducibility and are not the V2 default data or provider workflow. The included twenty-company universe is synthetic, even when queried through genuine sponsor infrastructure. Earlier private vendor-price experiments are not bundled in V2 public SEC snapshots.
 
 ## Meterless Nightshift
 

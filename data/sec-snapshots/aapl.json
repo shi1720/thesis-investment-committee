@@ -1,0 +1,597 @@
+{
+  "status": "partial",
+  "data": {
+    "instrument": {
+      "symbol": "AAPL",
+      "market": "US",
+      "exchange": "Nasdaq",
+      "currency": "USD"
+    },
+    "name": "Apple Inc.",
+    "sector": null,
+    "industry": "Electronic Computers",
+    "currency": "USD",
+    "fiscalDate": "2026-06-27",
+    "metrics": {
+      "pe": {
+        "value": null,
+        "unit": "ratio",
+        "period": null,
+        "note": "Unavailable without a verified current quote and compatible earnings basis"
+      },
+      "priceToBook": {
+        "value": null,
+        "unit": "ratio",
+        "period": null,
+        "note": "Unavailable without a verified quote/book value per share"
+      },
+      "roe": {
+        "value": 171.42244974480232,
+        "unit": "percent",
+        "period": "2025-09-27",
+        "note": "Annual net income / average beginning and ending positive common equity, all from the same filing."
+      },
+      "operatingMargin": {
+        "value": 32.62290137729969,
+        "unit": "percent",
+        "period": "2026-06-27",
+        "note": "Reported period operating income / revenue; not a silently synthesized TTM ratio."
+      },
+      "debtToEquity": {
+        "value": 0.7844494047619047,
+        "unit": "ratio",
+        "period": "2026-06-27",
+        "note": "Reported noncurrent debt plus complete current debt; excludes leases. No missing borrowing component is inferred zero."
+      },
+      "revenueGrowth": {
+        "value": 16.356501765281383,
+        "unit": "percent",
+        "period": "2026-06-27",
+        "note": "Same filing, same revenue tag and comparable prior-year duration."
+      },
+      "dividendYield": {
+        "value": null,
+        "unit": "percent",
+        "period": null,
+        "note": "Unavailable without actual quote and declared dividend basis"
+      },
+      "marketCap": {
+        "value": null,
+        "unit": "currency",
+        "period": null,
+        "note": "Unavailable without actual quote and matching share count"
+      },
+      "eps": {
+        "value": 2.02,
+        "unit": "currency",
+        "period": "2026-06-27",
+        "note": "Reported diluted EPS for the stated fiscal period, not forward EPS."
+      }
+    }
+  },
+  "provenance": {
+    "provider": "SEC",
+    "fetchedAt": "2026-10-27T06:07:06.496229+00:00",
+    "asOf": "2026-07-31",
+    "sourceUrl": "https://data.sec.gov/api/xbrl/companyfacts/CIK0000320193.json",
+    "currency": "USD",
+    "timezone": null,
+    "adjustment": "unknown",
+    "delay": "unknown"
+  },
+  "issuer": {
+    "cik": "0000320193",
+    "symbol": "AAPL",
+    "name": "Apple Inc."
+  },
+  "factEvidence": [
+    {
+      "id": "sec-fact-b55ccde340cfab96985c7c5b",
+      "tag": "RevenueFromContractWithCustomerExcludingAssessedTax",
+      "label": "Revenue from Contract with Customer, Excluding Assessed Tax",
+      "value": 109417000000,
+      "unit": "USD",
+      "start": "2026-03-29",
+      "end": "2026-06-27",
+      "filed": "2026-07-31",
+      "accession": "0000320193-26-000020",
+      "form": "10-Q",
+      "sourceUrl": "https://www.sec.gov/Archives/edgar/data/320193/000032019326000020/aapl-20260627.htm",
+      "excerpt": "Reported SEC XBRL RevenueFromContractWithCustomerExcludingAssessedTax: 109417000000 USD; 2026-03-29 to 2026-06-27; 10-Q filed 2026-07-31; accession 0000320193-26-000020. Structured fact, not a verbatim filing quotation."
+    },
+    {
+      "id": "sec-fact-bde8c7a3d9e28569e5d800fc",
+      "tag": "OperatingIncomeLoss",
+      "label": "Operating Income (Loss)",
+      "value": 35695000000,
+      "unit": "USD",
+      "start": "2026-03-29",
+      "end": "2026-06-27",
+      "filed": "2026-07-31",
+      "accession": "0000320193-26-000020",
+      "form": "10-Q",
+      "sourceUrl": "https://www.sec.gov/Archives/edgar/data/320193/000032019326000020/aapl-20260627.htm",
+      "excerpt": "Reported SEC XBRL OperatingIncomeLoss: 35695000000 USD; 2026-03-29 to 2026-06-27; 10-Q filed 2026-07-31; accession 0000320193-26-000020. Structured fact, not a verbatim filing quotation."
+    },
+    {
+      "id": "sec-fact-d503a6adc7495dcf1c7e66f5",
+      "tag": "EarningsPerShareDiluted",
+      "label": "Earnings Per Share, Diluted",
+      "value": 2.02,
+      "unit": "USD/shares",
+      "start": "2026-03-29",
+      "end": "2026-06-27",
+      "filed": "2026-07-31",
+      "accession": "0000320193-26-000020",
+      "form": "10-Q",
+      "sourceUrl": "https://www.sec.gov/Archives/edgar/data/320193/000032019326000020/aapl-20260627.htm",
+      "excerpt": "Reported SEC XBRL EarningsPerShareDiluted: 2.02 USD/shares; 2026-03-29 to 2026-06-27; 10-Q filed 2026-07-31; accession 0000320193-26-000020. Structured fact, not a verbatim filing quotation."
+    },
+    {
+      "id": "sec-fact-33019da28dbbd6e04e14d1b2",
+      "tag": "RevenueFromContractWithCustomerExcludingAssessedTax",
+      "label": "Revenue from Contract with Customer, Excluding Assessed Tax",
+      "value": 94036000000,
+      "unit": "USD",
+      "start": "2025-03-30",
+      "end": "2025-06-28",
+      "filed": "2026-07-31",
+      "accession": "0000320193-26-000020",
+      "form": "10-Q",
+      "sourceUrl": "https://www.sec.gov/Archives/edgar/data/320193/000032019326000020/aapl-20260627.htm",
+      "excerpt": "Reported SEC XBRL RevenueFromContractWithCustomerExcludingAssessedTax: 94036000000 USD; 2025-03-30 to 2025-06-28; 10-Q filed 2026-07-31; accession 0000320193-26-000020. Structured fact, not a verbatim filing quotation."
+    },
+    {
+      "id": "sec-fact-8ed2494f16204be8a470348f",
+      "tag": "NetIncomeLoss",
+      "label": "Net Income (Loss) Attributable to Parent",
+      "value": 112010000000,
+      "unit": "USD",
+      "start": "2024-09-29",
+      "end": "2025-09-27",
+      "filed": "2025-10-31",
+      "accession": "0000320193-25-000079",
+      "form": "10-K",
+      "sourceUrl": "https://www.sec.gov/Archives/edgar/data/320193/000032019325000079/aapl-20250927.htm",
+      "excerpt": "Reported SEC XBRL NetIncomeLoss: 112010000000 USD; 2024-09-29 to 2025-09-27; 10-K filed 2025-10-31; accession 0000320193-25-000079. Structured fact, not a verbatim filing quotation."
+    },
+    {
+      "id": "sec-fact-6fbe8fbf496cdefc42e48c4a",
+      "tag": "StockholdersEquity",
+      "label": "Stockholders' Equity Attributable to Parent",
+      "value": 73733000000,
+      "unit": "USD",
+      "start": null,
+      "end": "2025-09-27",
+      "filed": "2025-10-31",
+      "accession": "0000320193-25-000079",
+      "form": "10-K",
+      "sourceUrl": "https://www.sec.gov/Archives/edgar/data/320193/000032019325000079/aapl-20250927.htm",
+      "excerpt": "Reported SEC XBRL StockholdersEquity: 73733000000 USD; 2025-09-27; 10-K filed 2025-10-31; accession 0000320193-25-000079. Structured fact, not a verbatim filing quotation."
+    },
+    {
+      "id": "sec-fact-4fc92b8b9726cc71e3b4b326",
+      "tag": "StockholdersEquity",
+      "label": "Stockholders' Equity Attributable to Parent",
+      "value": 56950000000,
+      "unit": "USD",
+      "start": null,
+      "end": "2024-09-28",
+      "filed": "2025-10-31",
+      "accession": "0000320193-25-000079",
+      "form": "10-K",
+      "sourceUrl": "https://www.sec.gov/Archives/edgar/data/320193/000032019325000079/aapl-20250927.htm",
+      "excerpt": "Reported SEC XBRL StockholdersEquity: 56950000000 USD; 2024-09-28; 10-K filed 2025-10-31; accession 0000320193-25-000079. Structured fact, not a verbatim filing quotation."
+    },
+    {
+      "id": "sec-fact-f999becff955b6d5cb186809",
+      "tag": "LongTermDebtNoncurrent",
+      "label": "Long-term Debt, Excluding Current Maturities",
+      "value": 71340000000,
+      "unit": "USD",
+      "start": null,
+      "end": "2026-06-27",
+      "filed": "2026-07-31",
+      "accession": "0000320193-26-000020",
+      "form": "10-Q",
+      "sourceUrl": "https://www.sec.gov/Archives/edgar/data/320193/000032019326000020/aapl-20260627.htm",
+      "excerpt": "Reported SEC XBRL LongTermDebtNoncurrent: 71340000000 USD; 2026-06-27; 10-Q filed 2026-07-31; accession 0000320193-26-000020. Structured fact, not a verbatim filing quotation."
+    },
+    {
+      "id": "sec-fact-19af02632ee0a497dac0d8ec",
+      "tag": "LongTermDebtCurrent",
+      "label": "Long-term Debt, Current Maturities",
+      "value": 11007000000,
+      "unit": "USD",
+      "start": null,
+      "end": "2026-06-27",
+      "filed": "2026-07-31",
+      "accession": "0000320193-26-000020",
+      "form": "10-Q",
+      "sourceUrl": "https://www.sec.gov/Archives/edgar/data/320193/000032019326000020/aapl-20260627.htm",
+      "excerpt": "Reported SEC XBRL LongTermDebtCurrent: 11007000000 USD; 2026-06-27; 10-Q filed 2026-07-31; accession 0000320193-26-000020. Structured fact, not a verbatim filing quotation."
+    },
+    {
+      "id": "sec-fact-3292c6937d5421bf1f181881",
+      "tag": "CommercialPaper",
+      "label": "Commercial Paper",
+      "value": 1997000000,
+      "unit": "USD",
+      "start": null,
+      "end": "2026-06-27",
+      "filed": "2026-07-31",
+      "accession": "0000320193-26-000020",
+      "form": "10-Q",
+      "sourceUrl": "https://www.sec.gov/Archives/edgar/data/320193/000032019326000020/aapl-20260627.htm",
+      "excerpt": "Reported SEC XBRL CommercialPaper: 1997000000 USD; 2026-06-27; 10-Q filed 2026-07-31; accession 0000320193-26-000020. Structured fact, not a verbatim filing quotation."
+    },
+    {
+      "id": "sec-fact-05417bcf2daf5d2d5c48b43f",
+      "tag": "StockholdersEquity",
+      "label": "Stockholders' Equity Attributable to Parent",
+      "value": 107520000000,
+      "unit": "USD",
+      "start": null,
+      "end": "2026-06-27",
+      "filed": "2026-07-31",
+      "accession": "0000320193-26-000020",
+      "form": "10-Q",
+      "sourceUrl": "https://www.sec.gov/Archives/edgar/data/320193/000032019326000020/aapl-20260627.htm",
+      "excerpt": "Reported SEC XBRL StockholdersEquity: 107520000000 USD; 2026-06-27; 10-Q filed 2026-07-31; accession 0000320193-26-000020. Structured fact, not a verbatim filing quotation."
+    }
+  ],
+  "filings": [
+    {
+      "id": "sec-filing-0001140361-26-035325",
+      "form": "8-K/A",
+      "filed": "2026-09-01",
+      "reportDate": "2026-04-17",
+      "accession": "0001140361-26-035325",
+      "primaryDocument": "ef20081427_8ka.htm",
+      "url": "https://www.sec.gov/Archives/edgar/data/320193/000114036126035325/ef20081427_8ka.htm",
+      "title": "SEC 8-K/A filed 2026-09-01 (reported items 5.02)",
+      "items": "5.02"
+    },
+    {
+      "id": "sec-filing-0000320193-26-000020",
+      "form": "10-Q",
+      "filed": "2026-07-31",
+      "reportDate": "2026-06-27",
+      "accession": "0000320193-26-000020",
+      "primaryDocument": "aapl-20260627.htm",
+      "url": "https://www.sec.gov/Archives/edgar/data/320193/000032019326000020/aapl-20260627.htm",
+      "title": "SEC 10-Q filed 2026-07-31",
+      "items": null
+    },
+    {
+      "id": "sec-filing-0000320193-26-000018",
+      "form": "8-K",
+      "filed": "2026-07-30",
+      "reportDate": "2026-07-30",
+      "accession": "0000320193-26-000018",
+      "primaryDocument": "aapl-20260730.htm",
+      "url": "https://www.sec.gov/Archives/edgar/data/320193/000032019326000018/aapl-20260730.htm",
+      "title": "SEC 8-K filed 2026-07-30 (reported items 2.02,9.01)",
+      "items": "2.02,9.01"
+    },
+    {
+      "id": "sec-filing-0000320193-26-000013",
+      "form": "10-Q",
+      "filed": "2026-05-01",
+      "reportDate": "2026-03-28",
+      "accession": "0000320193-26-000013",
+      "primaryDocument": "aapl-20260328.htm",
+      "url": "https://www.sec.gov/Archives/edgar/data/320193/000032019326000013/aapl-20260328.htm",
+      "title": "SEC 10-Q filed 2026-05-01",
+      "items": null
+    },
+    {
+      "id": "sec-filing-0000320193-26-000011",
+      "form": "8-K",
+      "filed": "2026-04-30",
+      "reportDate": "2026-04-30",
+      "accession": "0000320193-26-000011",
+      "primaryDocument": "aapl-20260430.htm",
+      "url": "https://www.sec.gov/Archives/edgar/data/320193/000032019326000011/aapl-20260430.htm",
+      "title": "SEC 8-K filed 2026-04-30 (reported items 2.02,9.01)",
+      "items": "2.02,9.01"
+    },
+    {
+      "id": "sec-filing-0001140361-26-015711",
+      "form": "8-K",
+      "filed": "2026-04-20",
+      "reportDate": "2026-04-17",
+      "accession": "0001140361-26-015711",
+      "primaryDocument": "ef20071035_8k.htm",
+      "url": "https://www.sec.gov/Archives/edgar/data/320193/000114036126015711/ef20071035_8k.htm",
+      "title": "SEC 8-K filed 2026-04-20 (reported items 5.02)",
+      "items": "5.02"
+    },
+    {
+      "id": "sec-filing-0001140361-26-006577",
+      "form": "8-K",
+      "filed": "2026-02-24",
+      "reportDate": "2026-02-24",
+      "accession": "0001140361-26-006577",
+      "primaryDocument": "ef20060722_8k.htm",
+      "url": "https://www.sec.gov/Archives/edgar/data/320193/000114036126006577/ef20060722_8k.htm",
+      "title": "SEC 8-K filed 2026-02-24 (reported items 5.07,9.01)",
+      "items": "5.07,9.01"
+    },
+    {
+      "id": "sec-filing-0000320193-26-000006",
+      "form": "10-Q",
+      "filed": "2026-01-30",
+      "reportDate": "2025-12-27",
+      "accession": "0000320193-26-000006",
+      "primaryDocument": "aapl-20251227.htm",
+      "url": "https://www.sec.gov/Archives/edgar/data/320193/000032019326000006/aapl-20251227.htm",
+      "title": "SEC 10-Q filed 2026-01-30",
+      "items": null
+    },
+    {
+      "id": "sec-filing-0000320193-26-000005",
+      "form": "8-K",
+      "filed": "2026-01-29",
+      "reportDate": "2026-01-29",
+      "accession": "0000320193-26-000005",
+      "primaryDocument": "aapl-20260129.htm",
+      "url": "https://www.sec.gov/Archives/edgar/data/320193/000032019326000005/aapl-20260129.htm",
+      "title": "SEC 8-K filed 2026-01-29 (reported items 2.02,9.01)",
+      "items": "2.02,9.01"
+    },
+    {
+      "id": "sec-filing-0001140361-26-000199",
+      "form": "8-K",
+      "filed": "2026-01-02",
+      "reportDate": "2025-12-30",
+      "accession": "0001140361-26-000199",
+      "primaryDocument": "ef20060722_8k.htm",
+      "url": "https://www.sec.gov/Archives/edgar/data/320193/000114036126000199/ef20060722_8k.htm",
+      "title": "SEC 8-K filed 2026-01-02 (reported items 5.02)",
+      "items": "5.02"
+    },
+    {
+      "id": "sec-filing-0001140361-25-044561",
+      "form": "8-K",
+      "filed": "2025-12-05",
+      "reportDate": "2025-12-04",
+      "accession": "0001140361-25-044561",
+      "primaryDocument": "ef20060722_8k.htm",
+      "url": "https://www.sec.gov/Archives/edgar/data/320193/000114036125044561/ef20060722_8k.htm",
+      "title": "SEC 8-K filed 2025-12-05 (reported items 5.02)",
+      "items": "5.02"
+    },
+    {
+      "id": "sec-filing-0000320193-25-000079",
+      "form": "10-K",
+      "filed": "2025-10-31",
+      "reportDate": "2025-09-27",
+      "accession": "0000320193-25-000079",
+      "primaryDocument": "aapl-20250927.htm",
+      "url": "https://www.sec.gov/Archives/edgar/data/320193/000032019325000079/aapl-20250927.htm",
+      "title": "SEC 10-K filed 2025-10-31",
+      "items": null
+    },
+    {
+      "id": "sec-filing-0000320193-25-000077",
+      "form": "8-K",
+      "filed": "2025-10-30",
+      "reportDate": "2025-10-30",
+      "accession": "0000320193-25-000077",
+      "primaryDocument": "aapl-20251030.htm",
+      "url": "https://www.sec.gov/Archives/edgar/data/320193/000032019325000077/aapl-20251030.htm",
+      "title": "SEC 8-K filed 2025-10-30 (reported items 2.02,9.01)",
+      "items": "2.02,9.01"
+    },
+    {
+      "id": "sec-filing-0000320193-25-000073",
+      "form": "10-Q",
+      "filed": "2025-08-01",
+      "reportDate": "2025-06-28",
+      "accession": "0000320193-25-000073",
+      "primaryDocument": "aapl-20250628.htm",
+      "url": "https://www.sec.gov/Archives/edgar/data/320193/000032019325000073/aapl-20250628.htm",
+      "title": "SEC 10-Q filed 2025-08-01",
+      "items": null
+    },
+    {
+      "id": "sec-filing-0000320193-25-000071",
+      "form": "8-K",
+      "filed": "2025-07-31",
+      "reportDate": "2025-07-31",
+      "accession": "0000320193-25-000071",
+      "primaryDocument": "aapl-20250731.htm",
+      "url": "https://www.sec.gov/Archives/edgar/data/320193/000032019325000071/aapl-20250731.htm",
+      "title": "SEC 8-K filed 2025-07-31 (reported items 2.02,9.01)",
+      "items": "2.02,9.01"
+    },
+    {
+      "id": "sec-filing-0001140361-25-027340",
+      "form": "8-K",
+      "filed": "2025-07-25",
+      "reportDate": "2025-07-21",
+      "accession": "0001140361-25-027340",
+      "primaryDocument": "ef20052355_8k.htm",
+      "url": "https://www.sec.gov/Archives/edgar/data/320193/000114036125027340/ef20052355_8k.htm",
+      "title": "SEC 8-K filed 2025-07-25 (reported items 5.02)",
+      "items": "5.02"
+    },
+    {
+      "id": "sec-filing-0001140361-25-025275",
+      "form": "8-K",
+      "filed": "2025-07-09",
+      "reportDate": "2025-07-08",
+      "accession": "0001140361-25-025275",
+      "primaryDocument": "ef20051741_8k.htm",
+      "url": "https://www.sec.gov/Archives/edgar/data/320193/000114036125025275/ef20051741_8k.htm",
+      "title": "SEC 8-K filed 2025-07-09 (reported items 5.02)",
+      "items": "5.02"
+    },
+    {
+      "id": "sec-filing-0001140361-25-018400",
+      "form": "8-K",
+      "filed": "2025-05-12",
+      "reportDate": "2025-05-05",
+      "accession": "0001140361-25-018400",
+      "primaryDocument": "ef20048691_8k.htm",
+      "url": "https://www.sec.gov/Archives/edgar/data/320193/000114036125018400/ef20048691_8k.htm",
+      "title": "SEC 8-K filed 2025-05-12 (reported items 8.01,9.01)",
+      "items": "8.01,9.01"
+    },
+    {
+      "id": "sec-filing-0000320193-25-000057",
+      "form": "10-Q",
+      "filed": "2025-05-02",
+      "reportDate": "2025-03-29",
+      "accession": "0000320193-25-000057",
+      "primaryDocument": "aapl-20250329.htm",
+      "url": "https://www.sec.gov/Archives/edgar/data/320193/000032019325000057/aapl-20250329.htm",
+      "title": "SEC 10-Q filed 2025-05-02",
+      "items": null
+    },
+    {
+      "id": "sec-filing-0000320193-25-000055",
+      "form": "8-K",
+      "filed": "2025-05-01",
+      "reportDate": "2025-05-01",
+      "accession": "0000320193-25-000055",
+      "primaryDocument": "aapl-20250501.htm",
+      "url": "https://www.sec.gov/Archives/edgar/data/320193/000032019325000055/aapl-20250501.htm",
+      "title": "SEC 8-K filed 2025-05-01 (reported items 2.02,9.01)",
+      "items": "2.02,9.01"
+    },
+    {
+      "id": "sec-filing-0001140361-25-005876",
+      "form": "8-K",
+      "filed": "2025-02-25",
+      "reportDate": "2025-02-25",
+      "accession": "0001140361-25-005876",
+      "primaryDocument": "ef20044022_8k.htm",
+      "url": "https://www.sec.gov/Archives/edgar/data/320193/000114036125005876/ef20044022_8k.htm",
+      "title": "SEC 8-K filed 2025-02-25 (reported items 5.07)",
+      "items": "5.07"
+    },
+    {
+      "id": "sec-filing-0000320193-25-000008",
+      "form": "10-Q",
+      "filed": "2025-01-31",
+      "reportDate": "2024-12-28",
+      "accession": "0000320193-25-000008",
+      "primaryDocument": "aapl-20241228.htm",
+      "url": "https://www.sec.gov/Archives/edgar/data/320193/000032019325000008/aapl-20241228.htm",
+      "title": "SEC 10-Q filed 2025-01-31",
+      "items": null
+    },
+    {
+      "id": "sec-filing-0000320193-25-000007",
+      "form": "8-K",
+      "filed": "2025-01-30",
+      "reportDate": "2025-01-30",
+      "accession": "0000320193-25-000007",
+      "primaryDocument": "aapl-20250130.htm",
+      "url": "https://www.sec.gov/Archives/edgar/data/320193/000032019325000007/aapl-20250130.htm",
+      "title": "SEC 8-K filed 2025-01-30 (reported items 2.02,9.01)",
+      "items": "2.02,9.01"
+    },
+    {
+      "id": "sec-filing-0001140361-25-000228",
+      "form": "8-K",
+      "filed": "2025-01-03",
+      "reportDate": "2024-12-30",
+      "accession": "0001140361-25-000228",
+      "primaryDocument": "ef20040370_8k.htm",
+      "url": "https://www.sec.gov/Archives/edgar/data/320193/000114036125000228/ef20040370_8k.htm",
+      "title": "SEC 8-K filed 2025-01-03 (reported items 5.02)",
+      "items": "5.02"
+    },
+    {
+      "id": "sec-filing-0000320193-24-000123",
+      "form": "10-K",
+      "filed": "2024-11-01",
+      "reportDate": "2024-09-28",
+      "accession": "0000320193-24-000123",
+      "primaryDocument": "aapl-20240928.htm",
+      "url": "https://www.sec.gov/Archives/edgar/data/320193/000032019324000123/aapl-20240928.htm",
+      "title": "SEC 10-K filed 2024-11-01",
+      "items": null
+    },
+    {
+      "id": "sec-filing-0000320193-24-000120",
+      "form": "8-K",
+      "filed": "2024-10-31",
+      "reportDate": "2024-10-31",
+      "accession": "0000320193-24-000120",
+      "primaryDocument": "aapl-20241031.htm",
+      "url": "https://www.sec.gov/Archives/edgar/data/320193/000032019324000120/aapl-20241031.htm",
+      "title": "SEC 8-K filed 2024-10-31 (reported items 2.02,9.01)",
+      "items": "2.02,9.01"
+    },
+    {
+      "id": "sec-filing-0001140361-24-040659",
+      "form": "8-K",
+      "filed": "2024-09-10",
+      "reportDate": "2024-09-10",
+      "accession": "0001140361-24-040659",
+      "primaryDocument": "ef20035718_8k.htm",
+      "url": "https://www.sec.gov/Archives/edgar/data/320193/000114036124040659/ef20035718_8k.htm",
+      "title": "SEC 8-K filed 2024-09-10 (reported items 7.01)",
+      "items": "7.01"
+    },
+    {
+      "id": "sec-filing-0001140361-24-038601",
+      "form": "8-K",
+      "filed": "2024-08-26",
+      "reportDate": "2024-08-26",
+      "accession": "0001140361-24-038601",
+      "primaryDocument": "ny20033611x3_8k.htm",
+      "url": "https://www.sec.gov/Archives/edgar/data/320193/000114036124038601/ny20033611x3_8k.htm",
+      "title": "SEC 8-K filed 2024-08-26 (reported items 5.02)",
+      "items": "5.02"
+    },
+    {
+      "id": "sec-filing-0001140361-24-038403",
+      "form": "8-K",
+      "filed": "2024-08-23",
+      "reportDate": "2024-08-20",
+      "accession": "0001140361-24-038403",
+      "primaryDocument": "ny20033611x2_8k.htm",
+      "url": "https://www.sec.gov/Archives/edgar/data/320193/000114036124038403/ny20033611x2_8k.htm",
+      "title": "SEC 8-K filed 2024-08-23 (reported items 5.03,9.01)",
+      "items": "5.03,9.01"
+    },
+    {
+      "id": "sec-filing-0000320193-24-000081",
+      "form": "10-Q",
+      "filed": "2024-08-02",
+      "reportDate": "2024-06-29",
+      "accession": "0000320193-24-000081",
+      "primaryDocument": "aapl-20240629.htm",
+      "url": "https://www.sec.gov/Archives/edgar/data/320193/000032019324000081/aapl-20240629.htm",
+      "title": "SEC 10-Q filed 2024-08-02",
+      "items": null
+    }
+  ],
+  "warnings": [
+    "Dated cached public SEC snapshot. This is not a fresh or live fetch.",
+    "Official SEC reported facts are dated statements, not current market quotes or independently audited product calculations.",
+    "Quote-dependent valuation, capitalization and dividend-yield fields remain unavailable. Fiscal periods and filing publication dates are separate."
+  ],
+  "cached": true,
+  "dataMode": "cached_snapshot",
+  "snapshot": {
+    "sourceRequestedAt": "2026-10-27T06:07:06.496229+00:00",
+    "sourceRetrievedAt": null,
+    "submissionsRequestedAt": "2026-10-27T06:07:06.496970+00:00",
+    "normalizedAt": "2026-10-27T11:54:34.571Z",
+    "retrievalTimingNote": "Original successful HTTP request start is recorded; exact response completion time is unrecorded. File modification time was not used.",
+    "sourceUrls": [
+      "https://data.sec.gov/api/xbrl/companyfacts/CIK0000320193.json",
+      "https://data.sec.gov/submissions/CIK0000320193.json"
+    ],
+    "sourceSha256": {
+      "companyfacts": "73a86c6aedc31f77cac2ea4df5f80f0b3bd7e6eb58bb4e01444fbedf3afb9c43",
+      "submissions": "5891cf875f690e38f26ca628f7091184c9d73ca34ca7646b9cecd5013aeac4ab"
+    }
+  }
+}

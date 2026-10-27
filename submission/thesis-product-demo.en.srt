@@ -1,0 +1,255 @@
+1
+00:00:00,200 --> 00:00:01,620
+I don't need another stock tip.
+
+2
+00:00:01,640 --> 00:00:05,820
+I need to know what changed, what I'm
+missing, and whether an investment still
+
+3
+00:00:05,840 --> 00:00:10,620
+fits my plans. That's why I built Thesis,
+a research companion for my own
+
+4
+00:00:10,640 --> 00:00:11,990
+investing decisions.
+
+5
+00:00:12,982 --> 00:00:14,262
+Let's make this concrete.
+
+6
+00:00:14,282 --> 00:00:16,962
+I have ten thousand dollars for a home in
+two years.
+
+7
+00:00:16,982 --> 00:00:22,362
+Thesis asks what I'm saving for, where I
+live, and which currency I'm planning
+
+8
+00:00:22,382 --> 00:00:26,932
+in. Simple choices replace a complicated
+prompt.
+
+9
+00:00:28,057 --> 00:00:31,237
+Next, I choose my comfort with volatility
+and loss.
+
+10
+00:00:31,257 --> 00:00:33,707
+A ten percent loss means a thousand
+dollars.
+
+11
+00:00:35,157 --> 00:00:39,637
+I also mark the deadline as firm, because
+needing the money in two years
+
+12
+00:00:39,657 --> 00:00:41,107
+changes what's appropriate.
+
+13
+00:00:42,075 --> 00:00:45,495
+Being based in India doesn't mean
+investing only in India.
+
+14
+00:00:45,515 --> 00:00:51,865
+I can choose Indian investments, US
+investments, or a mix, and select sectors.
+
+15
+00:00:52,715 --> 00:00:57,765
+An optional equity split doesn't force my
+entire budget into those markets.
+
+16
+00:00:58,865 --> 00:01:02,145
+I review the amount, deadline and
+preferences together.
+
+17
+00:01:02,165 --> 00:01:06,245
+Explicit calculations and constraints
+create the allocation.
+
+18
+00:01:06,265 --> 00:01:09,715
+An optional model critique is configured
+separately.
+
+19
+00:01:11,015 --> 00:01:13,495
+The request becomes a saved background
+job.
+
+20
+00:01:13,515 --> 00:01:17,895
+I can follow its progress and return to
+the result without keeping a long
+
+21
+00:01:17,915 --> 00:01:18,965
+connection open.
+
+22
+00:01:19,783 --> 00:01:24,303
+For this firm home deadline, Thesis
+reserves the budget for accessible cash or
+
+23
+00:01:24,323 --> 00:01:26,503
+a suitable deposit that matures in time.
+
+24
+00:01:26,523 --> 00:01:28,973
+It doesn't force a stock allocation.
+
+25
+00:01:29,623 --> 00:01:31,703
+All ten thousand dollars are accounted
+for.
+
+26
+00:01:31,723 --> 00:01:36,773
+The bank, rate, eligibility and currency
+still need checking.
+
+27
+00:01:37,857 --> 00:01:39,637
+I can also record investments.
+
+28
+00:01:39,657 --> 00:01:44,707
+This illustrative entry is two Apple
+shares at a price I enter myself.
+
+29
+00:01:45,357 --> 00:01:48,807
+Thesis records two hundred dollars of
+cost.
+
+30
+00:01:49,257 --> 00:01:54,007
+Market valuation needs a separate,
+entitled quote source.
+
+31
+00:01:54,457 --> 00:01:58,007
+This records a holding, without placing a
+broker order.
+
+32
+00:01:58,948 --> 00:02:03,328
+The instrument view opens a real TradingView
+chart with attribution and market
+
+33
+00:02:03,348 --> 00:02:07,128
+status. The app keeps it separate from
+portfolio calculations.
+
+34
+00:02:07,148 --> 00:02:12,628
+An embedded chart doesn't establish
+verified history for allocation or risk
+
+35
+00:02:12,648 --> 00:02:13,398
+estimates.
+
+36
+00:02:14,323 --> 00:02:15,703
+Now I review the evidence.
+
+37
+00:02:15,723 --> 00:02:21,173
+Dated SEC facts pass through an
+owner-scoped Zetaris query.
+
+38
+00:02:21,623 --> 00:02:24,673
+Code identifies the available sources and
+gaps.
+
+39
+00:02:25,023 --> 00:02:30,103
+An NVIDIA Nemotron model, served through
+Nightshift, counterchecks what those
+
+40
+00:02:30,123 --> 00:02:35,303
+sources can support. Missing quotes and
+price history still block market
+
+41
+00:02:35,323 --> 00:02:39,973
+conclusions. Actual sources and the model
+receipt stay visible.
+
+42
+00:02:40,867 --> 00:02:45,957
+Meterless H-MEM recalls earlier reviews so
+I can revisit the reasoning.
+
+43
+00:02:46,407 --> 00:02:48,787
+Historical context isn't current evidence.
+
+44
+00:02:48,807 --> 00:02:55,087
+News stays sourced too. Its feed was
+unavailable here, and Thesis showed that
+
+45
+00:02:55,107 --> 00:02:57,457
+gap instead of inventing headlines.
+
+46
+00:02:58,450 --> 00:03:04,470
+Settings offer NVIDIA, OpenAI, Anthropic,
+Gemini and Nightshift.
+
+47
+00:03:04,490 --> 00:03:06,870
+Models come from the account's actual
+catalog.
+
+48
+00:03:06,890 --> 00:03:10,270
+Discovery and inference tests remain
+separate.
+
+49
+00:03:10,290 --> 00:03:12,540
+Keys stay encrypted on the server.
+
+50
+00:03:13,090 --> 00:03:16,840
+Personal providers require appropriate
+keys and credits.
+
+51
+00:03:17,798 --> 00:03:21,978
+Thesis brings a goal, my portfolio and the
+evidence together.
+
+52
+00:03:21,998 --> 00:03:28,178
+I make the decision. Next, I want
+scheduled checks that flag changes in
+
+53
+00:03:28,198 --> 00:03:30,778
+earnings, forecasts or legal developments.
+
+54
+00:03:30,798 --> 00:03:34,948
+Today, I can start a review and inspect
+what supports it.

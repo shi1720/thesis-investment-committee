@@ -1,0 +1,541 @@
+{
+  "status": "partial",
+  "data": {
+    "instrument": {
+      "symbol": "MSFT",
+      "market": "US",
+      "exchange": "Nasdaq",
+      "currency": "USD"
+    },
+    "name": "MICROSOFT CORP",
+    "sector": null,
+    "industry": "Services-Prepackaged Software",
+    "currency": "USD",
+    "fiscalDate": "2026-06-30",
+    "metrics": {
+      "pe": {
+        "value": null,
+        "unit": "ratio",
+        "period": null,
+        "note": "Unavailable without a verified current quote and compatible earnings basis"
+      },
+      "priceToBook": {
+        "value": null,
+        "unit": "ratio",
+        "period": null,
+        "note": "Unavailable without a verified quote/book value per share"
+      },
+      "roe": {
+        "value": 34.03862745048138,
+        "unit": "percent",
+        "period": "2026-06-30",
+        "note": "Annual net income / average beginning and ending positive common equity, all from the same filing."
+      },
+      "operatingMargin": {
+        "value": 46.780818408927225,
+        "unit": "percent",
+        "period": "2026-06-30",
+        "note": "Reported period operating income / revenue; not a silently synthesized TTM ratio."
+      },
+      "debtToEquity": {
+        "value": null,
+        "unit": "ratio",
+        "period": null,
+        "note": "Requires complete reported debt components and positive equity in one fiscal context"
+      },
+      "revenueGrowth": {
+        "value": 17.788686799846666,
+        "unit": "percent",
+        "period": "2026-06-30",
+        "note": "Same filing, same revenue tag and comparable prior-year duration."
+      },
+      "dividendYield": {
+        "value": null,
+        "unit": "percent",
+        "period": null,
+        "note": "Unavailable without actual quote and declared dividend basis"
+      },
+      "marketCap": {
+        "value": null,
+        "unit": "currency",
+        "period": null,
+        "note": "Unavailable without actual quote and matching share count"
+      },
+      "eps": {
+        "value": 17.95,
+        "unit": "currency",
+        "period": "2026-06-30",
+        "note": "Reported diluted EPS for the stated fiscal period, not forward EPS."
+      }
+    }
+  },
+  "provenance": {
+    "provider": "SEC",
+    "fetchedAt": "2026-10-27T06:02:01.309956+00:00",
+    "asOf": "2026-07-29",
+    "sourceUrl": "https://data.sec.gov/api/xbrl/companyfacts/CIK0000789019.json",
+    "currency": "USD",
+    "timezone": null,
+    "adjustment": "unknown",
+    "delay": "unknown"
+  },
+  "issuer": {
+    "cik": "0000789019",
+    "symbol": "MSFT",
+    "name": "MICROSOFT CORP"
+  },
+  "factEvidence": [
+    {
+      "id": "sec-fact-8af3a035f1e2035b5a57faaf",
+      "tag": "RevenueFromContractWithCustomerExcludingAssessedTax",
+      "label": "Revenue from Contract with Customer, Excluding Assessed Tax",
+      "value": 331839000000,
+      "unit": "USD",
+      "start": "2025-07-01",
+      "end": "2026-06-30",
+      "filed": "2026-07-29",
+      "accession": "0001193125-26-323660",
+      "form": "10-K",
+      "sourceUrl": "https://www.sec.gov/Archives/edgar/data/789019/000119312526323660/msft-20260630.htm",
+      "excerpt": "Reported SEC XBRL RevenueFromContractWithCustomerExcludingAssessedTax: 331839000000 USD; 2025-07-01 to 2026-06-30; 10-K filed 2026-07-29; accession 0001193125-26-323660. Structured fact, not a verbatim filing quotation."
+    },
+    {
+      "id": "sec-fact-e1f268a4e6932093e8dba2b0",
+      "tag": "OperatingIncomeLoss",
+      "label": "Operating Income (Loss)",
+      "value": 155237000000,
+      "unit": "USD",
+      "start": "2025-07-01",
+      "end": "2026-06-30",
+      "filed": "2026-07-29",
+      "accession": "0001193125-26-323660",
+      "form": "10-K",
+      "sourceUrl": "https://www.sec.gov/Archives/edgar/data/789019/000119312526323660/msft-20260630.htm",
+      "excerpt": "Reported SEC XBRL OperatingIncomeLoss: 155237000000 USD; 2025-07-01 to 2026-06-30; 10-K filed 2026-07-29; accession 0001193125-26-323660. Structured fact, not a verbatim filing quotation."
+    },
+    {
+      "id": "sec-fact-6f236c947369bb774c0c5cee",
+      "tag": "EarningsPerShareDiluted",
+      "label": "Earnings Per Share, Diluted",
+      "value": 17.95,
+      "unit": "USD/shares",
+      "start": "2025-07-01",
+      "end": "2026-06-30",
+      "filed": "2026-07-29",
+      "accession": "0001193125-26-323660",
+      "form": "10-K",
+      "sourceUrl": "https://www.sec.gov/Archives/edgar/data/789019/000119312526323660/msft-20260630.htm",
+      "excerpt": "Reported SEC XBRL EarningsPerShareDiluted: 17.95 USD/shares; 2025-07-01 to 2026-06-30; 10-K filed 2026-07-29; accession 0001193125-26-323660. Structured fact, not a verbatim filing quotation."
+    },
+    {
+      "id": "sec-fact-15968ba2dcef1c51423dc6e6",
+      "tag": "RevenueFromContractWithCustomerExcludingAssessedTax",
+      "label": "Revenue from Contract with Customer, Excluding Assessed Tax",
+      "value": 281724000000,
+      "unit": "USD",
+      "start": "2024-07-01",
+      "end": "2025-06-30",
+      "filed": "2026-07-29",
+      "accession": "0001193125-26-323660",
+      "form": "10-K",
+      "sourceUrl": "https://www.sec.gov/Archives/edgar/data/789019/000119312526323660/msft-20260630.htm",
+      "excerpt": "Reported SEC XBRL RevenueFromContractWithCustomerExcludingAssessedTax: 281724000000 USD; 2024-07-01 to 2025-06-30; 10-K filed 2026-07-29; accession 0001193125-26-323660. Structured fact, not a verbatim filing quotation."
+    },
+    {
+      "id": "sec-fact-7214124e170981367f6ebf7c",
+      "tag": "NetIncomeLoss",
+      "label": "Net Income (Loss) Attributable to Parent",
+      "value": 133749000000,
+      "unit": "USD",
+      "start": "2025-07-01",
+      "end": "2026-06-30",
+      "filed": "2026-07-29",
+      "accession": "0001193125-26-323660",
+      "form": "10-K",
+      "sourceUrl": "https://www.sec.gov/Archives/edgar/data/789019/000119312526323660/msft-20260630.htm",
+      "excerpt": "Reported SEC XBRL NetIncomeLoss: 133749000000 USD; 2025-07-01 to 2026-06-30; 10-K filed 2026-07-29; accession 0001193125-26-323660. Structured fact, not a verbatim filing quotation."
+    },
+    {
+      "id": "sec-fact-2658e3424491e2ed9ebd8650",
+      "tag": "StockholdersEquity",
+      "label": "Stockholders' Equity Attributable to Parent",
+      "value": 442387000000,
+      "unit": "USD",
+      "start": null,
+      "end": "2026-06-30",
+      "filed": "2026-07-29",
+      "accession": "0001193125-26-323660",
+      "form": "10-K",
+      "sourceUrl": "https://www.sec.gov/Archives/edgar/data/789019/000119312526323660/msft-20260630.htm",
+      "excerpt": "Reported SEC XBRL StockholdersEquity: 442387000000 USD; 2026-06-30; 10-K filed 2026-07-29; accession 0001193125-26-323660. Structured fact, not a verbatim filing quotation."
+    },
+    {
+      "id": "sec-fact-9c26f08c926578ccff2da748",
+      "tag": "StockholdersEquity",
+      "label": "Stockholders' Equity Attributable to Parent",
+      "value": 343479000000,
+      "unit": "USD",
+      "start": null,
+      "end": "2025-06-30",
+      "filed": "2026-07-29",
+      "accession": "0001193125-26-323660",
+      "form": "10-K",
+      "sourceUrl": "https://www.sec.gov/Archives/edgar/data/789019/000119312526323660/msft-20260630.htm",
+      "excerpt": "Reported SEC XBRL StockholdersEquity: 343479000000 USD; 2025-06-30; 10-K filed 2026-07-29; accession 0001193125-26-323660. Structured fact, not a verbatim filing quotation."
+    }
+  ],
+  "filings": [
+    {
+      "id": "sec-filing-0001193125-26-380280",
+      "form": "8-K",
+      "filed": "2026-09-02",
+      "reportDate": "2026-09-02",
+      "accession": "0001193125-26-380280",
+      "primaryDocument": "d291965d8k.htm",
+      "url": "https://www.sec.gov/Archives/edgar/data/789019/000119312526380280/d291965d8k.htm",
+      "title": "SEC 8-K filed 2026-09-02 (reported items 7.01,9.01)",
+      "items": "7.01,9.01"
+    },
+    {
+      "id": "sec-filing-0001193125-26-323660",
+      "form": "10-K",
+      "filed": "2026-07-29",
+      "reportDate": "2026-06-30",
+      "accession": "0001193125-26-323660",
+      "primaryDocument": "msft-20260630.htm",
+      "url": "https://www.sec.gov/Archives/edgar/data/789019/000119312526323660/msft-20260630.htm",
+      "title": "SEC 10-K filed 2026-07-29",
+      "items": null
+    },
+    {
+      "id": "sec-filing-0001193125-26-323632",
+      "form": "8-K",
+      "filed": "2026-07-29",
+      "reportDate": "2026-07-29",
+      "accession": "0001193125-26-323632",
+      "primaryDocument": "msft-20260729.htm",
+      "url": "https://www.sec.gov/Archives/edgar/data/789019/000119312526323632/msft-20260729.htm",
+      "title": "SEC 8-K filed 2026-07-29 (reported items 2.02,9.01)",
+      "items": "2.02,9.01"
+    },
+    {
+      "id": "sec-filing-0001193125-26-258667",
+      "form": "8-K",
+      "filed": "2026-06-05",
+      "reportDate": "2026-06-02",
+      "accession": "0001193125-26-258667",
+      "primaryDocument": "d26760d8k.htm",
+      "url": "https://www.sec.gov/Archives/edgar/data/789019/000119312526258667/d26760d8k.htm",
+      "title": "SEC 8-K filed 2026-06-05 (reported items 5.02)",
+      "items": "5.02"
+    },
+    {
+      "id": "sec-filing-0001193125-26-224155",
+      "form": "8-K",
+      "filed": "2026-05-14",
+      "reportDate": "2026-05-13",
+      "accession": "0001193125-26-224155",
+      "primaryDocument": "d125909d8k.htm",
+      "url": "https://www.sec.gov/Archives/edgar/data/789019/000119312526224155/d125909d8k.htm",
+      "title": "SEC 8-K filed 2026-05-14 (reported items 5.02,9.01)",
+      "items": "5.02,9.01"
+    },
+    {
+      "id": "sec-filing-0001193125-26-191507",
+      "form": "10-Q",
+      "filed": "2026-04-29",
+      "reportDate": "2026-03-31",
+      "accession": "0001193125-26-191507",
+      "primaryDocument": "msft-20260331.htm",
+      "url": "https://www.sec.gov/Archives/edgar/data/789019/000119312526191507/msft-20260331.htm",
+      "title": "SEC 10-Q filed 2026-04-29",
+      "items": null
+    },
+    {
+      "id": "sec-filing-0001193125-26-191457",
+      "form": "8-K",
+      "filed": "2026-04-29",
+      "reportDate": "2026-04-29",
+      "accession": "0001193125-26-191457",
+      "primaryDocument": "msft-20260429.htm",
+      "url": "https://www.sec.gov/Archives/edgar/data/789019/000119312526191457/msft-20260429.htm",
+      "title": "SEC 8-K filed 2026-04-29 (reported items 2.02,9.01)",
+      "items": "2.02,9.01"
+    },
+    {
+      "id": "sec-filing-0001193125-26-027207",
+      "form": "10-Q",
+      "filed": "2026-01-28",
+      "reportDate": "2025-12-31",
+      "accession": "0001193125-26-027207",
+      "primaryDocument": "msft-20251231.htm",
+      "url": "https://www.sec.gov/Archives/edgar/data/789019/000119312526027207/msft-20251231.htm",
+      "title": "SEC 10-Q filed 2026-01-28",
+      "items": null
+    },
+    {
+      "id": "sec-filing-0001193125-26-027198",
+      "form": "8-K",
+      "filed": "2026-01-28",
+      "reportDate": "2026-01-28",
+      "accession": "0001193125-26-027198",
+      "primaryDocument": "msft-20260128.htm",
+      "url": "https://www.sec.gov/Archives/edgar/data/789019/000119312526027198/msft-20260128.htm",
+      "title": "SEC 8-K filed 2026-01-28 (reported items 2.02,9.01)",
+      "items": "2.02,9.01"
+    },
+    {
+      "id": "sec-filing-0001193125-25-311196",
+      "form": "8-K",
+      "filed": "2025-12-08",
+      "reportDate": "2025-12-05",
+      "accession": "0001193125-25-311196",
+      "primaryDocument": "d34077d8k.htm",
+      "url": "https://www.sec.gov/Archives/edgar/data/789019/000119312525311196/d34077d8k.htm",
+      "title": "SEC 8-K filed 2025-12-08 (reported items 5.02,5.07)",
+      "items": "5.02,5.07"
+    },
+    {
+      "id": "sec-filing-0001193125-25-256321",
+      "form": "10-Q",
+      "filed": "2025-10-29",
+      "reportDate": "2025-09-30",
+      "accession": "0001193125-25-256321",
+      "primaryDocument": "msft-20250930.htm",
+      "url": "https://www.sec.gov/Archives/edgar/data/789019/000119312525256321/msft-20250930.htm",
+      "title": "SEC 10-Q filed 2025-10-29",
+      "items": null
+    },
+    {
+      "id": "sec-filing-0001193125-25-256310",
+      "form": "8-K",
+      "filed": "2025-10-29",
+      "reportDate": "2025-10-28",
+      "accession": "0001193125-25-256310",
+      "primaryDocument": "msft-20251028.htm",
+      "url": "https://www.sec.gov/Archives/edgar/data/789019/000119312525256310/msft-20251028.htm",
+      "title": "SEC 8-K filed 2025-10-29 (reported items 2.02,7.01,9.01)",
+      "items": "2.02,7.01,9.01"
+    },
+    {
+      "id": "sec-filing-0001193125-25-225125",
+      "form": "8-K",
+      "filed": "2025-09-30",
+      "reportDate": "2025-09-24",
+      "accession": "0001193125-25-225125",
+      "primaryDocument": "d863209d8k.htm",
+      "url": "https://www.sec.gov/Archives/edgar/data/789019/000119312525225125/d863209d8k.htm",
+      "title": "SEC 8-K filed 2025-09-30 (reported items 5.02)",
+      "items": "5.02"
+    },
+    {
+      "id": "sec-filing-0000950170-25-100235",
+      "form": "10-K",
+      "filed": "2025-07-30",
+      "reportDate": "2025-06-30",
+      "accession": "0000950170-25-100235",
+      "primaryDocument": "msft-20250630.htm",
+      "url": "https://www.sec.gov/Archives/edgar/data/789019/000095017025100235/msft-20250630.htm",
+      "title": "SEC 10-K filed 2025-07-30",
+      "items": null
+    },
+    {
+      "id": "sec-filing-0000950170-25-100226",
+      "form": "8-K",
+      "filed": "2025-07-30",
+      "reportDate": "2025-07-30",
+      "accession": "0000950170-25-100226",
+      "primaryDocument": "msft-20250730.htm",
+      "url": "https://www.sec.gov/Archives/edgar/data/789019/000095017025100226/msft-20250730.htm",
+      "title": "SEC 8-K filed 2025-07-30 (reported items 2.02,9.01)",
+      "items": "2.02,9.01"
+    },
+    {
+      "id": "sec-filing-0001193125-25-154103",
+      "form": "8-K",
+      "filed": "2025-07-01",
+      "reportDate": "2025-07-01",
+      "accession": "0001193125-25-154103",
+      "primaryDocument": "d84624d8k.htm",
+      "url": "https://www.sec.gov/Archives/edgar/data/789019/000119312525154103/d84624d8k.htm",
+      "title": "SEC 8-K filed 2025-07-01 (reported items 5.03,9.01)",
+      "items": "5.03,9.01"
+    },
+    {
+      "id": "sec-filing-0000950170-25-061046",
+      "form": "10-Q",
+      "filed": "2025-04-30",
+      "reportDate": "2025-03-31",
+      "accession": "0000950170-25-061046",
+      "primaryDocument": "msft-20250331.htm",
+      "url": "https://www.sec.gov/Archives/edgar/data/789019/000095017025061046/msft-20250331.htm",
+      "title": "SEC 10-Q filed 2025-04-30",
+      "items": null
+    },
+    {
+      "id": "sec-filing-0000950170-25-061032",
+      "form": "8-K",
+      "filed": "2025-04-30",
+      "reportDate": "2025-04-30",
+      "accession": "0000950170-25-061032",
+      "primaryDocument": "msft-20250430.htm",
+      "url": "https://www.sec.gov/Archives/edgar/data/789019/000095017025061032/msft-20250430.htm",
+      "title": "SEC 8-K filed 2025-04-30 (reported items 2.02,9.01)",
+      "items": "2.02,9.01"
+    },
+    {
+      "id": "sec-filing-0000950170-25-010491",
+      "form": "10-Q",
+      "filed": "2025-01-29",
+      "reportDate": "2024-12-31",
+      "accession": "0000950170-25-010491",
+      "primaryDocument": "msft-20241231.htm",
+      "url": "https://www.sec.gov/Archives/edgar/data/789019/000095017025010491/msft-20241231.htm",
+      "title": "SEC 10-Q filed 2025-01-29",
+      "items": null
+    },
+    {
+      "id": "sec-filing-0000950170-25-010484",
+      "form": "8-K",
+      "filed": "2025-01-29",
+      "reportDate": "2025-01-29",
+      "accession": "0000950170-25-010484",
+      "primaryDocument": "msft-20250129.htm",
+      "url": "https://www.sec.gov/Archives/edgar/data/789019/000095017025010484/msft-20250129.htm",
+      "title": "SEC 8-K filed 2025-01-29 (reported items 2.02,9.01)",
+      "items": "2.02,9.01"
+    },
+    {
+      "id": "sec-filing-0001193125-25-010492",
+      "form": "8-K",
+      "filed": "2025-01-22",
+      "reportDate": "2025-01-22",
+      "accession": "0001193125-25-010492",
+      "primaryDocument": "d929748d8k.htm",
+      "url": "https://www.sec.gov/Archives/edgar/data/789019/000119312525010492/d929748d8k.htm",
+      "title": "SEC 8-K filed 2025-01-22 (reported items 5.02)",
+      "items": "5.02"
+    },
+    {
+      "id": "sec-filing-0001193125-24-275524",
+      "form": "8-K",
+      "filed": "2024-12-11",
+      "reportDate": "2024-12-10",
+      "accession": "0001193125-24-275524",
+      "primaryDocument": "d865252d8k.htm",
+      "url": "https://www.sec.gov/Archives/edgar/data/789019/000119312524275524/d865252d8k.htm",
+      "title": "SEC 8-K filed 2024-12-11 (reported items 5.07,7.01)",
+      "items": "5.07,7.01"
+    },
+    {
+      "id": "sec-filing-0000950170-24-132722",
+      "form": "8-K",
+      "filed": "2024-12-03",
+      "reportDate": "2024-12-03",
+      "accession": "0000950170-24-132722",
+      "primaryDocument": "msft-20241203.htm",
+      "url": "https://www.sec.gov/Archives/edgar/data/789019/000095017024132722/msft-20241203.htm",
+      "title": "SEC 8-K filed 2024-12-03 (reported items 8.01,9.01)",
+      "items": "8.01,9.01"
+    },
+    {
+      "id": "sec-filing-0000950170-24-118967",
+      "form": "10-Q",
+      "filed": "2024-10-30",
+      "reportDate": "2024-09-30",
+      "accession": "0000950170-24-118967",
+      "primaryDocument": "msft-20240930.htm",
+      "url": "https://www.sec.gov/Archives/edgar/data/789019/000095017024118967/msft-20240930.htm",
+      "title": "SEC 10-Q filed 2024-10-30",
+      "items": null
+    },
+    {
+      "id": "sec-filing-0000950170-24-118955",
+      "form": "8-K",
+      "filed": "2024-10-30",
+      "reportDate": "2024-10-30",
+      "accession": "0000950170-24-118955",
+      "primaryDocument": "msft-20241030.htm",
+      "url": "https://www.sec.gov/Archives/edgar/data/789019/000095017024118955/msft-20241030.htm",
+      "title": "SEC 8-K filed 2024-10-30 (reported items 2.02,9.01)",
+      "items": "2.02,9.01"
+    },
+    {
+      "id": "sec-filing-0001193125-24-204403",
+      "form": "8-K",
+      "filed": "2024-08-21",
+      "reportDate": "2024-08-21",
+      "accession": "0001193125-24-204403",
+      "primaryDocument": "d846847d8k.htm",
+      "url": "https://www.sec.gov/Archives/edgar/data/789019/000119312524204403/d846847d8k.htm",
+      "title": "SEC 8-K filed 2024-08-21 (reported items 7.01,9.01)",
+      "items": "7.01,9.01"
+    },
+    {
+      "id": "sec-filing-0000950170-24-087843",
+      "form": "10-K",
+      "filed": "2024-07-30",
+      "reportDate": "2024-06-30",
+      "accession": "0000950170-24-087843",
+      "primaryDocument": "msft-20240630.htm",
+      "url": "https://www.sec.gov/Archives/edgar/data/789019/000095017024087843/msft-20240630.htm",
+      "title": "SEC 10-K filed 2024-07-30",
+      "items": null
+    },
+    {
+      "id": "sec-filing-0000950170-24-087835",
+      "form": "8-K",
+      "filed": "2024-07-30",
+      "reportDate": "2024-07-30",
+      "accession": "0000950170-24-087835",
+      "primaryDocument": "msft-20240730.htm",
+      "url": "https://www.sec.gov/Archives/edgar/data/789019/000095017024087835/msft-20240730.htm",
+      "title": "SEC 8-K filed 2024-07-30 (reported items 2.02,9.01)",
+      "items": "2.02,9.01"
+    },
+    {
+      "id": "sec-filing-0000950170-24-048288",
+      "form": "10-Q",
+      "filed": "2024-04-25",
+      "reportDate": "2024-03-31",
+      "accession": "0000950170-24-048288",
+      "primaryDocument": "msft-20240331.htm",
+      "url": "https://www.sec.gov/Archives/edgar/data/789019/000095017024048288/msft-20240331.htm",
+      "title": "SEC 10-Q filed 2024-04-25",
+      "items": null
+    },
+    {
+      "id": "sec-filing-0000950170-24-048268",
+      "form": "8-K",
+      "filed": "2024-04-25",
+      "reportDate": "2024-04-25",
+      "accession": "0000950170-24-048268",
+      "primaryDocument": "msft-20240425.htm",
+      "url": "https://www.sec.gov/Archives/edgar/data/789019/000095017024048268/msft-20240425.htm",
+      "title": "SEC 8-K filed 2024-04-25 (reported items 2.02,9.01)",
+      "items": "2.02,9.01"
+    }
+  ],
+  "warnings": [
+    "Dated cached public SEC snapshot. This is not a fresh or live fetch.",
+    "Official SEC reported facts are dated statements, not current market quotes or independently audited product calculations.",
+    "Quote-dependent valuation, capitalization and dividend-yield fields remain unavailable. Fiscal periods and filing publication dates are separate."
+  ],
+  "cached": true,
+  "dataMode": "cached_snapshot",
+  "snapshot": {
+    "sourceRequestedAt": "2026-10-27T06:02:01.309956+00:00",
+    "sourceRetrievedAt": null,
+    "submissionsRequestedAt": "2026-10-27T06:05:16.405558+00:00",
+    "normalizedAt": "2026-10-27T11:54:34.604Z",
+    "retrievalTimingNote": "Original successful HTTP request start is recorded; exact response completion time is unrecorded. File modification time was not used.",
+    "sourceUrls": [
+      "https://data.sec.gov/api/xbrl/companyfacts/CIK0000789019.json",
+      "https://data.sec.gov/submissions/CIK0000789019.json"
+    ],
+    "sourceSha256": {
+      "companyfacts": "dd0308149a8e96497989ed7c690b5a49a00bef9ceafbb24638bda41e8ae938dd",
+      "submissions": "5f7093cab1b22bc9cc784b5a04f8394a0faf216513810829b302e464d138a990"
+    }
+  }
+}

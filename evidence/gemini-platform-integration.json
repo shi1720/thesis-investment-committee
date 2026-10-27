@@ -1,0 +1,61 @@
+{
+  "verifiedAt": "2026-10-27T10:24:28.166Z",
+  "scope": "Actual authenticated native Gemini catalog discovery and inference attempts. HTTP402 rejected both the nonce and plan critique; no successful generation is claimed. No market data was substituted.",
+  "base": "http://127.0.0.1:5199",
+  "model": "gemini-3.5-flash-lite",
+  "catalogModels": 34,
+  "connectionReceipt": {
+    "id": "4321b10f-2692-474f-ad9b-9bba70db46a7",
+    "role": "connection_test",
+    "provider": "gemini",
+    "requestedModel": "gemini-3.5-flash-lite",
+    "responseModel": null,
+    "startedAt": "2026-10-27T10:24:10.674Z",
+    "latencyMs": 415,
+    "inputTokens": null,
+    "outputTokens": null,
+    "reasoningTokens": null,
+    "reportedCostUsd": null,
+    "requestId": null,
+    "status": "failed",
+    "errorCode": "provider_http"
+  },
+  "totalAllocated": 10000,
+  "budgetConserved": true,
+  "aiReview": {
+    "status": "failed",
+    "message": "The provider returned HTTP 402. Check model compatibility and account availability."
+  },
+  "reportStatus": "failed",
+  "stages": [],
+  "receipts": [
+    {
+      "id": "0a9d08f8-40f6-432c-8ec8-87a7432d305a",
+      "role": "planner",
+      "provider": "gemini",
+      "requestedModel": "gemini-3.5-flash-lite",
+      "responseModel": null,
+      "startedAt": "2026-10-27T10:24:23.177Z",
+      "latencyMs": 468,
+      "inputTokens": null,
+      "outputTokens": null,
+      "reasoningTokens": null,
+      "reportedCostUsd": null,
+      "requestId": null,
+      "status": "failed",
+      "errorCode": "provider_http"
+    }
+  ],
+  "persistedJobReceipts": 1,
+  "limitations": [
+    "Qualitative model analysis is unverified. Citation membership checks do not establish factual entailment.",
+    "Historical performance does not predict returns. Portfolio weights and risk constraints remain deterministic.",
+    "Source excerpts and user notes are untrusted context. Search snippets are not independently verified.",
+    "Actual provider charges may be unknown; token and call limits do not guarantee a monetary ceiling."
+  ],
+  "error": {
+    "code": "provider_http",
+    "message": "The provider returned HTTP 402. Check model compatibility and account availability."
+  },
+  "temporaryKeyDeleted": true
+}
