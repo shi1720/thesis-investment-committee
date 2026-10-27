@@ -19,7 +19,7 @@ submitted evidence now includes:
 | [Official H-MEM conformance](../evidence/hmem-conformance.json) | Thirteen passing upstream conformance checks against the pinned official engine | A proprietary memory invention or demonstrated customer benefit |
 | [Nemotron feature](../evidence/nemotron-live.json) and [model provenance](../evidence/nemotron-model-provenance.json) | A real optional exclusion-auditor feature, two actual request receipts and concrete NVIDIA model identity | Nemotron involvement in the recorded Qwen-only public cloud run |
 | [Private actual-data metadata](../evidence/zetaris-personal-metadata.json) | A validated actual personal-use US record in its separate Zetaris namespace | Public redistribution rights, a broad live universe or an investable recommendation |
-| Automated suite and clean reproduction | Typed source/risk/revision behavior, adapter boundaries and repeatable setup | Investment alpha, calibrated forecasts or an audited financial service |
+| [Fresh clean reproduction](../evidence/clean-reproduction.json) | Eighty-four passing tests, typed source/risk/revision behavior, adapter boundaries, builds, repeatable migrations and fourteen isolated sample API checks | Investment alpha, calibrated forecasts or an audited financial service |
 
 The public sponsor demonstrations use synthetic financial inputs. Real provider
 execution and real market observations are separate facts. The private actual

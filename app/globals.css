@@ -5136,3 +5136,7 @@ button:focus-visible, a:focus-visible, input:focus-visible, select:focus-visible
   .result-tabs > button { justify-content: center; font-size: 12px; white-space: nowrap; gap: 4px; }
   .result-tabs > button > svg { display: none; }
 }
+
+.fixture-title { display: flex; flex-direction: column; gap: 5px; color: #4f5f7c; font-size: 12px; font-weight: 550; line-height: 1.5; }
+.fixture-title small { font-size: 11px; color: #63728b; font-weight: 400; }
+@media (max-width: 990px) { .hero { overflow: hidden; } }

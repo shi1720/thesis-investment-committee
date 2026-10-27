@@ -2108,14 +2108,14 @@ export default function Home() {
                                     <span>{e.kind}</span>
                                     <span>{date(e.asOf)}</span>
                                   </div>
-                                  <a
+                                  {/^https:\/\//i.test(e.url) ? <a
                                     href={e.url}
                                     target="_blank"
                                     rel="noopener noreferrer"
                                   >
                                     {e.title}
                                     <ExternalLink size={13} />
-                                  </a>
+                                  </a> : <strong className="fixture-title">{e.title}<small>Fixture record</small></strong>}
                                   <p>{e.excerpt}</p>
                                   <div className="evidence-bottom">
                                     <code>{e.id}</code>
@@ -2822,10 +2822,10 @@ export default function Home() {
                 <div className="detail-source" key={e.id}>
                   <FileText size={16} />
                   <div>
-                    <a href={e.url} target="_blank" rel="noopener noreferrer">
+                    {/^https:\/\//i.test(e.url) ? <a href={e.url} target="_blank" rel="noopener noreferrer">
                       {e.title}
                       <ExternalLink size={12} />
-                    </a>
+                    </a> : <strong className="fixture-title">{e.title}<small>Fixture record</small></strong>}
                     <span>
                       {e.publisher} · {date(e.asOf)}
                       {e.sample ? " · Sample assumption" : ""}

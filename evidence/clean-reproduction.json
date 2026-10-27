@@ -1,107 +1,147 @@
 {
-  "schema": "thesis.clean-checkout-reproduction.v1",
-  "finishedAt": "2026-10-27T05:37:14.267690+00:00",
-  "source": "/Users/shivamgupta/Documents/Codex/2026-10-27/can-we-build-something-to-help-2/outputs/thesis",
-  "isolatedCheckout": "/Users/shivamgupta/Documents/Codex/2026-10-27/can-we-build-something-to-help-2/work/clean-repro",
-  "sourceEditedByThisTask": false,
-  "copiedFiles": 191,
-  "envExampleIncluded": true,
-  "excluded": [
-    "node_modules",
-    ".git",
-    "dist",
-    ".dev.vars",
-    ".env files except .env.example",
-    ".wrangler",
-    ".sites-runtime",
-    "work",
-    "outputs",
-    "*.tsbuildinfo",
-    "OS metadata"
-  ],
+  "schema": "thesis.clean-reproduction.v2",
+  "executedAt": "2026-10-27T07:26:01.847200+00:00",
+  "source": "Fresh isolated copy of intended tracked and nonignored working-tree files; not a remote repository clone",
   "environment": {
-    "node": "v22.16.0",
-    "npm": "10.9.2",
-    "platform": "macOS portable Sites profile; loopback-only Worker"
+    "os": "macOS arm64",
+    "node": "v24.12.0",
+    "npm": "11.6.2",
+    "runtimeDownload": {
+      "version": "v24.12.0",
+      "platform": "darwin-arm64",
+      "source": "https://nodejs.org/dist/v24.12.0/node-v24.12.0-darwin-arm64.tar.gz",
+      "sha256": "319f221adc5e44ff0ed57e8a441b2284f02b8dc6fc87b8eb92a6a93643fd8080",
+      "checksumSource": "https://nodejs.org/dist/v24.12.0/SHASUMS256.txt",
+      "verified": true
+    },
+    "dependencyInstall": "npm ci from unchanged lockfile",
+    "privateEnvironmentFilesCopied": false,
+    "placeholderEnvIncluded": true,
+    "nodeModulesCopied": false,
+    "gitMetadataCopied": false
+  },
+  "sourceSnapshot": {
+    "runtimeFileCount": 122,
+    "runtimeSha256": "35d0754bbfc909be7afab301e58cecc0181666c2c2c1bd5b3a5172abd90f7d0a",
+    "matchesCurrentRuntimeSource": true
   },
   "checks": [
     {
       "command": "npm ci",
-      "passed": true,
-      "installedPackages": 688,
-      "log": "work/clean-repro-npm-ci.log"
-    },
-    {
-      "command": "npm run setup",
-      "passed": true,
-      "productionBuild": true,
-      "freshLocalMigrationsApplied": 2,
-      "log": "work/clean-repro-setup-first.log"
+      "result": "passed",
+      "packagesAdded": 888,
+      "lastExecutedAt": "2026-10-27T07:17:32.918716+00:00",
+      "verificationScope": "Initial fresh reproduction; retained, not rerun during final refresh"
     },
     {
       "command": "npm run typecheck",
-      "passed": true,
-      "log": "work/clean-repro-typecheck.log"
+      "result": "passed",
+      "lastExecutedAt": "2026-10-27T07:39:47.044752+00:00",
+      "verificationScope": "Final fixture-link and stylesheet refresh"
     },
     {
       "command": "npm test",
-      "passed": true,
-      "tests": 50,
+      "result": "passed",
+      "tests": 84,
+      "passed": 84,
       "failed": 0,
       "skipped": 0,
-      "todo": 0,
-      "log": "work/clean-repro-tests.log"
+      "lastExecutedAt": "2026-10-27T07:39:49.463213+00:00",
+      "verificationScope": "Final fixture-link and stylesheet refresh"
     },
     {
-      "command": "npm run setup (second run)",
-      "passed": true,
+      "command": "npm run build:web",
+      "result": "passed",
+      "lastExecutedAt": "2026-10-27T07:41:55.073799+00:00",
+      "verificationScope": "Final fixture-link and stylesheet refresh"
+    },
+    {
+      "command": "npm run setup",
+      "result": "passed",
+      "freshMigrations": 2,
+      "lastExecutedAt": "2026-10-27T07:18:16.527362+00:00",
+      "verificationScope": "Initial fresh reproduction; retained, not rerun during final refresh"
+    },
+    {
+      "command": "npm run setup (repeat)",
+      "result": "passed",
+      "newMigrations": 0,
       "migrationLedgerUnchanged": true,
-      "ledgerHashUnchanged": true,
-      "ledgerMtimeUnchanged": true,
-      "databaseMigrationExecutions": 0,
-      "log": "work/clean-repro-setup-second.log"
+      "lastExecutedAt": "2026-10-27T07:21:46.171626+00:00",
+      "verificationScope": "Initial fresh reproduction; retained, not rerun during final refresh"
     },
     {
-      "command": "npm start -- --port 5194",
-      "passed": true,
-      "healthHttpStatus": 200,
-      "serverStoppedAfterTests": true
+      "command": "npm run build:api (after setup regenerates dist)",
+      "result": "passed",
+      "lastExecutedAt": "2026-10-27T07:39:47.189893+00:00",
+      "verificationScope": "Final fixture-link and stylesheet refresh"
     },
     {
-      "command": "THESIS_TEST_URL=http://127.0.0.1:5194 THESIS_TEST_TRUSTED_HEADERS=1 npm run test:api",
-      "passed": true,
+      "command": "node --check dist/api/server.mjs",
+      "result": "passed",
+      "lastExecutedAt": "2026-10-27T07:42:40.890870+00:00",
+      "verificationScope": "Final fixture-link and stylesheet refresh"
+    },
+    {
+      "command": "THESIS_TEST_URL=http://127.0.0.1:5199 THESIS_TEST_TRUSTED_HEADERS=1 npm run test:api",
+      "result": "passed",
       "checks": 14,
-      "environment": "local production Worker, synthetic platform identity headers",
-      "log": "work/clean-repro-api-tests.log"
+      "identity": "Synthetic loopback-only platform identity; separate from real Firebase hosted checks",
+      "serverStopped": true,
+      "lastExecutedAt": "2026-10-27T07:23:43.950037+00:00",
+      "verificationScope": "Initial fresh reproduction; retained, not rerun during final refresh"
+    },
+    {
+      "command": "Known-pattern scan of intended text source",
+      "result": "passed",
+      "textFiles": 255,
+      "matches": 0,
+      "scope": "Limited known-secret-pattern scan; not an external security audit",
+      "lastExecutedAt": "2026-10-27T07:23:19.403828+00:00",
+      "verificationScope": "Initial fresh reproduction; retained, not rerun during final refresh"
     }
   ],
-  "migrationLedger": {
-    "0000_omniscient_kate_bishop.sql": "6a2f2b3c5e80cd49c9bc085064f0f32ce372ad54c252d17a24cc396ed3199a11",
-    "0001_stormy_menace.sql": "e8ed5e2e3bc0f217649487343117bf797f797c35edf537b4b057cba0c312a813"
-  },
-  "secretScan": {
-    "actualSecretsFound": false,
-    "scope": "All copied UTF-8 source and evidence; known private key/provider-key/JWT/credential-URL patterns",
-    "intentionalTestFixtureHits": [
-      {
-        "path": "tests/providers.test.ts",
-        "kind": "credential_url",
-        "occurrences": 1,
-        "classification": "intentional fake credential URL used to test rejection; example.test domain"
-      }
-    ],
-    "limitation": "Heuristic scan, not an external security audit."
-  },
-  "instructionsAccurate": true,
-  "reproductionBugs": [],
-  "harnessNotes": [
-    "One initial start attempt overlapped the second build and saw temporarily absent dist/server/wrangler.json. Starting after build completion passed. This was test-harness sequencing, not a source defect.",
-    "Sponsor services were not called; the tested research was explicitly synthetic sample mode.",
-    "Source evidence/api-tests.json was not replaced; the test wrote only into the isolated copy."
+  "sampleFinancialInputs": "Entirely synthetic",
+  "setupInstructions": "Printed setup directs npm run dev, the displayed URL and Sign in; explicitly labels a synthetic local development account",
+  "reproductionBugsFound": [],
+  "limits": [
+    "Local sample reproduction does not verify hosted IAM, sponsor availability, actual market coverage, financial correctness or commercial data rights.",
+    "Actual provider prices, private user preferences and numerical market results were not copied into public evidence.",
+    "No broad security, load or recovery certification is inferred.",
+    "Official Node 24.12 replaced the available local Node 24.8, which is below the declared minimum. The final install/checks use the supported minimum."
   ],
-  "limitations": [
-    "No sponsor credentials were copied. This test does not establish connected sponsor availability.",
-    "API tests used synthetic trusted platform headers against the private loopback Worker. Hosted identity boundary requires separate deployed verification.",
-    "Browser layout/accessibility testing was not performed by this clean-checkout check."
-  ]
+  "initialReproductionCompletedAt": "2026-10-27T07:26:01.847200+00:00",
+  "lastVerifiedAt": "2026-10-27T07:42:40.890870+00:00",
+  "finalRefresh": {
+    "startedAt": "2026-10-27T07:39:46.673829+00:00",
+    "completedAt": "2026-10-27T07:42:40.890870+00:00",
+    "changedFiles": [
+      "app/page.tsx",
+      "lib/server/report.ts",
+      "tests/report.test.ts",
+      "app/globals.css"
+    ],
+    "reason": "Synthetic fixture references render plain text; include the final authorized stylesheet snapshot",
+    "rerun": [
+      "84 tests",
+      "typecheck",
+      "API build",
+      "web build",
+      "built API syntax"
+    ],
+    "retainedEarlierChecks": [
+      "fresh npm ci",
+      "fresh migrations",
+      "repeat setup migration ledger",
+      "14 isolated API checks",
+      "known-pattern secret scan"
+    ],
+    "previousRuntimeSnapshot": {
+      "runtimeFileCount": 122,
+      "runtimeSha256": "f3a03736970ae93288ea069a0513bc2603d984f1337680e6febf021e1191a3c8",
+      "matchesCurrentRuntimeSource": true
+    },
+    "runtimeSourceMatches": true,
+    "noProvisioningRepeated": true
+  }
 }

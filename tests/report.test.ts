@@ -11,4 +11,8 @@ test('research report escapes user/source text and keeps sample labeling',()=>{
   assert.ok(html.includes('&lt;script&gt;'));
   assert.ok(html.includes('Synthetic sample data'));
   assert.ok(html.includes('&quot; onmouseover=&quot;'));
+  run.evidence.push({...run.evidence[0],id:'fixture',url:'#sample-fixture'});
+  const fixtureReport=researchReport(run);
+  assert.ok(fixtureReport.includes('Fixture record: fixture'));
+  assert.ok(!fixtureReport.includes('href="#sample-fixture"'));
 });
